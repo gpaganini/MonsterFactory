@@ -1,0 +1,64 @@
+SELECT distinct co.seqconsumo,
+  (select pdvvinc from integrador.syncro_pdv p2 where p2.pdvvinc=co.pdv and rownum=1) as codpdv,
+  (select descr from integrador.syncro_pdv p2 where p2.pdvvinc=co.pdv and rownum=1) as pdv,
+    case
+      when co.estornado is null then 'N'
+      else co.estornado
+    end estornado,
+    co.matricula,
+    (select loginusuario from integrador.syncro_pdv p2 where p2.matricula=co.matricula and rownum=1) as usuario,
+    a.codartigo,
+    a.descprod,
+    co.qtd,
+    le.descr AS LocalEmissao,
+       (SELECT
+        hp.valor
+      FROM
+        pdv.preco hp
+      WHERE
+        hp.produto=co.codproduto AND
+        hp.data=(SELECT
+                      Max(data)
+                    FROM
+                      pdv.preco hp2
+                    WHERE
+                      co.codproduto=hp2.produto AND
+                      co.datahora>hp2.data)) AS precounitario,
+   (SELECT
+        hp.valor
+      FROM
+        pdv.preco hp
+      WHERE
+        hp.produto=co.codproduto AND
+        hp.data=(SELECT
+                      Max(data)
+                    FROM
+                      pdv.preco hp2
+                    WHERE
+                      co.codproduto=hp2.produto AND
+                      co.datahora>hp2.data)) *co.qtd as valortotal,
+   to_char(co.datahora,'dd/mm/yyyy hh24:mi:ss') as datahora,
+   co.terminal
+  from
+   integrador.syncro_consumo co
+
+   left join integrador.syncro_artigo a on
+     co.codproduto=a.codartigo
+   left join integrador.geral_localemissao le ON co.localemissao = le.localemissao
+
+
+  where
+    estorno='N' and
+    co.datahora BETWEEN To_Date('01/07/2015 00:00:00','dd/mm/yyyy hh24:mi:ss') AND
+                        To_Date('31/07/2015 23:59:59','dd/mm/yyyy hh24:mi:ss') AND
+                        a.codartigo in (16653,16654) AND
+                        co.localemissao IN (1,2,3,5,7,8,10)
+                    --  AND To_Date(co.datahora, 'hh24:mi:ss') BETWEEN To_Char('15:38:00', 'hh24:mi:ss') AND To_Char('23:59:59', 'hh24:mi:ss')
+ORDER by  a.descprod
+
+
+
+
+
+
+

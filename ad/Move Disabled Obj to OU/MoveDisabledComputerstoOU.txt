@@ -1,0 +1,1 @@
+Get-ADComputer -LDAPFilter "(&(objectCategory=computer)(objectClass=computer)(useraccountcontrol:1.2.840.113556.1.4.803:=2))" | Move-ADObject -TargetPath "OU=Computadores,OU=Desabilitados,DC=rqr,DC=com,DC=br"

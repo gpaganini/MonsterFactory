@@ -1,0 +1,7 @@
+makecert -pe -n "CN=PowerShell CSC" -ss MY -a sha1 -eku 1.3.6.1.5.5.7.3.3 -iv root.pvk -ic root.cer
+
+
+Set-AuthenticodeSignature .\logon.ps1 -Certificate $acert
+
+
+https://www.darkoperator.com/blog/2013/3/5/powershell-basics-execution-policy-part-1.html

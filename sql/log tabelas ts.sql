@@ -1,0 +1,83 @@
+SELECT V.IDVENDATS, PSQ.DESCRICAO, PSQ.IDPSQATENDIMENTO, PSQ.IDPSQPESQUISA, NVL(PSQ.IDPSQEFETATEND,0) AS IDPSQEFETATEND, PSQ.FLGPROSPECCAO,
+       CASE WHEN PSQ.FLGSTATUS = 'C' THEN 'Concluído' WHEN PSQ.FLGSTATUS = 'X' THEN 'Iniciado' ELSE 'Não Respondida' END FLGSTATUS
+  FROM
+       (SELECT PAT.DESCRICAO, PAT.IDPSQATENDIMENTO, PAT.IDPSQPESQUISA,
+
+       (SELECT FLGSTATUS
+          FROM PSQEFETATEND
+         WHERE IDPSQEFETATEND = (SELECT MAX(IDPSQEFETATEND) FROM PSQEFETATEND WHERE IDPESSOA = 8277097 AND IDPSQATENDIMENTO = PAT.IDPSQATENDIMENTO   )
+        ) FLGSTATUS,
+
+       (SELECT MAX(IDPSQEFETATEND)
+          FROM PSQEFETATEND
+         WHERE IDPESSOA = 8277097 AND IDPSQATENDIMENTO = PAT.IDPSQATENDIMENTO
+        ) IDPSQEFETATEND,
+
+        (SELECT FLGPROSPECCAO
+           FROM PSQAGENCIATS
+          WHERE IDPSQATENDIMENTO = PAT.IDPSQATENDIMENTO
+            AND IDAGENCIATS = 984951
+         ) FLGPROSPECCAO
+
+  FROM PSQATENDIMENTO PAT, PSQMODXATENDIMENTO PMA , (SELECT P.IDPSQATENDIMENTO FROM PSQCONTRATOTS P, VENDAXCONTRATOTS VC, VENDATS V, ATENDCLIENTETS A     WHERE P.IDCONTRATOTS = VC.IDCONTRATOTS AND VC.IDVENDATS = V.IDVENDATS AND V.IDATENDCLIENTETS = A.IDATENDCLIENTETS       AND A.IDCLIENTE = 8277097    GROUP BY P.IDPSQATENDIMENTO) PXC
+ WHERE PAT.IDPSQATENDIMENTO = PMA.IDPSQATENDIMENTO
+ AND PAT.IDPSQATENDIMENTO = PXC.IDPSQATENDIMENTO
+   AND PMA.IDMODULO = 769) PSQ
+ ORDER BY PSQ.FLGPROSPECCAO DESC
+
+
+ SELECT * FROM VENDATS WHERE IDATENDCLIENTETS = 910798;
+
+ SELECT * FROM vendats WHERE idvendats = 632503;
+
+ SELECT * FROM vendaxcontratots WHERE idvendaxcontrato = 578019;
+
+ SELECT * FROM promotor WHERE idpromotor = 939934;
+
+ SELECT * FROM promotorxcliente;
+
+ SELECT * FROM PESSOA WHERE IDPESSOA = 7980305;
+
+ SELECT * FROM ATENDCLIENTETS WHERE idatendclientets = 904040;
+
+ SELECT * FROM USUARIOSISTEMA WHERE IDUSUARIO = 6373838;
+
+ SELECT PR.IDPROMOTOR, P.NOME, PR.FLGSTATUS                                      FROM PESSOA P, PROMOTOR PR, PROMOTORESXFASETS PRO, PROMOTORESXAGENCIATS PA   WHERE PR.IDPROMOTOR = P.IDPESSOA                                                AND PR.IDPROMOTOR = PRO.IDPROMOTOR                                            AND PR.IDPROMOTOR = PA.IDPROMOTOR                                             AND (PR.FLGSTATUS <> 'I' OR PR.FLGSTATUS IS NULL)                           AND PRO.FASE = 6    AND PA.IDAGENCIATS = 984951  UNION                                                                        SELECT P.IDPESSOA, P.NOME, PR.FLGSTATUS                                         FROM VENDAXCONTRATOTS VC, PESSOA P, PROMOTOR PR                              WHERE P.IDPESSOA         = PR.IDPROMOTOR                                        AND (VC.IDPROMOTOR  = P.IDPESSOA                                               OR VC.IDPROMOTOREP = P.IDPESSOA)                                             AND VC.IDVENDAXCONTRATO = 580033  ORDER BY NOME
+
+SELECT * FROM promotorxcliente
+
+SELECT * FROM lancamentots WHERE idlancamentots = 6435990;
+
+SELECT
+  p.nome AS cliente
+FROM
+  pessoa p
+  join atendclientets a ON p.idpessoa = a.idcliente
+  join vendats v ON a.idatendclientets = v.idatendclientets
+  join vendaxcontratots vc ON v.idvendats = vc.idvendats
+WHERE
+  vc.idvendaxcontrato = 579735
+
+SELECT * FROM Logtabelas  WHERE
+  arquivo = 'VENDAXCONTRATOTS' AND
+  nomecampo = 'IDPROMOTOR' AND
+  datahora Between To_Date('01/12/2017','dd/mm/yyyy') And
+                   To_Date('31/12/2017 23:59:59','dd/mm/yyyy hh24:mi:ss')
+  ORDER BY 2;
+
+SELECT * FROM Logtabelas  WHERE
+  arquivo = 'VENDAXCONTRATOTS' AND
+  nomecampo = 'IDPROMOTOREP' AND
+  datahora Between To_Date('01/12/2017','dd/mm/yyyy') And
+                   To_Date('31/12/2017 23:59:59','dd/mm/yyyy hh24:mi:ss')
+  ORDER BY 2;
+
+
+SELECT SubStr('nomeusuario',2,4) FROM usuariosistema WHERE idusuario = 956;
+
+SELECT * FROM PESSOA WHERE IDPESSOA = 6665208;
+
+SELECT * FROM usuariosistema;
+
+
+SELECT SubStr('nomeusuario', 5) AS NOMEUSUARIO FROM usuariosistema WHERE nomeusuario = 'PAULO.SOARES';

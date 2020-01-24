@@ -1,0 +1,71 @@
+SELECT
+                  PI.IDHOTEL, PI.IDTIPODEBCRED, RTRIM(DC.DESCRICAO) AS DESCRICAO, RTRIM(DC.PDVVINCULADO) AS PDVVINCULADO,
+                  RTRIM(PI.CODARTIGO) AS CODARTIGO, RTRIM(AR.CODBARRA) AS CODBARRA, RTRIM(PR.DESCPROD) AS DESCPROD,
+                  PI.CODIMPRESSORA, RTRIM(IM.DESCIMPRESSORA) AS IMPRESSORA, RTRIM(PI.CODIMPRESERVA) AS CODIMPRESERVA,
+                  RTRIM(IR.DESCIMPRESSORA) AS IMPRESERVA, RTRIM(PI.CODALMOXARIFADO) AS CODALMOXARIFADO,
+                  RTRIM(PI.CODIMPDEVOLUC) AS CODIMPDEVOLUC,
+                  RTRIM(ID.DESCIMPRESSORA) AS DESCIMPDEVOLUC, RTRIM(PI.CODIMPDEVOLUCRES) AS CODIMPDEVOLUCRES,
+                  RTRIM(IDR.DESCIMPRESSORA) AS DESCIMPDEVOLUCRES,
+                  RTRIM(AL.DESCALMOX) AS DESCALMOX, PI.PRECO,
+                  PI.PRECOVARIAVEL, PI.SEMTAXASERVICO, PI.SEMDESCONTO,
+                  PI.SEMCOMANDAPEDIDO, PI.SEMPONTUARFIDELID, PI.CLASFISCHM,
+                  PI.IDESTACAOBALANCA, RTRIM(FT.CODMEDIDA) AS CODMEDIDA, FT.CODITEMCOMANDA, FT.TIPOPEDIDOITEM,
+                  FT.CODGRUPOITEM, FT.TIPOMOLHOACOM, RH.REGISTRADORFISCAL,
+                  RTRIM(IH.ITEMARTIGO) AS ITEMARTIGO, IX.IDIMPOSTO, IX.PERCENTUAL, IX.BASE,
+                  FTMI.CODITEMCOMANDA AS ITEMCODCOMANDA, FT.NUMMINACOMP, FT.NUMMINMOLHO,
+                  GI.TIPOGRUPOITEM, RTRIM(GI.DESCGRUPOITEM) AS DESCGRUPOITEM
+                FROM
+                  REGFISCALXHOTEL RH,
+                  PDVITEM PI, TIPODEBCREDHOTEL DC, ARTIGO AR, PRODUTO PR,
+                  IMPRESSO IM, IMPRESSO IR, ALMOX AL, FICHATECNICA FT, GRPITEM GI,
+                  ITEMMOLH IH, IMPOSTOSXITEM IX, FICHATECNICA FTMI,
+                  IMPRESSO ID, IMPRESSO IDR
+                WHERE
+                  (Pi.Idhotel          = 8484) And
+                  --(Pi.Idtipodebcred    = 6859) And
+                  (Rh.Idpessoa         = 1) And
+                  exists
+                  (select
+                        1
+                      from
+                        pdv.produto@dblinktravel p
+                      where
+                        --p.id=PI.CODARTIGO and (tinha no script original
+                        p.customdata is null and
+                        exists (select 1 from park2.lancamentoproduto@dblinktravel lp where lp.produto=p.id)) and
+                  (PI.IDHOTEL          = DC.IDHOTEL) AND
+                  (PI.IDTIPODEBCRED    = DC.IDTIPODEBCRED) AND
+                 (PI.IDHOTEL          = FT.IDHOTEL) AND
+                  (PI.CODARTIGO        = FT.CODARTIGOPRINC) AND
+                  (GI.CODGRUPOITEM     = FT.CODGRUPOITEM) AND
+                  (PI.CODIMPRESSORA    = IM.CODIMPRESSORA(+)) AND
+                  (PI.CODIMPRESERVA    = IR.CODIMPRESSORA(+)) AND
+                  (PI.CODIMPRESSORA    = ID.CODIMPRESSORA(+)) AND
+                  (PI.CODIMPRESERVA    = IDR.CODIMPRESSORA(+)) AND
+                  (PI.CODARTIGO        = AR.CODARTIGO) AND
+                  (AR.CODPRODUTO       = PR.CODPRODUTO) AND
+                  (PI.CODALMOXARIFADO  = AL.CODALMOXARIFADO(+)) AND
+                  (PI.IDHOTEL          = RH.IDHOTEL(+)) AND
+                  (PI.CODARTIGO        = RH.CODARTIGO(+)) AND
+                  (RH.CODARTIGO        = IX.CODARTIGO(+)) AND
+                  (RH.IDPESSOA         = IX.IDEMPRESA(+)) AND
+                  (RH.IDIMPOSTO        = IX.IDIMPOSTO(+)) AND
+                  (FT.CODARTIGOPRINC   = IH.CODARTIGO(+))  AND
+                  (IH.ITEMARTIGO       = FTMI.CODARTIGOPRINC(+))
+                ORDER BY
+                  PR.DESCPROD
+
+                  SELECT * FROM pdv.produto WHERE customdata IS null;
+
+                  SELECT * FROM pdvitem WHERE codartigo = 200111;
+
+                  SELECT * FROM artigo WHERE codartigo = '200111';
+
+                  select
+                        *
+                      from
+                        pdv.produto@dblinktravel p
+                      where
+
+                        p.customdata is null
+

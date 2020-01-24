@@ -1,0 +1,21 @@
+Boa tarde,
+ 
+Tudo bem ?
+ 
+Trabalhando no projeto da nova Intranet, estou realizando o levantamento dos associados cadastrados no AD e analisando esses dados me deparei com algumas incoerências. 
+-Existem departamentos iguais cadastrados de formas diferentes;
+-Existem cadastros sem e-mail, sem departamento e sem ramal. Precisamos atualizar esses dados para não gerar conteúdos inválidos. O que é preciso para prosseguirmos com esse processo? Desde já agradeço.
+ 
+Vamos nos falando.
+ 
+Att,
+
+
+Anexei outra planilha informando os erros e quais são eles.
+
+- O Campo departamento está se repetindo, cadastrando vários departamentos iguais;
+- Pessoas sem cadastro departamentos;
+- Pessoas sem cadastro de e-mails;
+- Pessoas sem cadastro de ramal;
+- Pessoas sem cadastro de cargo;
+

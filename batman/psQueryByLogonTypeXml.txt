@@ -1,0 +1,9 @@
+<QueryList>
+  <Query Id="0" Path="Security">
+    <Select Path="Security">*[System[(EventID=4624)]]
+and
+*[EventData[Data[@Name='LogonType'] and Data=2]]</Select>
+  </Query>
+</QueryList>
+
+-ExecutionPolicy Bypass C:\Script\ClearLogs.PS1

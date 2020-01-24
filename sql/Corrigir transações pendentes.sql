@@ -1,0 +1,1 @@
+Exec integrador.pr_corrigePdvSessionDuplicado(PdvSession, Qtd Transações);

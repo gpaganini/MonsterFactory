@@ -1,0 +1,6 @@
+https://gallery.technet.microsoft.com/scriptcenter/Get-Active-Directory-user-246f17c7
+
+
+Import-Module C:\Script\GetADUserLastLogonTime.psm1
+
+Get-OSCLastLogonTime -CsvFilePath "C:\SamAccountName.csv"

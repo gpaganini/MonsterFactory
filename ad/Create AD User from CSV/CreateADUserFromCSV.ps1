@@ -1,0 +1,3 @@
+import-module activedirectory
+Import-Csv -Delimiter ";" "C:\path\to\user.CSV" | ForEach-Object {
+New-ADUser -GivenName $_.firstName -Surname $_.lastName -SamAccountName $_.samAccountName -DisplayName $_.displayName -Name $_.name -Description $_.description -Title $_.title -Department $_.department -EmailAddress $_.emailAddress -UserPrincipalName $_.emailAddress -Path $_.ou-AccountPassword (ConvertTo-SecureString "Aviva12345" -AsPlainText -force) -Enabled $True -ChangePasswordAtLogon $True}

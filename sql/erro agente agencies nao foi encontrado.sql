@@ -1,0 +1,9 @@
+--ver se o caminho já foi setado na agencia criado no valet passando o ID
+SELECT * FROM centraldistribuicao.agente WHERE id = 162750;
+
+--se o caminho for null executar esse update passando o caminho que deu erro no travel e o ID da agencia no valenet
+UPDATE centraldistribuicao.agente SET caminho = 'agencies/23311' WHERE id = 162750;
+
+SELECT * FROM centraldistribuicao.agente WHERE caminho = 'agencies/23311';
+
+COMMIT;

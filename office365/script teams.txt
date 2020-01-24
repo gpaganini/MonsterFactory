@@ -1,0 +1,2 @@
+$licenseOptions = New-MsolLicenseOptions -AccountSkuId "grq:ENTERPRISEPACK" -DisabledPlans $null
+Get-MsolUser -All | Where-Object {($_.licenses).accountskuid -match "ENTERPRISEPACK"} | Set-MsolUserLicense -LicenseOptions $licenseOptions

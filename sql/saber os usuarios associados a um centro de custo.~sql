@@ -1,0 +1,19 @@
+SELECT
+  c.codcentrocusto,
+  u.nomeusuario,
+  u.descricao
+      FROM
+  usccusto c join pessoa p ON c.idusuario = p.idpessoa
+      WHERE
+  c.codcentrocusto = 010207;
+
+SELECT c.codcentrocusto, p.nome FROM usccusto c join pessoa p ON c.idusuario = p.idpessoa WHERE c.codcentrocusto = 010207;
+
+
+SELECT * FROM usuariosistema WHERE nomeusuario LIKE '%FERNANDO.RA%';
+
+SELECT * FROM pessoa WHERE idpessoa = 27;
+
+SELECT * FROM centcust WHERE nome LIKE '%IDEIAS%';
+
+SELECT * FROM pessoa;

@@ -1,0 +1,7 @@
+SELECT * FROM lancamentosfront WHERE idnotaspdv = 49212808;
+
+UPDATE lancamentosfront SET documento = REPLACE (documento,'?','a') WHERE idlancamento = 91475104;
+
+COMMIT;
+
+ROLLBACK;

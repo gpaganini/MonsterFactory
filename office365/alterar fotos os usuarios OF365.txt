@@ -1,0 +1,30 @@
+Verificar se usuario tem photo
+Get-UserPhoto -Identity "name"
+
+
+Remover Photo de um Usuario
+Remove-UserPhoto -Identity "Name" -Confirm:$Y
+
+
+Remover Photo de Todos os Usuarios
+Get-User | Where-Object {$_.identity -notlike "*discover*"} | ForEach-Object { get-UserPhoto -Identity $_.name } | foreach {Remove-UserPhoto -Identity $_.identity -Confirm:$Y}
+
+
+Adicionar Photo para um Usuario
+Set-UserPhoto "Name" -PictureData ([System.IO.File]::ReadAllBytes("C:\Caminho\Onde\Photo\Esta.jpg"))
+
+
+Adicionar a Mesma Photo para Todos os Usuarios
+Get-User | Where-Object {$_.identity -notlike "*discover*"} | Select Name | ForEach-Object {Set-UserPhoto -Identity $_.Name -PictureData ([System.IO.File]::ReadAllBytes("C:\Caminho\Onde\Photo\Esta.jpg"))
+
+
+BlockUser from Changing photo
+Get-OwaMailboxPolicy | Set-OwaMailboxPolicy -DisplayPhotosEnabled $False -SetPhotoEnabled $False
+Set-OwaMailboxPolicy -Identity OwaMailboxPolicy-Default -SetPhotoEnabled $false
+
+
+Get-OwaMailboxPolicy | Set-OwaMailboxPolicy -DisplayPhotosEnabled $True -SetPhotoEnabled $True
+Set-OwaMailboxPolicy -Identity OwaMailboxPolicy-Default -SetPhotoEnabled $True
+
+
+http://technet.microsoft.com/en-us/library/jj218694(v=exchg.150).aspx

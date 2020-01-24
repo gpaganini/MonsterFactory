@@ -1,0 +1,1 @@
+Get-EventLog -LogName Security | ?{$_.message -like "*locked*USERNAME*"} | fl -property * 

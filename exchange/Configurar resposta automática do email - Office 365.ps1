@@ -1,0 +1,1 @@
+Set-MailboxAutoReplyConfiguration -Identity user -AutoReplyState Scheduled -StartTime "10/16/2017 08:00:00" -EndTime "11/15/2017 17:00:00" -InternalMessage "Internal auto-reply message"

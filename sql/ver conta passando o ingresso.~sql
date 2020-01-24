@@ -1,0 +1,8 @@
+select
+   lp.conta,
+   il.ingresso
+ from
+   park2.ingressoLancamento il
+   join park2.lancamentoproduto lp on il.lancamento=lp.numero
+ where
+   il.ingresso IN ();

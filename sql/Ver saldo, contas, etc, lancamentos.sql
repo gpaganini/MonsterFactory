@@ -1,0 +1,34 @@
+SELECT idhotel, idreservasfront FROM reservasfront WHERE numreserva=152254773;
+
+SELECT * FROM cartao WHERE idcartao=7247876;
+
+SELECT * FROM listanegracartao WHERE idcartao = 7247876;
+
+INSERT INTO cartao(idhotel,idcartao,idhospede,idreservasfront,tipo,dataemissao,flgcancelado,flgcheckout,idusuario,idconta,TRGDTINCLUSAO,TRGUSERINCLUSAO)
+            VALUES(13, 7021513,6692723,1944387,2,To_Date('10/10/2013','dd/mm/yyyy'),'N','N',5518856,17490039,To_Date('10.10.2013 11:46:35','DD/MM/YYYY HH24:MI:SS'),'CM5518856');
+
+SELECT * FROM contasfront WHERE idreservasfront=1973250;
+
+SELECT * FROM lancamentosfront lf WHERE EXISTS(SELECT cf.idconta FROM contasfront cf WHERE cf.idconta = lf.idconta AND cf.idreservasfront=1973250)
+AND idhotel=13;
+
+SELECT * FROM contasfront WHERE idconta=17490039;
+
+SELECT idlancamento,idhotel,vlrlancamento, idtipodebcred FROM lancamentosfront WHERE idconta=17670831;
+
+SELECT * FROM lancamentosfront WHERE idconta = 17670831;
+
+SELECT idhotel,idtipodebcred,descricao FROM tipodebcredhotel WHERE idtipodebcred IN (238);
+
+SELECT * FROM tipdebcred;
+
+SELECT idtipodebcred,descricao FROM tipodebcredhotel WHERE idhotel=139 AND descricao IN ('VOUCHER RQVC COBRADO');
+
+UPDATE lancamentosfront SET idtipodebcred = 511 WHERE idtipodebcred = 413 AND idconta = 18994904;
+
+COMMIT;
+
+
+
+
+

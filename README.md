@@ -1,2 +1,2 @@
 # powershellson
-Scripts em Powershell para automatizar e facilitar minha vida.
+Scripts em Powershell, SQL e Bat para automatizar e facilitar minha vida.

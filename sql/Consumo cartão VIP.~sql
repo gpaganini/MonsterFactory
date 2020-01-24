@@ -1,0 +1,12 @@
+SELECT
+  *
+  FROM
+    mvlive.v_consumosCartaoVip
+  WHERE
+    cartao in (10046574)
+  AND
+    datahora
+  BETWEEN
+    To_Date('01/11/2016 00:00:00','dd/mm/yyyy hh24:mi:ss') AND
+    To_Date('30/11/2016 23:59:59','dd/mm/yyyy hh24:mi:ss')
+  order BY 1,2

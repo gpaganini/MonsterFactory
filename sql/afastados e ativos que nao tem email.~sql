@@ -1,0 +1,6 @@
+SELECT p.nome FROM funcionario f join pessoa p ON p.idpessoa = f.idpessoa WHERE f.idsitfunc in (1,2) AND p.email IS NULL;
+
+SELECT * FROM pessoa WHERE nome like '%GISELLE RODRIGUES DA CUNHA%';
+
+SELECT * FROM funcionario WHERE idpessoa = 5300195;
+

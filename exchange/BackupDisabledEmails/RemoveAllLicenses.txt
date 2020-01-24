@@ -1,0 +1,5 @@
+Import-csv "desabilitados_e1_26092019.csv" | ForEach {
+	$User = Get-MsolUser -UserPrincipalName $_.upn
+	$Skus = $User.licenses.AccountSkuid
+	Set-MsolUserLicense -UserPrincipalName $User.UserPrincipalName -RemoveLicenses $Skus
+}

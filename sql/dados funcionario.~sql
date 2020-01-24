@@ -1,0 +1,32 @@
+--busca dados de todos os funcionários ativos na folha
+SELECT
+    p.nome,
+    s.descricao AS Situacao,
+    f.matricula AS Matricula,
+    c.titulo AS Cargo,
+    cc.nome AS CentroDeCusto,
+    f.dataadmissao AS DataAdmissao,
+    p.numdocumento AS CPF,
+    dp.numdocumento AS RG,
+    p.email AS Email,
+    pf.datanasc AS DataNascimento,
+    ep.logradouro||', '||ep.numero||', '||ep.complemento||' '||ep.bairro||'. '||cid.nome||' - '||cid.codestado AS Endereco
+  FROM
+    sitfunc s
+    join funcionario f ON s.idsitfunc = f.idsitfunc
+    join pessoa p ON f.idpessoa = p.idpessoa
+    join pessoafisica pf ON p.idpessoa = pf.idpessoa
+    join cargo c ON c.idcargo = f.idcargo
+    join centcust cc ON f.codcentrocusto = cc.codcentrocusto
+    join docpessoa dp ON p.idpessoa = dp.idpessoa
+    join endpess ep ON ep.idpessoa = p.idpessoa
+    join cidades cid ON cid.idcidades = ep.idcidades
+  WHERE
+    f.idsitfunc in (1,2)
+  AND
+    dp.iddocumento = 5
+  ORDER BY 6
+
+
+
+

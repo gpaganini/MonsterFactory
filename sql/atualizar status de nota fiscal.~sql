@@ -1,0 +1,5 @@
+SELECT dataemissao,flgstatusnfe,idempresa,vlrdocumento,iddocumento FROM LFDOCUMENTOFISCAL WHERE numdocumentoini='849';
+
+UPDATE LFDOCUMENTOFISCAL SET flgstatusnfe = '1' , chavenfeletronica = '' , protocolonfe= '',numeronfe= '' WHERE iddocumento ='3506305';
+
+COMMIT;

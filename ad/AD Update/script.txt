@@ -1,0 +1,18 @@
+get-content c:\users.txt | get-aduser -pr SamAccountName,PasswordExpired,whenChanged,UserPrincipalName
+
+get-aduser –filter * -property * | select-object SamAccountName,company,givenName,surname,DisplayName,Office,OfficePhone,EmailAddress,streetAddress,city,state,postalcode,title,department,description,manager,mailnickname,IPphone | export-CSV c:\intel\adusers.csv -NoTypeInformation -Encoding UTF8
+
+
+Get-ADUser -SearchBase "OU=teste,OU=GETI,OU=DEAF,OU=Site RQE,OU=Rio Quente Resorts,DC=rqr,DC=com,DC=br" -Filter * -property * | select-object SamAccountName,company,givenName,surname,DisplayName,Office,OfficePhone,EmailAddress,streetAddress,city,state,postalcode,title,department,description,manager,mailnickname,IPphone | export-CSV c:\intel\adusersteste.csv -NoTypeInformation -Encoding UTF8
+
+
+SamAccountName,company,givenName,surname,DisplayName,Office,OfficePhone,EmailAddress,streetAddress,city,state,postalcode,title,department,description,manager,mailnickname,IPphone
+
+
+$Users = gc "C:\scripts\Users.txt
+foreach ($User in $Users) {
+Get-ADUser -Identity $User -Properties DisplayName,Office
+}
+
+
+-company $($user.company) -givenName $($user.givenName) -surname $($user.surname) -DisplayName $($user.DisplayName) -Office $($user.Office) -OfficePhone $($user.OfficePhone) -EmailAddress $($user.EmailAddress) -streetAddress $($user.streetAddress) -city $($user.city) -state $($user.state) -postalcode $($user.postalcode) -title $($user.title) -department $($user.department) -description $($user.description) -manager $($user.manager) -replace @{IPphone = "$($user.ipphone)"; mailnickname = "$($user.mailnickname)"}

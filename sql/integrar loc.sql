@@ -1,0 +1,32 @@
+SELECT xmlout FROM cm.intresvalenet@dblinktravel WHERE rid_travel =  801970   ORDER BY id DESC;
+
+select * from reservasfront where locreserva= 760010;
+
+SELECT idhotel, numreserva, statusreserva, idreservasfront, datachegprevista FROM reservasfront WHERE locreserva = 9251050;
+
+SELECT * from reservations@dblinktravel WHERE rid = 9131979;
+
+SELECT locreserva FROM reservasfront WHERE numreserva = 151850771;
+
+SELECT * FROM pessoa WHERE idpessoa = 138;
+
+ execute cm.pr_retiralocvalenet(2372113);
+
+ SELECT * FROM statusreserva;
+
+
+EXEC cm.pr_corrigeconta(185309259);
+
+--Para forçar a integração quando só tem um loc
+
+$repository.consulta('reservations/756271').set_data 'forca_inclusao','sim'
+
+--Reserva a confirmar no time sharing e bloqueada no travel
+
+UPDATE reservations@dblinktravel SET STATUSNAME='C'WHERE rid = 9039883;
+
+COMMIT;
+
+--Hóspede sem cidade
+
+EXEC CM.PR_INSERECIDADEHOSPEDE(155376535, 1);

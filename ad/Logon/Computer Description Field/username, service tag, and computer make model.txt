@@ -1,0 +1,21 @@
+Set WshNetwork = WScript.CreateObject("WScript.Network")
+Set objWMI = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+' Get service tag and computer manufacturer
+For Each objSMBIOS in objWMI.ExecQuery("Select * from Win32_SystemEnclosure")
+  serviceTag = replace(objSMBIOS.SerialNumber, ",", ".")
+  manufacturer = replace(objSMBIOS.Manufacturer, ",", ".")
+Next
+' Get computer model
+For Each objComputer in objWMI.ExecQuery("Select * from Win32_ComputerSystem")
+  model = trim(replace(objComputer.Model, ",", "."))
+Next
+' Get computer object in AD
+Set objSysInfo = CreateObject("ADSystemInfo")
+Set objComputer = GetObject("LDAP://" & objSysInfo.ComputerName)
+' Build up description field data and save into computer object if different from current description
+' We also do not update computers with a description that starts with an underscore (_)
+newDescription = WshNetwork.UserName & " (" & serviceTag & " – " & manufacturer & " " & model & ")"
+if not objComputer.Description = newDescription and not left(objComputer.Description,1) = "_"  then
+  objComputer.Description = newDescription
+  objComputer.SetInfo
+end if

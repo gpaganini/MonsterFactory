@@ -1,0 +1,23 @@
+SELECT * FROM grupousu;
+
+SELECT ga.nomegrupo AS Grupo, ga.descricao, p.nome FROM grupoacesso ga join grupousu gu ON ga.idgrupo = gu.idgrupo join pessoa p ON gu.idusuario = p.idpessoa WHERE nomegrupo LIKE '%GTH-TREIN%' ORDER BY 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

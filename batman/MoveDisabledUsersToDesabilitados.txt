@@ -1,0 +1,31 @@
+#desabilita exclusão acidental
+Get-ADUser -SearchBase 'OU=Rio Quente Resorts,DC=rqr,DC=com,DC=br' -Filter {name -like "DESATIVADO*" -AND Enabled -eq $false} | Set-ADObject -ProtectedFromAccidentalDeletion $false
+
+#busca usuarios que estao desabilitados e possuem "DESATIVADO" no nome, na OU="Rio Quente Resorts"
+Get-ADUser -SearchBase 'OU=Rio Quente Resorts,DC=rqr,DC=com,DC=br' -Filter {name -like "DESATIVADO*" -AND Enabled -eq $false} | ft Name,DistinguishedName
+
+#move os usuarios para a OU=Desabilitados
+Get-ADUser -SearchBase 'OU=Rio Quente Resorts,DC=rqr,DC=com,DC=br' -Filter {name -like "DESATIVADO*" -AND Enabled -eq $false} | Move-ADObject -TargetPath "OU=Usuarios,OU=Desabilitados,DC=rqr,DC=com,DC=br"
+
+
+
+#Busca computadores que nao acessam a rede a mais de 30 dias, desabilita a proteção de deleção acidental, move para a OU "Desabilitados\Computadores", desabilita o computador, Comenta o campo descrição, e ativa a proteção de deleção acidental.
+
+$then = (Get-Date).AddDays(-30) # The 60 is the number of days from today since the last logon.
+
+Get-ADComputer -Property Name,lastLogonDate -Filter {lastLogonDate -lt $then} | FT Name,lastLogonDate 
+
+#Disable Accidental Deletion
+Get-ADComputer -Property Name,lastLogonDate -Filter {lastLogonDate -lt $then} | Set-ADObject -ProtectedFromAccidentalDeletion $false
+
+# If you would like to Remove these computer accounts, uncomment the following line:
+Get-ADComputer -Property Name,lastLogonDate -Filter {lastLogonDate -lt $then} | Move-ADObject -TargetPath "OU=Computadores,OU=Desabilitados,DC=rqr,DC=com,DC=br"
+
+# If you would like to Disable these computer accounts, uncomment the following line:
+Get-ADComputer -Property Name,lastLogonDate -Filter {lastLogonDate -lt $then} | Set-ADComputer -Enabled $false
+
+#Comenta a descrição do computador
+Get-ADComputer -Property Name,lastLogonDate -Filter {lastLogonDate -lt $then} | Set-ADComputer -Description "Computador Desativado pois nao acessa a rede a mais de 30 dias"
+
+#Enable Accidental Deletion
+Get-ADComputer -Property Name,lastLogonDate -Filter {lastLogonDate -lt $then} | Set-ADObject -ProtectedFromAccidentalDeletion $true

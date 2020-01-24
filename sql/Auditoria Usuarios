@@ -1,0 +1,23 @@
+SELECT DISTINCT us.idusuario, 
+      p.nome AS NOME, 
+      us.nomeusuario AS USUARIO, 
+      f.matricula AS MATRICULA,
+      nomegrupo AS GRUPO,
+      ga.descricao AS DESCRICAO_GRUPO,
+      us.trgdtinclusao AS DATA_CADASTRO,    
+      us.bloqueado AS BLOQUEADO, 
+      us.desativado AS DESATIVADO
+
+   --SELECT *
+      
+    FROM usuariosistema us
+      join pessoa p ON us.idusuario = p.idpessoa
+      join pessoafisica pf ON p.idpessoa=pf.idpessoa
+      join grupousu gu ON us.idusuario = gu.idusuario
+      join grupoacesso ga ON gu.idgrupo = ga.idgrupo
+      left join funcionario f ON p.idpessoa=f.idpessoa 
+      --join logacessosis lg ON us.idusuario=lg.idusuario
+
+    WHERE us.trgdtinclusao BETWEEN To_Date('01/01/2019 00:00:00','dd/mm/yyyy hh24:mi:ss') AND To_Date('30/06/2019 00:00:00','dd/mm/yyyy hh24:mi:ss') 
+      
+      ORDER BY 2 ASC    

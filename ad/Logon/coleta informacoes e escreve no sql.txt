@@ -1,0 +1,26 @@
+#Gets computer information
+$username = $env:USERNAME
+$computername = $env:COMPUTERNAME
+$ipv4 = Test-Connection -ComputerName (hostname) -Count 1 | foreach { $_.ipv4address } 
+$ipv6 = Test-Connection -ComputerName (hostname) -Count 1 | foreach { $_.ipv6address } 
+$computermodel = get-wmiobject win32_computersystem | foreach { $_.model } 
+$serial = get-wmiobject win32_bios | foreach { $_.serialnumber } 
+$action = 'Logon'
+$timeformat='MM-dd-yyyy hh:mm:ss tt'
+$time = (Get-Date).ToString($timeformat)
+ 
+#Connects to Database
+$connection = New-Object System.Data.SqlClient.SqlConnection
+$connection.ConnectionString = "Data Source=SQL-Server-01;Initial Catalog=Comp_Info;Integrated Security=SSPI;"
+$connection.Open()
+ 
+#Inserts information to the DB
+$cmd = New-Object System.Data.SqlClient.SqlCommand
+$cmd.connection = $connection
+$cmd.CommandText = "INSERT INTO LogonInfo ([Date and Time],Username,[Comptuter Name],[IPv4 Address],[IPv6 Address],Model,Serial,Action)
+VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')" -f
+$time,$username,$computername,$ipv4,$ipv6,$computermodel,$serial,$action
+$cmd.ExecuteNonQuery()
+ 
+#Closes Connection
+$connection.Close()

@@ -1,0 +1,50 @@
+  SELECT
+  --trunc(datahora),
+  'POS ou B2B/B2C' as tipo,
+  Case
+    When Datahoraintegracao Is Null Then 'Não'
+    else 'Sim'
+  end as integrado,
+  Round(Sum(Case When Valor=0 Then Calcvalortotal
+               WHEN valor IS NULL THEN calcvalortotal
+              ELSE valor END),2) as total
+From
+  Park2.Lancamentoproduto --as of Timestamp to_timestamp(sysdate - interval '30' minute)
+WHERE
+Datahora Between To_Date('01/07/2015','dd/mm/yyyy') And To_Date ('31/07/2015 23:59:59','dd/mm/yyyy hh24:mi:ss') And
+  Naoiraintegrar Is Null --and integrado<>5
+  And Exists (Select 1 From Park2.Conta Ct Where Conta=Ct.Numero And Ct.Tipo In (11,12))
+GROUP BY
+  --trunc(datahora),
+  Case
+    When Datahoraintegracao Is Null Then 'Não'
+    else 'Sim'
+  End
+
+union all
+
+  SELECT
+  --trunc(datahora),
+  'Outros',
+  Case
+    When Datahoraintegracao Is Null Then 'Não'
+    else 'Sim'
+  end as integrado,
+  Round(sum(CASE WHEN valor=0 THEN calcvalortotal
+               WHEN valor IS NULL THEN calcvalortotal
+              ELSE valor END),2) as total
+From
+  Park2.Lancamentoproduto --as of Timestamp to_timestamp(sysdate - interval '30' minute)
+WHERE
+Datahora Between To_Date('01/07/2015','dd/mm/yyyy') And To_Date ('31/07/2015 23:59:59','dd/mm/yyyy hh24:mi:ss') And
+  Naoiraintegrar Is Null --and integrado<>5
+  and exists (select 1 from park2.conta ct where conta=ct.numero and ct.tipo not in (11,12))
+GROUP BY
+  --trunc(datahora),
+  Case
+    When Datahoraintegracao Is Null Then 'Não'
+    Else 'Sim'
+  End
+order by 1,2;
+
+

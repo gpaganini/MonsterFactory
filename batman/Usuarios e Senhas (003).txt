@@ -1,0 +1,239 @@
+Usuário: Administrador
+Senha @data%center,#2008!
+
+Usuário: .\geti
+Senha: @r@m1$
+
+Servidor Cartão
+10.1.1.25
+rserverctrq!
+
+ramais
+usuario: mtcl
+vgb#RIOQ90l 
+
+Usário: sistemas
+Senha: !ctrq#system%
+
+Servidor Tarifador
+10.1.1.116
+rserverctrq!
+
+Servidor TMF
+
+10.1.1.130
+rserverctrq!
+
+Usuario: administrador
+senha: @data%center,#2008!
+
+usuario: usuarios
+senha: ctrq123456
+
+10.1.1.233
+rqr@micros477
+
+maquinas SP
+administrador
+#grq@geti2014!
+
+coletores
+sandro.tim
+solution
+https://portaldoconhecimento.tsi.com.br/ativacao-codin-rep/pages/ativacao/frmAtivacao.zul
+
+CTBC
+numero do circuito
+01788307
+
+tmf
+107958
+
+disec
+disec2123
+
+
+senha visual CC
+carloss
+1qaz2wsx@
+
+Flavio impressora
+92817428
+
+suporte dell
+BR_TechSupport@Dell.com
+
+
+mtcl
+vgb#RIOQ90l
+
+Nano Pacheco
+SSID: ADM-RQR2
+Senha: rqr2010ctrq#@!adm
+
+	ATIVAR COLETOR
+site: https://portaldoconhecimento.tsi.com.br/ativacao-codin-rep/pages/ativacao/frmAtivacao.zul
+usuario: sandro.tim
+senha: solution
+
+
+	
+		servidor myauth2
+
+      http://myauth2.ctrq.com.br:1881/admin/
+Usuário: HelpDesk
+Senha: helpdesk#@!ctrq
+
+
+servidor sincro: 10.1.1.130
+servidor sitef:  10.1.1.25
+servidor Ronda:  10.1.1.16
+servidor volare: 10.1.1.106
+servidor tck:    10.1.1.38  usuario: 123456789
+servidor telefonia: 10.1.1.116
+servidor  MultiClubes 10.1.1.117
+ramal 10.0.5.22
+
+http://rqtravel1.valetur.com.br:8080/manager/html/reload?path=/repository
+tomcat
+s3cret
+
+tmf 958107
+
+senha Wi-fi    rqr2010ctrq
+               grq477ctrq
+
+
+vpn.ctrq.com.br
+
+www.rqr.com.br/.fornecedores
+
+Configurações:
+
+Peer: wall.rqr.com.br
+Key: RQR%FaYchR56
+
+
+
+servidor park   10.1.1.217
+                10.1.1.108
+
+senha manutençao
+Manut$#@!
+
+
+srvrqets01 
+
+imprfessoras
+\\rqe-printsrv01
+
+
+
+ 
+      GOIANIA
+06274029 katia rufino
+06274028 andreia 
+
+
+1q2w3e
+
+
+
+10.100.129.136  soft fone
+
+
+nano
+
+ubnt
+ctrq#@!
+
+
+
+Sao paulo
+
+*0 012113512 numero
+
+
+
+dion
+678468541044
+
+caminho de reustaurar boot
+C:\Windows\System32\CodeIntegrity 
+
+
+Maria Ritta Ferreira Galvao
+mandar email ao fazer cadastro
+
+74055  76001
+
+paulo hernane
+09974023
+
+
+
+
+
+Tabela de códigos SITEF
+Código Mensagem apresentada no PDV Descrição
+ 00 Transação OK Aprovada, Transação executada
+ 01 01 Ligar para o emissor do cartão
+ 03 03 Estab. Inval Estabelecimento Comercial inválido
+ 05 05 Transação negada pelo emissor (do not honor)
+ 06 06 Refaça Trans Erro na Transação – Dados inválidos
+ 12 12 Trans. Inval. Transação Inválida
+ 13 13 Valor Inval. Valor da Transação Inválido
+ 14 14 Probl.cartão Cartão Inválido
+ 15 15 Probl.cartão Instituição Não Cadastrada
+ 19 19 Refaça Trans. Refaça a Transação
+ 20 20 Refaça Trans. Resposta Inválida
+ 25 25 Refaça Trans. Registro não Encontrado
+ 30 30 Refaça Trans. Erro de Formato
+ 31 31 Probl.cartão Instituição Não Pertence à Rede
+ 38 38 Probl.cartão Excedido Número de Tentativas do PIN
+ 39 39 Conta Inval. Número da Conta Inválido
+ 41 41 Probl.cartão Cartão Extraviado
+ 43 43 Probl.cartão Cartão Roubado
+ 51 51 Excede Limite Saldo Insuficiente
+ 52 52 Probl.cartão Conta Corrente Não Cadastrada
+ 54 54 Probl.cartão Não Autorizado - Cartão Vencido
+ 55 55 Senha Inval. Senha Incorreta
+ 56 56 Probl.cartão Cartão Sem Registro
+ 57 57 Probl.cartão Transação Não Permitida a esse Cliente
+ 59 59 Conta Inval. Conta Irregular
+ 60 60 Ligue cartão Entrar em Contato com a Instituição
+ 61 61 Excede Limite Excedido Limite de Saque
+ 65 65 Excede Limite Excedido Freqüência de Saque
+ 76 76 Probl.cartão Cartão Bloqueado
+ 79 79 Probl. Banco Transação Não Permitida Neste Ciclo
+ 83 83 Refaça Trans. Time-out
+ 84 84 Refaça Trans. Log-On (Terminal não aberto)
+ 85 85 Refaça Trans. Problema Rede Local
+ 87 87 Falta Cartão Cartão Obrigatório na Transação
+ 91 91 Refaça Trans. Instituição Temporariamente Fora de Operação
+ M7 M7 IPTE Inválido Código IPTE Inválido
+ M9 M9 Refaça Trans. Data Inválida
+ N0 N0 Refaça Trans. MAC Inválido
+ N1 N1 Refaça Trans. Dados Inválidos
+ N2 N2 Refaça Trans. Código de Processamento Inválido
+ N3 N3 Trans. Canc. Transação já Cancelado
+ N4 N4 Pag. Inval. Empresa Credora Inválida
+ N5 N5 C.B. Inval. Código de Barras Inválido
+ N9 N9 Refaça Trans. NSU Repetido
+ P1 Cheque OK. Cheque OK.
+ P2 P2 Cheque Sustado
+ P3 P3 Solicitar desbloqueio do Cheque
+ P4 P4 Conta encerrada
+ P5 P5 Conta inválida
+ P6 P6 Agência Inválida
+ P7 P7 Número de Cheque Inválido
+ P8 P8 Não consta CCF / TecBan
+ R1 R1 Cheque Ok Consta CCF/TecBan
+ R2 R2 Cheque Sustado Consta CCF / TecBan
+ R3 R3 Cheque Bloqueado Consta CCF/TecBan
+ R4 R4 Consta Encerrada Consta CCF / TecBan
+ R5 R5 Consta CPF / TecBan
+ R6 R6 CGC / CPF inválido
+
+sac.gyn@tntbrasil.com.br 
+paulo.amancio 

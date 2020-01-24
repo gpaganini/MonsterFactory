@@ -1,0 +1,4 @@
+if not objComputer.Description = WshNetwork.UserName & " (" & serviceTag & " - " & manufacturer & " " & model & ")" then
+objComputer.Description = WshNetwork.UserName & " (" & serviceTag & " - " & manufacturer & " " & model & ")"
+objComputer.SetInfo
+end if

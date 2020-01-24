@@ -1,0 +1,19 @@
+ select securitysy0_.NOME as x0_0_, securitysy2_.NOME as x1_0_ from Park2.SECURITY_SYSTEMUSER securitysy0_, Park2.SECURITY_SYSTEMGRUPOUSER securitysy1_, Park2.SECURITY_SYSTEMGRUPO securitysy2_ where (securitysy1_.SECURITY_SYSTEMUSER=securitysy0_.ID )and(securitysy2_.NUMERO=securitysy1_.SECURITY_SYSTEMGRUPO )and(securitysy1_.SECURITY_SYSTEMGRUPO=39 );
+
+SELECT * FROM park2.security_systemuser WHERE nome = 'reginaldo'; --0
+SELECT security_systemuser,security_systemgrupo FROM park2.security_systemgrupouser HAVING Count(*) >1 GROUP BY security_systemuser,security_systemgrupo; --1
+SELECT * FROM park2.security_systemgrupo;
+
+SELECT * FROM park2.security_systemuser;
+
+SELECT id,nome FROM park2.agente a join park2.security_systemgrupouser s
+ON a.security_systemuser = s.security_systemuser
+WHERE s.security_systemgrupo = 39 AND a.oculto = 1 ORDER BY 2;
+
+SELECT * FROM park2.agente;
+
+SELECT * FROM park2.security_systemgrupousuario;
+
+SELECT * FROM park2.gruporecebimento;
+
+

@@ -1,0 +1,5 @@
+SELECT *
+FROM INTEGRACAOPARK where
+datalancamento between to_date('01/05/2014 00:00:00','dd/mm/yyyy hh24:mi:ss') and to_date('30/06/2014 23:59:59','dd/mm/yyyy hh24:mi:ss') AND
+dataintegracao IS NULL
+ORDER BY datalancamento;
