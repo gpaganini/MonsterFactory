@@ -1,8 +1,10 @@
 
-Name            LockedOut DomainController      BadPwdCount AccountLockoutTime LastBadPasswordAttempt
-----            --------- ----------------      ----------- ------------------ ----------------------
-alimpio.almeida     False SRVAD-A.rqr.com.br              0                    03/02/2019 14:50:35   
-alimpio.almeida     False SRVRQEAD02.rqr.com.br           0                    03/02/2019 10:16:28   
+Name          LockedOut DomainController        BadPwdCount AccountLockoutTime  LastBadPasswordAttempt
+----          --------- ----------------        ----------- ------------------  ----------------------
+luane.cardoso      True SRVAD-A.rqr.com.br                0 04/02/2020 15:31:45 04/02/2020 15:27:33   
+luane.cardoso      True SRVRQEAD02.rqr.com.br             5 04/02/2020 15:31:45 04/02/2020 15:31:45   
+luane.cardoso      True SRVRQE950005.rqr.com.br           0 04/02/2020 15:27:33 28/10/2019 08:48:17   
+luane.cardoso      True SRVRQE940006.rqr.com.br           0 04/02/2020 15:31:45 31/01/2020 17:06:31   
 
 
 WARNING: No events were found that match the specified selection criteria.
