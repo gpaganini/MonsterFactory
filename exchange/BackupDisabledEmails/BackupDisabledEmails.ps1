@@ -1,4 +1,4 @@
-$CSV = "desabilitados_e3_06-01-2019.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "desabilitados_e3_02032020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV 
 
 function credO365 {
@@ -50,6 +50,8 @@ function conectaO365 {
 function converteCaixa {
 	conectaExchOnline
 	
+	$i = 0
+	
 	$arquivo | ForEach {
         $mailbox = (Get-Mailbox -Identity $_.upn)
         $isShared = $mailbox.RecipientTypeDetails.Equals("SharedMailbox") #verificando se a caixa ja e compartilhada ou nao
@@ -63,7 +65,10 @@ function converteCaixa {
             } else {
                 Write-Host "Convertido caixa de $_.upn" -ForegroundColor Green
             }
-        }		
+        }
+		
+		$i++
+		Write-Progress -Activity "Convertendo caixas . . ." -Status "Convertido: $i de $($arquivo.Count)" -PercentComplete ($i/$arquivo.Count*100)					
 	}
 	
 	Write-Host "Fechando conector com o exchange online" -ForegroundColor Cyan
@@ -72,6 +77,8 @@ function converteCaixa {
 
 function ocultaEndereco {
 	conectaExchOnprem
+	
+	$i = 0
 
 	$arquivo | foreach {
 		$mailbox = (Get-RemoteMailbox -Identity $_.upn)
@@ -87,6 +94,9 @@ function ocultaEndereco {
 				Write-Host "Ocultado a caixa de $_.upn" -ForegroundColor Green
 			}
 		}
+		
+		$i++
+		Write-Progress -Activity "Ocultando caixas . . ." -Status "Ocultado: $i de $($arquivo.Count)" -PercentComplete ($i/$arquivo.Count*100)
 	}
 	
 	Write-Host "Fechando conector com o exchange OnPremise" -ForegroundColor Cyan
@@ -95,6 +105,8 @@ function ocultaEndereco {
 
 function removeLicenca {
 	conectaO365
+	
+	$i = 0
 	
 	$arquivo | ForEach {
 		$msolUser = (Get-MsolUser -UserPrincipalName $_.upn)
@@ -112,6 +124,9 @@ function removeLicenca {
 		} else {
             Write-Host "Usuario $_.upn.UPN nao possui licenca" -ForegroundColor Yellow
         }
+		
+		$i++
+		Write-Progress -Activity "Removendo licencas . . ." -Status "Removido: $i de $($arquivo.Count)" -PercentComplete ($i/$arquivo.Count*100)
 	}
 
 	Write-Host "Fechando conector com o office 365" -ForegroundColor Cyan
@@ -122,4 +137,4 @@ converteCaixa
 removeLicenca
 ocultaEndereco
 
-#v1.3 @gpaganini
+#v1.4 @gpaganini
