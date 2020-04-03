@@ -13,7 +13,7 @@
 #>
 
 
-$csv = ".\layoff_redirect-op.csv"
+$csv = ".\layoff_redirect-adm.csv"
 $arquivo = import-csv $csv -Delimiter ";"
 
 $i = 0
