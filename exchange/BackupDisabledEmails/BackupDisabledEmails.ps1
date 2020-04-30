@@ -1,4 +1,4 @@
-$CSV = "desabilitados_e3_02032020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "desabilitados_bp_02032020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV 
 
 function credO365 {
