@@ -12,22 +12,21 @@
 	
 #>
 
+..\exchonlineconn.ps1
 
-$csv = ".\layoff_redirect-adm.csv"
+$csv = ".\layoff-fernanda.csv"
 $arquivo = import-csv $csv -Delimiter ";"
 
 $i = 0
 
-<# foreach ($user in $arquivo) {
+foreach ($user in $arquivo) {
 
 try {
     Set-MailboxAutoReplyConfiguration `
     -Identity ($user.mail) `
-    -AutoReplyState Scheduled `
-    -StartTime "04/02/2020" `
-    -EndTime "05/31/2020" `
-    -InternalMessage "Olá, estou ausente. Por favor, encaminhe sua mensagem para $($user.destinatary)" `
-    -ExternalMessage "Olá, estou ausente. Por favor, encaminhe sua mensagem para $($user.destinatary)"
+    -AutoReplyState Enabled `
+    -InternalMessage "$($user.message)" `
+    -ExternalMessage "$($user.message)"
     } catch [Microsoft.Exchange.Management.StoreTasks.SetMailboxAutoReplyConfiguration],[ManagementObjectNotFoundException] {
         Write-Host -BackgroundColor Red -ForegroundColor White "Erro ao aplicar configuracao no usuario $($user.mail)"
     }
@@ -37,10 +36,10 @@ try {
     Write-Progress -Activity "Configurando ausencia temporaria..." `
     -Status "Configurado $i de $($arquivo.Count)" `
     -PercentComplete ($i/$arquivo.Count*100)
-}#>
+}
 
     
-foreach ($user in $arquivo) {
+<#foreach ($user in $arquivo) {
     try {
         Set-MailboxAutoReplyConfiguration `
         -Identity ($user.mail)`
@@ -56,7 +55,7 @@ foreach ($user in $arquivo) {
     Write-Progress -Activity "Configurando ausencia temporaria..." `
     -Status "Configurado $i de $($arquivo.Count)" `
     -PercentComplete ($i/$arquivo.Count*100)
-}
+}#>
 
 
 
