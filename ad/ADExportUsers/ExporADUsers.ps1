@@ -17,13 +17,13 @@
 		
 	#>
 
-[CmdletBinding()]
+<#[CmdletBinding()]
 Param(
     [Parameter(Position=0, Mandatory=$true, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]    
     [string]$Dominio = 'Dominio',
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]    
+    [Parameter(Mandatory=$false, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$true)]    
     [string]$searchBase = 'SearchBase'
-)
+)#>
 
 
 $path = Split-Path -Parent "C:\Users\giovani.paganini\powershellson\ad\ADExportUsers\*.*"
@@ -36,15 +36,16 @@ $csvfile = $path + "\ADUsers_$LogDate.csv"
 Import-Module ActiveDirectory
 
 Function Main {
-    $GetAdminact = Get-Credential
+    #$GetAdminact = Get-Credential
 
-    $dc = Get-ADDomainController -DomainName $Dominio -Discover -NextClosestSite
+    #$dc = Get-ADDomainController -DomainName $Dominio -Discover -NextClosestSite
 
-    $adServer = $dc.Hostname[0]
+    #$adServer = $dc.Hostname[0]
 
-    $AllADUsers = Get-ADUser -Server $adServer `
-    -Credential $GetAdminact -SearchBase $searchBase `
-    -Filter * -Properties *
+    $AllADUsers = Get-ADUser -Filter * -Properties * | Where-Object {$_.DistinguishedName -notlike "OU=Servidores,DC=aviva,DC=com,DC=br" -and ` 
+        $_.DistinguishedName -notlike "OU=Usuarios Terceiros,OU=Unidade Costa do Sauipe,DC=aviva,DC=com,DC=br" -and ` 
+        $_.DistinguishedName -notlike "OU=Usuarios Terceiros,OU=Unidade Rio Quente,DC=aviva,DC=com,DC=br" -and `
+        $_.DistinguishedName -notlike "OU=Usuarios Servico - Exchange,OU=Unidade Rio Quente,DC=aviva,DC=com,DC=br"}
 
     $AllADUsers | 
     Select-Object @{Label = "Nome";Expression = {$_.Name}},
@@ -54,7 +55,8 @@ Function Main {
     @{Label = "CPF";Expression = {$_.extensionAttribute1}},
     @{Label = "Cargo";Expression = {$_.Title}},
     @{Label = "Email";Expression = {$_.Email}},
-    @{Label = "Status";Expression = {if (($_.Enabled -eq 'TRUE')  ) {'Ativo'} Else {'Inativo'}}} |
+    @{Label = "Status";Expression = {if (($_.Enabled -eq 'TRUE')  ) {'Ativo'} Else {'Inativo'}}},
+    @{Label = "DN";Expression = {$_.DistinguishedName}} |
 
     Export-Csv -Path $csvfile -NoTypeInformation -Encoding UTF8
 }
@@ -73,4 +75,7 @@ $cpf = "extensionAttribute1"
 $oUser = Get-ADUser -Identity giovani.paganini -Properties * | select $fN,$dN,$mail,$usuario,$matricula,$cpf
 #>
 
-
+<#| Where-Object {$_.DistinguishedName -notlike "OU=Servidores,DC=aviva,DC=com,DC=br" -and ` 
+        $_.DistinguishedName -notlike "OU=Usuarios Terceiros,OU=Unidade Costa do Sauipe,DC=aviva,DC=com,DC=br" -and ` 
+        $_.DistinguishedName -notlike "OU=Usuarios Terceiros,OU=Unidade Rio Quente,DC=aviva,DC=com,DC=br" -and `
+        $_.DistinguishedName -notlike "OU=Usuarios Servico - Exchange,OU=Unidade Rio Quente,DC=aviva,DC=com,DC=br"}#>
