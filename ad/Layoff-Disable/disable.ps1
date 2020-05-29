@@ -1,13 +1,12 @@
 Import-Module ActiveDirectory
 
-$csv = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\disable-sauipe.csv"
+$csv = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\disable-27052020.csv"
 $arquivo = Import-Csv -Path $csv -Delimiter ";"
 
 $i = 0
 
 foreach ($user in $arquivo) {
-    $oldname = Get-ADUser -Identity $user.usuario -Properties * | select DisplayName,IPPhone    
-    $oldname
+    #$oldname = Get-ADUser -Identity $user.usuario -Properties * | select DisplayName,IPPhone
     <#if ($oldname.DisplayName -like "*AUSENTE*") {
         $newName = $oldname.DisplayName -replace ("AUSENTE - ","")
         Set-ADUser -Identity $user.usuario -DisplayName $newName
@@ -32,8 +31,8 @@ foreach ($user in $arquivo) {
 
     Set-ADUser -Identity $user.usuario -Replace @{'ipPhone'=$user.MAT}
     $oldname
-    
-    Disable-ADAccount -Identity $user.usuario #>
+    #>
+    Disable-ADAccount -Identity $user.usuario
 
     $i++
 

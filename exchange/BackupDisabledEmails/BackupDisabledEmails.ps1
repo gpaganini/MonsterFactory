@@ -1,9 +1,9 @@
-$CSV = "desabilitados_bp_02032020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados-28052020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV 
 
 function credO365 {
     $usuario = 'gpaganini@aviva.com.br'
-    $senha = Get-Content '.\trustyPassword.txt'
+    $senha = Get-Content 'C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\trustyPassword.txt'
 
     $secureSenha = $senha | ConvertTo-SecureString
 
@@ -16,7 +16,7 @@ function credO365 {
 
 function credExchOnprem {
     $usuario = 'rqr\giovani.paganini'
-    $senha = Get-Content '.\trustyPassword.txt'
+    $senha = Get-Content 'C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\trustyPassword.txt'
 
     $secureSenha = $senha | ConvertTo-SecureString
 
@@ -135,6 +135,6 @@ function removeLicenca {
 
 converteCaixa
 removeLicenca
-ocultaEndereco
+#ocultaEndereco
 
 #v1.4 @gpaganini
