@@ -40,3 +40,19 @@ foreach ($user in $arquivo) {
     -Status "Desativado $i de $($arquivo.Count)" `
     -PercentComplete ($i/$arquivo.Count*100)
 }
+
+
+
+$usuarios = Get-ADUser -Filter 'DisplayName -like "AUSENTE *" -and DisplayName -notlike "AUSENTE - *"' -Properties * | select DisplayName,SamAccountName
+
+foreach ($usuario in $usuarios) {
+    $oldname = $usuario.DisplayName
+    Write-Host "Antes: "$oldname -ForegroundColor White -BackgroundColor Green $usuario.SamAccountName
+
+    if ($oldname -like 'AUSENTE *') {
+        $newName = $oldname -replace ("AUSENTE ","AUSENTE - ")
+        Write-Host "Depois: "$newName -ForegroundColor White -BackgroundColor Magenta
+        
+        Set-ADUser -Identity $usuario.SamAccountName -DisplayName $newName
+    }
+}

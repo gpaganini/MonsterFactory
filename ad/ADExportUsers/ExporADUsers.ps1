@@ -26,7 +26,7 @@ Param(
 )#>
 
 
-$path = Split-Path -Parent "C:\Users\giovani.paganini\powershellson\ad\ADExportUsers\*.*"
+$path = Split-Path -Parent "C:\Users\giovani.paganini.AVIVA\Documents\powershellson\ad\ADExportUsers\*.*"
 $LogDate = get-date -f ddMMyyyy-hhmm
 
 $csvfile = $path + "\ADUsers_$LogDate.csv"
