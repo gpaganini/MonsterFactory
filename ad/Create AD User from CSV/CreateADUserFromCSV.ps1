@@ -1,6 +1,6 @@
 Import-Module ActiveDirectory
 
-$csv = ".\Usuarios.csv"
+$csv = ".\Usuarios-26062020.csv"
 $arquivo = Import-Csv -Path $csv -Delimiter ";"
 
 function create {
@@ -14,7 +14,7 @@ function create {
         -Department $user.Department `
         -Title $user.Title `
         -UserPrincipalName ($user.Usuario+"@aviva.com.br") `
-        -Path "OU=Usuarios Novos,OU=Automacao - Autoseg,DC=aviva,DC=com,DC=br" `
+        -Path "OU=Usuarios,OU=Vacation Club,OU=Unidade Costa do Sauipe,DC=aviva,DC=com,DC=br" `
         -AccountPassword (ConvertTo-SecureString "Aviva@2020" -AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $true
     }
 }
@@ -28,6 +28,7 @@ function update {
     }
 }
 
+create
 update
 
 <#Import-Csv -Delimiter ";" "C:\path\to\user.CSV" | ForEach-Object {

@@ -14,6 +14,22 @@ $csv = ".\agenda-gerentes.csv"
 $arquivo = Import-Csv -Path $csv
 
 $arquivo | foreach {
+    $id = $_.alias + ':\Calendário'
+    $export = Get-MailboxFolderPermission -Identity $id
+
+    if ($export) {
+        #write-host -BackgroundColor Green "BR" $id
+    } else {
+        $id = $_.alias + ':\Calendar'
+        $export = Get-MailboxFolderPermission -Identity $id
+        #Write-Host -BackgroundColor Red "murica" $id
+    }
+
+  
+}
+
+
+<#$arquivo | foreach {
 
     $id = $_.alias + ':\Calendário'
     $export = Get-MailboxFolderPermission -Identity $id
@@ -58,4 +74,4 @@ $arquivo | foreach {
         Add-MailboxFolderPermission -Identity $id -User Anonymous -AccessRights None #força permissao nula para anonimo
 
     } #*>> ".\agendas.log"
-}
+}#>

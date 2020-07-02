@@ -1,11 +1,17 @@
 
 ####################################### habilita caixa de email remota para multiplos usuarios a partir de um CSV
-$path = ".\rollbackdadisgrasa.csv"
+$path = ".\timeshare.csv"
 
 $arquivo = Import-Csv $path
 
 $arquivo | ForEach { Enable-RemoteMailbox -Identity $_.User -RemoteRoutingAddress ($_.User+'@grq.mail.onmicrosoft.com') }
 
+
+$arquivo | foreach {
+#    $users = Get-MsolUser -
+    #Set-MsolUser -UserPrincipalName $_.User -UsageLocation BR
+    Set-MsolUserLicense -UserPrincipalName $_.User -AddLicenses grq:O365_BUSINESS_ESSENTIALS
+}
 ####################################### habilita caixa de email remota para multiplos usuarios a partir de uma OU especifica.
 
 ## 
