@@ -421,6 +421,7 @@ $AllMailbox = Get-mailbox -resultsize unlimited
 
 Foreach($Mbx in $AllMailbox)
 
+
 {
 
 $Stats = Get-mailboxStatistics -Identity $Mbx.distinguishedname -WarningAction SilentlyContinue
@@ -441,13 +442,16 @@ $userObj = New-Object PSObject
 
 $userObj | Add-Member NoteProperty -Name "Display Name" -Value $mbx.displayname
 $userObj | Add-Member NoteProperty -Name "Alias" -Value $Mbx.Alias
-$userObj | Add-Member NoteProperty -Name "SamAccountName" -Value $Mbx.SamAccountName
+#$userObj | Add-Member NoteProperty -Name "SamAccountName" -Value $Mbx.SamAccountName
+$userObj | Add-Member NoteProperty -Name "UserPrincipalName" -Value $Mbx.UserPrincipalName
 $userObj | Add-Member NoteProperty -Name "RecipientType" -Value $Mbx.RecipientTypeDetails
-$userObj | Add-Member NoteProperty -Name "Recipient OU" -Value $Mbx.OrganizationalUnit
-$userObj | Add-Member NoteProperty -Name "Primary SMTP address" -Value $Mbx.PrimarySmtpAddress
-$userObj | Add-Member NoteProperty -Name "Email Addresses" -Value ($Mbx.EmailAddresses -join ";")
-$userObj | Add-Member NoteProperty -Name "Database" -Value $Stats.Database
-$userObj | Add-Member NoteProperty -Name "ServerName" -Value $Stats.ServerName
+#$userObj | Add-Member NoteProperty -Name "Recipient OU" -Value $Mbx.OrganizationalUnit
+#$userObj | Add-Member NoteProperty -Name "Primary SMTP address" -Value $Mbx.PrimarySmtpAddress
+#$userObj | Add-Member NoteProperty -Name "Email Addresses" -Value ($Mbx.EmailAddresses -join ";")
+#$userObj | Add-Member NoteProperty -Name "Database" -Value $Stats.Database
+#$userObj | Add-Member NoteProperty -Name "ServerName" -Value $Stats.ServerName
+$userObj | Add-Member NoteProperty -Name "LitigationHoldEnabled" -Value $Mbx.LitigationHoldEnabled
+$userObj | Add-Member NoteProperty -Name "LitigationHoldDuration" -Value $Mbx.LitigationHoldDuration
 $userObj | Add-Member NoteProperty -Name "TotalItemSize" -Value $Stats.TotalItemSize
 $userObj | Add-Member NoteProperty -Name "ItemCount" -Value $Stats.ItemCount
 $userObj | Add-Member NoteProperty -Name "DeletedItemCount" -Value $Stats.DeletedItemCount
@@ -471,7 +475,7 @@ Write-Progress -Activity "Scanning Mailboxes . . ." -Status "Scanned: $i of $($A
 }
 }
 
-$output | Export-csv -Path $CSVfile -NoTypeInformation -Encoding UTF8
+$output | Export-csv -Path $CSVfile -NoTypeInformation -Encoding UTF8 -NoClobber
 
 ;Break}
 
