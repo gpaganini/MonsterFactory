@@ -1,9 +1,9 @@
-$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados-28052020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\teste.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV 
 
 function credO365 {
     $usuario = 'gpaganini@aviva.com.br'
-    $senha = Get-Content 'C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\trustyPassword.txt'
+    $senha = Get-Content 'C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\o365pass.txt'
 
     $secureSenha = $senha | ConvertTo-SecureString
 
@@ -15,8 +15,8 @@ function credO365 {
 }
 
 function credExchOnprem {
-    $usuario = 'rqr\giovani.paganini'
-    $senha = Get-Content 'C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\trustyPassword.txt'
+    $usuario = 'aviva\adm.giovani'
+    $senha = Get-Content 'C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\onprempass.txt'
 
     $secureSenha = $senha | ConvertTo-SecureString
 
@@ -35,7 +35,7 @@ function conectaExchOnline {
 }
 
 function conectaExchOnprem {
-    $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://SRVRQE940020/PowerShell/ -Authentication Kerberos -Credential (credExchOnprem)
+    $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://SRVRQE940021/PowerShell/ -Authentication Kerberos -Credential (credExchOnprem)
     Import-PSSession $Session
 	
 	Write-Host "Conectado no Exchange OnPremise" -ForegroundColor Green
@@ -61,9 +61,9 @@ function converteCaixa {
         } else {
             Set-Mailbox -Identity $_.upn -Type Shared #se nao, converte a caixa para Shared Mailbox
             if(!$?) {
-                Write-Host "Erro convertendo a caixa de $_.upn" -ForegroundColor Red
+                Write-Host "Erro convertendo a caixa de $($_.upn)" -ForegroundColor Red
             } else {
-                Write-Host "Convertido caixa de $_.upn" -ForegroundColor Green
+                Write-Host "Convertido caixa de $($_.upn)" -ForegroundColor Green
             }
         }
 		
@@ -85,13 +85,13 @@ function ocultaEndereco {
 		$isHidden = $mailbox.HiddenFromAddressListsEnabled
 
 		if($isHidden -eq $True) {
-			Write-Host "A Caixa de $_.upn ja esta oculta da lista global de enderecos!" -ForegroundColor Yellow
+			Write-Host "A Caixa de $($_.upn) ja esta oculta da lista global de enderecos!" -ForegroundColor Yellow
 		} else {
 			Set-RemoteMailbox -Identity $_.upn -HiddenFromAddressListsEnabled $true
 			if(!$?){
-				Write-Host "Erro ocultando o email de $_.upn" -ForegroundColor Red
+				Write-Host "Erro ocultando o email de $($_.upn)" -ForegroundColor Red
 			} else {
-				Write-Host "Ocultado a caixa de $_.upn" -ForegroundColor Green
+				Write-Host "Ocultado a caixa de $($_.upn)" -ForegroundColor Green
 			}
 		}
 		
@@ -117,12 +117,12 @@ function removeLicenca {
 			Set-MsolUserLicense -UserPrincipalName $_.upn -RemoveLicenses $license
 			
 			if(!$?){
-				Write-Host "Erro removendo licencaa do $_.upn" -ForegroundColor Red
+				Write-Host "Erro removendo licencaa do $($_.upn)" -ForegroundColor Red
 			} else {
-				Write-host "Removido $license de $_.upn" -ForegroundColor Green
+				Write-host "Removido $license de $($_.upn)" -ForegroundColor Green
 			}
 		} else {
-            Write-Host "Usuario $_.upn.UPN nao possui licenca" -ForegroundColor Yellow
+            Write-Host "Usuario $($_.upn) nao possui licenca" -ForegroundColor Yellow
         }
 		
 		$i++
@@ -137,4 +137,4 @@ converteCaixa
 removeLicenca
 #ocultaEndereco
 
-#v1.4 @gpaganini
+#v1.5 @gpaganini
