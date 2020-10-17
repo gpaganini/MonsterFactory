@@ -1,7 +1,7 @@
 Import-Module ActiveDirectory
 
-$csv = ".\Usuarios-26062020.csv"
-$arquivo = Import-Csv -Path $csv -Delimiter ";"
+$csv = "C:\Users\giovani.paganini\powershellson\ad\Create AD User from CSV\Usuarios-25092020.csv"
+$arquivo = Import-Csv -Path $csv -Encoding Default -Delimiter ";"
 
 function create {
     foreach ($user in $arquivo) {
@@ -10,12 +10,12 @@ function create {
         -SamAccountName $user.Usuario `
         -DisplayName $user.NAME `
         -Name $user.NAME `
-        -Description $user.Title `
+        -Description $user.Description `
         -Department $user.Department `
         -Title $user.Title `
-        -UserPrincipalName ($user.Usuario+"@aviva.com.br") `
-        -Path "OU=Usuarios,OU=Vacation Club,OU=Unidade Costa do Sauipe,DC=aviva,DC=com,DC=br" `
-        -AccountPassword (ConvertTo-SecureString "Aviva@2020" -AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $true
+        -UserPrincipalName ($user.UserPrincipalName) `
+        -Path "OU=UNITONO,OU=Usuarios Terceiros,OU=Unidade Rio Quente,DC=aviva,DC=com,DC=br" `
+        -AccountPassword (ConvertTo-SecureString $user.Password -AsPlainText -Force) -Enabled $true -ChangePasswordAtLogon $false
     }
 }
 
@@ -24,12 +24,22 @@ function update {
         $ud = Get-ADUser -Identity $user.Usuario -Properties *
 
         Set-ADUser -Identity $user.Usuario -Office $user.Office -Company $user.Office -StreetAddress $user.StreetAddress `
-        -City $user.City -State $user.State -Country "BR" -PostalCode $user.PostalCode -Replace @{'extensionAttribute1'=$user.cpf;'ipPhone'=$user.mat}   
+        -City $user.City -State $user.State -Country "BR" -PostalCode $user.PostalCode -Replace @{'ipPhone'=$user.mat}   
     }
 }
 
-create
-update
+function update2 {
+    foreach ($user in $arquivo) {
+        $ud = Get-ADUser -Identity $user.Usuario -Properties *
+
+        Set-ADUser -Identity $user.Usuario -Office $user.Office -Company $user.Office -StreetAddress $user.StreetAddress `
+        -City $user.City -State $user.State -Country "BR" -PostalCode $user.PostalCode -Department $user.Department -Replace @{'ipPhone'=$user.mat;'telephoneNumber'=$user.PhoneNumber}   
+    }
+}
+
+update2
+#create
+#update
 
 <#Import-Csv -Delimiter ";" "C:\path\to\user.CSV" | ForEach-Object {
 New-ADUser -GivenName $_.firstName `

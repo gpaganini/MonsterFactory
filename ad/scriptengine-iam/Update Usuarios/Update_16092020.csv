@@ -1,0 +1,550 @@
+Nome;Usuario;UPN;Matricula;CPF;Email;Status;LastLogonDate
+0800 Net;0800.net;0800.net@aviva.com.br;Service;;0800.net@aviva.com.br;Inativo;
+0800 WiFi;0800.wifi;0800.wifi@aviva.com.br;Service;;0800.wifi@aviva.com.br;Inativo;
+3CX - Otimi;ext.otimi;ext.otimi@aviva.com.br;Service;;;Ativo;
+3DB Temporário;3db.temp;3db.temp@aviva.com.br;Terceiro;;;Inativo;
+3DB Thiago;ext.thiago;ext.thiago@aviva.com.br;Terceiro;;;Inativo;
+ADAudit Plus;svc.adaudit;svc.adaudit@aviva.com.br;216422;9154321964;;Ativo;10/09/2020 14:02
+Adm - Alessandre Eduardo da Silva;adm.alessandre;adm.alessandre@aviva.com.br;210371;88026337115;;Ativo;11/09/2020 11:08
+Adm - Alexandro Jorge dos Santos;adm.alexandro;adm.alexandro@aviva.com.br;109159;78400635515;;Ativo;15/09/2020 13:31
+Adm - Alimpio;adm.alimpio;adm.alimpio@aviva.com.br;210293;3814681193;;Ativo;08/09/2020 14:43
+Adm - Breno Rodrigues de Sá;adm.breno;adm.breno@aviva.com.br;215449;3820158197;;Ativo;07/09/2020 22:27
+Adm - Bruno Simoes;adm.bsimoes;adm.bsimoes@aviva.com.br;217957;8977331692;;Ativo;03/09/2020 09:55
+Adm - Carlos Correia;adm.carlos;adm.carlos@aviva.com.br;105522;4306479560;;Ativo;12/09/2020 15:39
+Adm - Christian Rocha;adm.crrocha;adm.crrocha@aviva.com.br;218157;18123361874;;Ativo;
+Adm - Cicero;adm.cicero;adm.cicero@aviva.com.br;203750;51736624172;;Ativo;
+Adm - Cleiton;adm.cleiton;adm.cleiton@aviva.com.br;210255;78114438568;;Ativo;10/09/2020 09:09
+Adm - David Junior;adm.david;adm.david@aviva.com.br;105390;874394503;;Ativo;07/09/2020 11:57
+Adm - Dielson;adm.dielson;adm.dielson@aviva.com.br;217544;3531769154;;Ativo;14/09/2020 15:46
+Adm - Dion;adm.dion;adm.dion@aviva.com.br;213305;9450450692;;Ativo;10/09/2020 09:28
+Adm - Edgar Zattar;adm.edgar;adm.edgar@aviva.com.br;216811;1439419680;;Inativo;
+Adm - Eduardo;adm.gomes;adm.gomes@aviva.com.br;217059;70104728159;;Inativo;09/04/2020 11:40
+Adm - Elton Freire;adm.elton;adm.elton@aviva.com.br;109508;1207974536;;Ativo;29/08/2020 11:52
+Adm - Emerson Santos;adm.emerson;adm.emerson@aviva.com.br;109140;6695291500;;Inativo;30/03/2020 09:20
+Adm - Fabiana;adm.fabiana;adm.fabiana@aviva.com.br;217440;4331555151;;Ativo;03/09/2020 10:42
+Adm - Fernando Rabelo;adm.fernando;adm.fernando@aviva.com.br;212244;2751015174;;Ativo;06/09/2020 08:07
+Adm - Giovani Paganini;adm.giovani;adm.giovani@aviva.com.br;216422;9154321964;;Ativo;06/09/2020 00:34
+Adm - Igor Machado;adm.igor;adm.igor@aviva.com.br;109001;80660223520;;Ativo;14/09/2020 11:15
+Adm - Joao Marcelo;adm.joao;adm.joao@aviva.com.br;217251;70135538165;;Inativo;16/03/2020 08:29
+Adm - Josias Fabiano Fernandes Figueira;adm.josias.figueira;adm.josias.figueira@aviva.com.br;217174;4347988605;;Inativo;27/04/2020 16:32
+Adm - Leandro Fischer;adm.leandro;adm.leandro@aviva.com.br;213966;8812114946;;Ativo;11/09/2020 20:43
+Adm - Leandro Maximiano;adm.lmaximiano;adm.lmaximiano@aviva.com.br;217624;6060823602;;Inativo;22/06/2020 17:33
+Adm - Luan Jose Silva Costa;adm.luan.costa;adm.luan.costa@aviva.com.br;217813;11449957609;;Inativo;30/06/2020 19:50
+Adm - Luana Lima;adm.luana;adm.luana@aviva.com.br;107037;2733352512;;Ativo;14/09/2020 15:28
+Adm - Lucas;adm.lucas;adm.lucas@aviva.com.br;217709;3388982120;;Inativo;19/03/2020 08:48
+Adm - Marcos Santana;adm.marcos;adm.marcos@aviva.com.br;108992;67701973591;;Ativo;03/03/2020 11:32
+Adm - Paulo Gargur;adm.gargur;adm.gargur@aviva.com.br;102203;28777646568;;Ativo;09/09/2020 07:41
+Adm - Paulo Soares;adm.psoares;adm.psoares@aviva.com.br;211572;3759200133;;Ativo;08/09/2020 09:06
+Adm - Rafael;adm.rafael;adm.rafael@aviva.com.br;100935;22866618807;;Ativo;15/09/2020 22:49
+Adm - Saulo;adm.saulo;adm.saulo@aviva.com.br;215367;2378261195;;Ativo;10/09/2020 13:35
+Adm - Sezia;adm.sezia;adm.sezia@aviva.com.br;204625;47201207172;;Ativo;14/09/2020 12:55
+Adm - Stewart Tawer Ferreira Viana;adm.stewart;adm.stewart@aviva.com.br;217381;7563414690;;Ativo;06/09/2020 11:12
+Adm - Thiago;adm.thiago;adm.thiago@aviva.com.br;217049;2837333140;;Ativo;07/09/2020 15:44
+Adm - Valnei Galvao;adm.valnei;adm.valnei@aviva.com.br;108991;82633584500;;Inativo;27/03/2020 17:39
+Adm - Vinicius Carvalho;adm.vinicius;adm.vinicius@aviva.com.br;106383;1085912558;;Ativo;13/09/2020 09:15
+Adm - Wallison Costa Simao;adm.wallison;adm.wallison@aviva.com.br;216081;70159237181;;Inativo;20/02/2020 13:45
+Adm - Wanderson Luiz Barbosa Freitas;adm.wanderson;adm.wanderson@aviva.com.br;217153;1622890655;;Ativo;10/09/2020 09:39
+Adm Aldenia;adm.aldenia;adm.aldenia@aviva.com.br;101404;38755647820;;Inativo;25/03/2020 09:22
+Adm Wenderson;adm.wenderson;adm.wenderson@aviva.com.br;101243;34745131844;;Ativo;14/09/2020 05:34
+ADManager Plus;svc.admanager;svc.admanager@aviva.com.br;216422;9154321964;;Ativo;11/09/2020 06:00
+Admin - Elen;adm.elen;adm.elen@aviva.com.br;217788;3502192570;;Inativo;
+Admin - Marcos;adm.marcoss;adm.marcoss@aviva.com.br;108992;67701973591;;Ativo;16/12/2019 14:42
+Admin TFS;tfs.admin;tfs.admin@rioquenteresorts.com.br;Service;;;Inativo;
+Administração Flat;administracaoflat;administracaoflat@aviva.com.br;Service;;administracaoflat@aviva.com.br;Ativo;14/09/2020 17:14
+AdmSonicWall;admsonicwall;admsonicwall@rioquenteresorts.com.br;Service;;;Ativo;
+admt;svc_admt;svc_admt@aviva.com.br;Service;;;Ativo;03/09/2020 12:25
+Adriana Goncalves;ext.adriana.goncalve;ext.adriana.goncalves@aviva.com.br;Unitono;;ext.adriana.goncalves@aviva.com.br;Ativo;08/09/2020 12:25
+Adriane Ramos;ext.adriane.ramos;ext.adriane.ramos@aviva.com.br;Terceiro;;ext.adriane.ramos@aviva.com.br;Ativo;
+Ala Agua;ala.agua;ala.agua@aviva.com.br;Service;;ala.agua@aviva.com.br;Ativo;
+Ala Mar;ala.mar;ala.mar@aviva.com.br;Service;;ala.mar@aviva.com.br;Ativo;
+Ala Premium;ala.premium;ala.premium@aviva.com.br;Service;;ala.premium@aviva.com.br;Ativo;
+Ala Sol;ala.sol;ala.sol@aviva.com.br;Service;;ala.sol@aviva.com.br;Ativo;
+Ala Terra;ala.terra;ala.terra@aviva.com.br;Service;;ala.terra@aviva.com.br;Ativo;
+Alerta CFTV - Costa do Sauipe;alerta_cftv_cds;alerta-cftv-cds@aviva.com.br;Service;;alerta-cftv-cds@aviva.com.br;Ativo;
+Alerta CFTV - Escritorio SP;alerta_cftv_spo;alerta-cftv-spo@aviva.com.br;Service;;alerta-cftv-spo@aviva.com.br;Ativo;
+Alerta CFTV - Rio Quente;alerta_cftv_rqe;alerta-cftv-rqe@aviva.com.br;Service;;alerta-cftv-rqe@aviva.com.br;Ativo;14/04/2020 12:12
+Alessandra Aline Vidal Santos dos Anjos;alessandra.anjos;alessandra.anjos@aviva.com.br;Terceiro;;;Ativo;
+Alexandre Ferreira de Souza;ext.alexandre.souza;ext.alexandre.souza@aviva.com.br;Terceiro;;ext.alexandre.souza@aviva.com.br;Inativo;
+Alexandre Iwamura;ext.alexandreiwamura;ext.alexandreiwamura@rioquenteresorts.com.br;Terceiro;;;Ativo;
+Alexandre Pereira Bentes;ext.alexandre.bentes;ext.alexandre.bentes@aviva.com.br;Unitono;;ext.alexandre.bentes@aviva.com.br;Inativo;
+Alexandre Reis da Silva;ext.alexandre.silva;ext.alexandre.silva@aviva.com.br;Unitono;;ext.alexandre.silva@aviva.com.br;Ativo;08/09/2020 21:51
+Aleydson Erick Pereira da Silva;ext.aleydson.silva;ext.aleydson.silva@rioquenteresorts.com.br;Terceiro;;aleydson.silva@aviva.com.br;Inativo;
+Alfa;alfa;alfa@rioquenteresorts.com.br;Service;;;Inativo;15/04/2020 05:48
+Algberto Reis Cruz;ext.algberto.reis;ext.algberto.reis@rioquenteresorts.com.br;Terceiro;;ext.algberto.reis@aviva.com.br;Inativo;
+Aline Evely L. da Silva;ext.aline.silva;ext.aline.silva@rioquenteresorts.com.br;Terceiro;;Aevely@aviva.com.br;Inativo;
+Allan da Silva Santos;ext.allan.santos;ext.allan.santos@aviva.com.br;Unitono;;ext.allan.santos@aviva.com.br;Inativo;
+Amanda Moreira de Lima;ext.amanda.lima;ext.amanda.lima@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Amir Abreu Gomes;ext.amir;ext.amir@aviva.com.br;Terceiro;;ext.Almir@aviva.com.br;Inativo;
+Ana Julia Oliveira Silva;ext.ana.silva;ext.ana.silva@rioquenteresorts.com.br;Terceiro;;ext.ana.silva@aviva.com.br;Ativo;
+Anderson Simão Soares;ext.anderson.soares;ext.anderson.soares@aviva.com.br;Terceiro;;ext.anderson.soares@aviva.com.br;Ativo;11/09/2020 15:36
+Andrea Tome da Silva Fujimoto;ext.andrea.fujimoto;ext.andrea.fujimoto@aviva.com.br;Unitono;;ext.andrea.fujimoto@aviva.com.br;Inativo;
+Angelica Alves;angelica.alves;angelica.alves@aviva.com.br;Terceiro;;angelica.alves@aviva.com.br;Inativo;09/03/2020 09:10
+Antonio Marcos Pereira;ext.apereira;ext.apereira@aviva.com.br;Terceiro;;;Ativo;
+Apaga Publico;apaga.publico;apaga.publico@aviva.com.br;Service;;;Inativo;
+Ariana Barreto da Silva;ext.ariana.silva;ext.ariana.silva@aviva.com.br;Unitono;;ext.ariana.silva@aviva.com.br;Inativo;
+Arpia Tecnologia;ext.arpia;ext.arpia@aviva.com.br;Terceiro;;;Inativo;
+Arquimedes Nobre;ext.arquimedes.nobre;ext.arquimedes.nobre@rioquenteresorts.com.br;Terceiro;;ext.arquimedes.nobre@aviva.com.br;Ativo;08/09/2020 09:04
+Atendentes - Governança;atendentes.gov;atendentes.gov@aviva.com.br;Service;;atendentes.gov@aviva.com.br;Ativo;06/09/2020 11:49
+Atendimento Ala Água;atendimento.agua;atendimento.agua@aviva.com.br;Service;;atendimento.agua@aviva.com.br;Inativo;
+Atendimento Ala Mar;atendimento.mar;atendimento.mar@aviva.com.br;Service;;atendimento.mar@aviva.com.br;Inativo;
+Atendimento Ala Sol;atendimento.sol;atendimento.sol@aviva.com.br;Service;;atendimento.sol@aviva.com.br;Inativo;04/12/2019 20:42
+Atendimento Ala Terra;atendimento.terra;atendimento.terra@aviva.com.br;Service;;atendimento.terra@aviva.com.br;Inativo;
+Atendimento ao Cliente;atendimentoaocliente;atendimentoaocliente@rioquenteresorts.com.br;Service;;atendimentoaocliente@aviva.com.br;Ativo;
+Atendimento Estância Thermas;atendimento.estancia;atendimento.estancia@rioquenteresorts.com.br;Service;;atendimento.estancia@aviva.com.br;Ativo;
+Atendimento Geti;atendimentogeti;atendimentogeti@rioquenteresorts.com.br;Service;;atendimentogeti@aviva.com.br;Ativo;06/09/2020 11:59
+Atendimento Premium;atendimento.premium;atendimento.premium@aviva.com.br;Service;;atendimento.premium@aviva.com.br;Inativo;
+ATM Vendas Parques;atm.parques;atm.parques@aviva.com.br;Generico;;atm.parques@aviva.com.br;Ativo;
+AutoSeg Teste;ext.asteste;ext.asteste@aviva.com.br;Teste;;;Inativo;13/01/2020 14:15
+Avaliação  de Desempenho TH;avaliacaodesempenho;avaliacaodesempenho@ctrq.com.br;Service;;avaliacaodesempenho@aviva.com.br;Ativo;
+Aviva - PRTG Network Monitor;alert_prtg;alert_prtg@aviva.com.br;Service;;alert_prtg@aviva.com.br;Ativo;
+Aviva Liga;liga;liga@aviva.com.br;Service;;liga@aviva.com.br;Ativo;
+Aviva Vacation Club;avivavacationclub;avivavacationclub@aviva.com.br;Service;;avivavacationclub@aviva.com.br;Ativo;
+Beatriz Aparecida Silva Santos de Souza;ext.beatriz.souza;ext.beatriz.souza@aviva.com.br;Unitono;;ext.beatriz.souza@aviva.com.br;Ativo;14/09/2020 13:40
+Beatriz de Souza Alemida Nascimento;beatriz.nascimento;beatriz.nascimento@aviva.com.br;Terceiro;;;Ativo;12/12/2019 21:16
+Beatriz Ferreira Lourenço da Silva;ext.beatriz.silva;ext.beatriz.silva@aviva.com.br;Terceiro;;;Inativo;
+Beatriz Marcelino de Jesus;beatriz.jesus;beatriz.jesus@aviva.com.br;Terceiro;;;Ativo;11/02/2020 10:05
+Berçario Sauípe;bercario.sauipe;bercario.sauipe@aviva.com.br;Service;;bercario.sauipe@aviva.com.br;Ativo;01/02/2020 18:08
+Boletim Gerencial;boletimgerencial;boletimgerencial@aviva.com.br;Service;;boletimgerencial@aviva.com.br;Inativo;
+Bom Dia Sauipe;bomdiasauipe;bomdiasauipe@aviva.com.br;Service;;bomdiasauipe@aviva.com.br;Inativo;
+Bombeiros;bombeiros;bombeiros2@aviva.com.br;Terceiro;;bombeiros2@aviva.com.br;Inativo;30/03/2020 10:09
+Breno Martins Saudade;ext.breno.saudade;ext.breno.saudade@rioquenteresorts.com.br;Terceiro;;ext.breno.saudade@aviva.com.br;Ativo;
+Bruna Moreira dos Santos;ext.bruna.santos;ext.bruna.santos@aviva.com.br;Unitono;;ext.bruna.santos@aviva.com.br;Inativo;
+CA Service Account;svc_ca;svc_ca@aviva.com.br;Service;;;Ativo;20/11/2019 15:07
+Caixas Hotéis;caixas.hoteis;caixas.hoteis@aviva.com.br;Generico;;;Ativo;08/09/2020 11:58
+Calendario Corporativo;calendario;calendario@aviva.com.br;Service;;calendario@aviva.com.br;Ativo;
+Calendario Projetos e Implantação;calprojimplantacao;calprojimplantacao@rioquenteresorts.com.br;Service;;calprojimplantacao@aviva.com.br;Ativo;
+Carla Cristina Ribeiro de Paula;ext.carla.paula;ext.carla.paula@rioquenteresorts.com.br;Terceiro;;ext.carla.paula@aviva.com.br;Ativo;
+Carolainy Ester de Oliveira Costa;ext.carolainy.costa;ext.carolainy.costa@aviva.com.br;Terceiro;;ext.carolainy.costa@aviva.com.br;Ativo;
+Carolina Sass de Haro;carolina.haro;carolina.haro@aviva.com.br;Terceiro;;carolina.haro@aviva.com.br;Ativo;
+Celina Maria da Silva;ext.celina.silva;ext.celina.silva@aviva.com.br;Unitono;;ext.celina.silva@aviva.com.br;Inativo;
+Celso Luiz de Lima Silva;ext.celso.silva;ext.celso.silva@rioquenteresorts.com.br;Terceiro;;ext.celso.silva@aviva.com.br;Ativo;
+Central de Reservas;reservas.sauipe;reservas.sauipe@aviva.com.br;Service;;reservas.sauipe@aviva.com.br;Ativo;
+Centro Náutico;centronautico;centronautico@aviva.com.br;Service;;;Inativo;
+CEO Aviva;ceo;ceo@aviva.com.br;Service;;ceo@aviva.com.br;Ativo;
+Chat GETI;chatgeti;chatgeti@aviva.com.br;Service;;chatgeti@aviva.com.br;Inativo;
+Checkin RQVC;checkinrqvc;checkinrqvc@rioquenteresorts.com.br;Service;;checkinrqvc@aviva.com.br;Ativo;
+Christian Silva Francisco;christian.francisco;christian.francisco@aviva.com.br;218108;70576707104;christian.francisco@aviva.com.br;Ativo;14/09/2020 09:19
+Cintia Almeida Olinto;ext.cintia.olinto;ext.cintia.olinto@aviva.com.br;Unitono;;ext.cintia.olinto@aviva.com.br;Inativo;
+Cisco Auth;cisco_auth;cisco_auth@rqr.com.br;Terceiro;;;Inativo;
+Claudia Cristina Godinho de Freitas Primo;tclaudia.primo;tclaudia.primo@aviva.com.br;Terceiro;;tclaudia.primo@aviva.com.br;Ativo;18/03/2020 15:01
+Clelia Maria da Silva;ext.clelia.silva;ext.clelia.silva@aviva.com.br;Terceiro;;ext.clelia.silva@aviva.com.br;Ativo;
+CM;cm;cm@aviva.com.br;Service;;;Ativo;20/01/2020 16:26
+CM - Implantação;cmimp;cmimp@aviva.com.br;Service;;;Ativo;
+Comite de Inovação;comitedeinovacao;comitedeinovacao@rioquenteresorts.com.br;Service;;comitedeinovacao@aviva.com.br;Ativo;
+Comite Executivo;comiteexecutivo;comiteexecutivo2@rioquenteresorts.com.br;Service;;comiteexecutivo2@aviva.com.br;Ativo;
+Comitê Socioambiental;comitesocioambiental;comitesocioambiental@aviva.com.br;Service;;comitesocioambiental@aviva.com.br;Ativo;
+Comunicação DETH;comunicacaoth;comunicacaoth@aviva.com.br;Service;;comunicacaoth@aviva.com.br;Ativo;08/09/2020 07:04
+Comunicação Estrategia e Inovação;estrategiaeinovacao;estrategiaeinovacao@aviva.com.br;Service;;estrategiaeinovacao@aviva.com.br;Inativo;
+Comunicação Estratégia e Inovação;informeporque;informeporque@aviva.com.br;Service;;informeporque@aviva.com.br;Ativo;
+Comunicação Interna;comunicacaointerna;comunicacaointerna@aviva.com.br;Service;;comunicacaointerna@aviva.com.br;Inativo;
+Comunicacao Supply;comunicacao_supply;comunicacao_supply@aviva.com.br;Service;;Comunicacao_Supply@aviva.com.br;Inativo;01/07/2020 11:14
+Comunicacao TH;comunicacao-th;comunicacao-th@aviva.com.br;Service;;Comunicacao-th@aviva.com.br;Ativo;
+comunicacaothvendas;comunicacaothvendas;comunicacaothvendas@aviva.com.br;Service;;comunicacaothvendas@aviva.com.br;Ativo;
+Confirmação Check-in Hotel Cristal;confirmacaocheckin;confirmacaocheckin@aviva.com.br;Service;;confirmacaocheckin@aviva.com.br;Ativo;19/07/2020 09:57
+Consumo Interno;consumointerno;consumointerno@aviva.com.br;Service;;consumointerno@aviva.com.br;Ativo;
+Conta de Servico SCCM 2012R2;serv_sccm;serv_sccm@aviva.com.br;Service;;serv_sccm@aviva.com.br;Inativo;
+contratosrqvc;contratosrqvc;contratosrqvc@rioquenteresorts.com.br;Service;;contratosrqvc@aviva.com.br;Ativo;
+Controladoria Sauipe;controladoria.sauipe;controladoria.sauipe@aviva.com.br;Service;;;Inativo;19/03/2020 09:59
+CSC - Centro Serviço Compartilhado;comunicacaocsc;comunicacaocsc@aviva.com.br;Service;;comunicacaocsc@aviva.com.br;Ativo;10/09/2020 08:51
+CSVC;csvc;csvc@aviva.com.br;Service;;csvc@aviva.com.br;Inativo;
+CVC Operadora;cvc.operadora;cvc.operadora@rioquenteresorts.com.br;Service;;cvc.operadora@aviva.com.br;Ativo;
+Dafne Freitas;kpmg.dafne;kpmg.dafne@aviva.com.br;Terceiro;;kpmg.dafne@aviva.com.br;Ativo;
+Daiane Barra;ext.daiane.barra;ext.daiane.barra@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Daniel Fabro dos Reis;ext.dreis;ext.dreis@aviva.com.br;Terceiro;;;Ativo;
+Daniel Marcos Silva Dos Santos;ext.daniel;ext.daniel@aviva.com.br;Terceiro;;ext.daniel@aviva.com.br;Inativo;
+Daniel Silva;ext.daniel.silva;ext.daniel.silva@rioquenteresorts.com.br;Terceiro;;ext.daniel.silva@aviva.com.br;Inativo;
+Danilo Diego Vaz Machado;ext.danilo.machado;ext.danilo.machado@rioquenteresorts.com.br;Terceiro;;ext.danilo.machado@aviva.com.br;Ativo;
+DAY PASS COSTA DO  SAUIPE;daypass.sauipe;daypass.sauipe@aviva.com.br;Service;;daypass.sauipe@aviva.com.br;Ativo;
+Débora Sousa Fernandes;ext.debora.fernandes;ext.debora.fernandes@aviva.com.br;Terceiro;;ext.debora.fernandes@aviva.com.br;Inativo;
+DHCP DNS Registration Account;svc.dhcp;svc.dhcp@aviva.com.br;Service;;;Ativo;12/09/2020 14:54
+Dirce Rocha do Espirito Santo;ext.dirce.santo;ext.dirce.santo@aviva.com.br;Unitono;;ext.dirce.santo@aviva.com.br;Ativo;
+Diretoria Estancia Thermas;diretoriaestancia;diretoriaestancia@rioquente.com.br;Service;;diretoriaestancia@aviva.com.br;Ativo;
+Diretoria Executiva;diretoriaexecutiva;diretoriaexecutiva@rioquenteresorts.com.br;Service;;diretoriaexecutiva@aviva.com.br;Ativo;
+Dj's - Music Play;dj;dj@aviva.com.br;Generico;;dj@aviva.com.br;Inativo;
+Douglas Sales de Medeiros Brito;ext.douglas.brito;ext.douglas.brito@aviva.com.br;Unitono;;ext.douglas.brito@aviva.com.br;Inativo;
+EAD GRQ;ead.grq;ead.grq@ctrq.com.br;Service;;ead.grq@aviva.com.br;Ativo;18/05/2020 17:47
+Edilane Oliveira Ramos;edilane.ramos;edilane.ramos@aviva.com.br;Terceiro;;;Ativo;08/12/2019 08:55
+Edina Aparecida Moreira;ext.edina.moreira;ext.edina.moreira@aviva.com.br;Unitono;;ext.edina.moreira@aviva.com.br;Ativo;25/08/2020 17:12
+Edisio De Souza Sa;ext.edisio.sa;ext.edisio.sa@aviva.com.br;Unitono;;ext.edisio.sa@aviva.com.br;Ativo;08/09/2020 11:25
+Eduardo da Silva Tessari;ext.eduardo.tessari;ext.eduardo.tessari@aviva.com.br;Unitono;;ext.eduardo.tessari@aviva.com.br;Inativo;
+Eduardo Henrique de Souza;ext.eduardo.souza;ext.eduardo.souza@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Eduardo Oliveira Costa;ext.eduardo.costa;ext.eduardo.costa@aviva.com.br;Terceiro;;ext.eduardo.costa@aviva.com.br;Ativo;
+Eliane Garcia Melgaço;eliane.melgaco;eliane.melgaco@aviva.com.br;Terceiro;;eliane.melgaco@aviva.com.br;Ativo;
+Elisabeth Lujan;telisabeth.lujan;telisabeth.lujan@aviva.com.br;Terceiro;;telisabeth.lujan@aviva.com.br;Ativo;03/03/2020 14:22
+Elisangela Fonseca Beduino dos Reis;ext.elisangela.reis;ext.elisangela.reis@aviva.com.br;Unitono;;ext.elisangela.reis@aviva.com.br;Ativo;08/09/2020 07:59
+Elita Vargas Sanches;ext.elita.sanches;ext.elita.sanches@aviva.com.br;Unitono;;ext.elita.sanches@aviva.com.br;Ativo;10/09/2020 08:00
+Ellen Karoline da Silva;ellen.silva;ellen.silva@aviva.com.br;Terceiro;;ellen.silva@aviva.com.br;Ativo;
+Ellevo 0800;svc.ellevo;svc.ellevo@aviva.com.br;Service;;;Inativo;25/03/2020 01:00
+Engeman Enterprise Asset Management LTDA;ext.engeman;ext.engeman@aviva.com.br;Terceiro;;ext.engeman@aviva.com.br;Ativo;
+Enio Silva;ext.enio.silva;ext.enio.silva@rioquenteresorts.com.br;Terceiro;;ext.enio.silva@aviva.com.br;Inativo;
+Enzo Pallos de Oliveira Silva;enzo.silva;enzo.silva@aviva.com.br;Terceiro;;;Ativo;
+Erica Silva;erica.silva;erica.silva@aviva.com.br;Terceiro;;;Inativo;
+Esolution Esolution;ext.esolution;ext.esolution@rioquenteresorts.com.br;Terceiro;;;Ativo;
+Evanilde Rocha Paixão;ext.evanilde.paixao;ext.evanilde.paixao@aviva.com.br;Unitono;;ext.evanilde.paixao@aviva.com.br;Inativo;
+Experiencias;experiencias;experiencias@aviva.com.br;Service;;experiencias@aviva.com.br;Ativo;
+EXT - AX4B;ext.ax4b;ext.ax4b@aviva.com.br;Terceiro;;ext.ax4b@aviva.com.br;Inativo;09/07/2020 10:00
+Ext Alan - Santo Digital;ext.alan;ext.alan@aviva.com.br;Terceiro;;;Inativo;
+Ext IBMT;ext.ibmt;ext.ibmt@aviva.com.br;Terceiro;;;Ativo;10/09/2020 13:52
+Ext Procentric;ext.procentric;ext.procentric@aviva.com.br;Terceiro;;;Ativo;10/03/2020 11:31
+Ext Ubiqua Brasil Ltda ME;ext.ubicua;ext.ubicua@aviva.com.br;Terceiro;;;Ativo;14/09/2020 09:34
+ext.3.db;ext.3.db;ext.3.db@rioquenteresorts.com.br;Terceiro;;;Ativo;07/09/2020 17:59
+ext.3db;ext.3db;ext.3db@aviva.com.br;Terceiro;;;Ativo;28/05/2020 07:45
+ext.autoseg;ext.autoseg;ext.autoseg@aviva.com.br;Terceiro;;;Inativo;
+ext.cms;ext.cms;ext.cms@rioquenteresorts.com.br;Terceiro;;;Inativo;
+ext.dclick;ext.dclick;ext.dclick@rqr.com.br;Terceiro;;;Ativo;12/05/2020 16:52
+ext.ivare;ext.ivare;ext.ivare@rqr.com.br;Terceiro;;;Inativo;
+ext.ldc;ext.ldc;ext.ldc@rioquenteresorts.com.br;Terceiro;;;Ativo;
+ext.pmweb;ext.pmweb;ext.pmweb@rqr.com.br;Terceiro;;;Ativo;15/09/2020 12:30
+ext.simbiox;ext.simbiox;ext.simbiox@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Facebook RQVC;facebookrqvc;facebookrqvc@rioquenteresorts.com.br;Service;;facebookrqvc@aviva.com.br;Ativo;
+Fale com o Marketing;falecomomarketing;falecomomarketing@rioquenteresorts.com.br;Service;;falecomomarketing@aviva.com.br;Ativo;
+Fale Conosco;faleconosco;faleconosco@aviva.com.br;Service;;;Inativo;
+Fale Conosco RQVC;faleconoscorqvc;faleconoscorqvc@rioquenteresorts.com.br;Service;;faleconoscorqvc@aviva.com.br;Ativo;
+Fernando Arrais;kpmg.fernando;kpmg.fernando@aviva.com.br;Terceiro;;kpmg.fernando@aviva.com.br;Ativo;
+Fernando Massayoshi Oka;ext.fernando.oka;ext.fernando.oka@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Financeiro Vacation Ownership;vo.financeiro;vo.financeiro@rioquenteresorts.com.br;Service;;vo.financeiro@aviva.com.br;Ativo;
+Flavia Regina Rodrigues da Silva;ext.flavia.silva;ext.flavia.silva@aviva.com.br;Unitono;;ext.flavia.silva@aviva.com.br;Ativo;08/09/2020 11:16
+Fleshtel Grupo Carvalho;ext.fleshtel;ext.fleshtel@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Francine Dominicheli Rinaldi;ext.francine.rinaldi;ext.francine.rinaldi@aviva.com.br;Unitono;;ext.francine.rinaldi@aviva.com.br;Inativo;
+Francisco Hiczy da Costa;fhc;fhc@rioquenteresorts.com.br;AUT00153;;fhc@aviva.com.br;Ativo;
+Franklen Jeferson Farias Santos;ext.fsantos;ext.fsantos@aviva.com.br;Terceiro;;ext.fsantos@aviva.com.br;Inativo;
+Gabriel Henrique de Morais Guimarães;ext.gabriel.guimarae;ext.gabriel.guimarae@rioquenteresorts.com.br;Terceiro;;;Inativo;
+GABRIELA FERREIRA RODRIGUES;ext.grodrigues;ext.grodrigues@aviva.com.br;Terceiro;;;Inativo;
+Gabriela Souza Martins;ext.gabriela.martins;ext.gabriela.martins@aviva.com.br;Unitono;;ext.gabriela.martins@aviva.com.br;Inativo;
+Gabriele dos Santos Silva;ext.gabriele.silva;ext.gabriele.silva@aviva.com.br;Unitono;;ext.gabriele.silva@aviva.com.br;Inativo;
+Genesys Compact Edition;genesys;genesys@rioquenteresorts.com.br;Terceiro;;genesys@aviva.com.br;Ativo;
+Gestao de Impressoras;gestaoimpressoras;gestaoimpressoras@rioquenteresorts.com.br;Service;;gestaoimpressoras@aviva.com.br;Ativo;
+Gestao Desempenho Aviva;avaliacaoca;gestaodesempenho@aviva.com.br;Service;;gestaodesempenho@aviva.com.br;Ativo;03/03/2020 14:16
+Gestão Projeto Porrque;gestaoprojetoporrque;gestaoprojetoporrque@rioquenteresorts.com.br;Service;;gestaoprojetoporrque@aviva.com.br;Ativo;
+GETI Mobile;getimobile;getimobile@aviva.com.br;Service;;getimobile@aviva.com.br;Ativo;24/07/2020 14:22
+Giovanna Lima;kpmg.giovanna;kpmg.giovanna@aviva.com.br;Terceiro;;kpmg.giovanna@aviva.com.br;Ativo;
+Girliane Oliveira dos Santos;ext.girliane.santos;ext.girliane.santos@aviva.com.br;Unitono;;ext.girliane.santos@aviva.com.br;Inativo;02/04/2020 17:38
+Grupo Empreza;grupoempreza;grupoempreza@rioquenteresorts.com.br;Terceiro;;;Ativo;
+Grupo Rio Quente;noreply;noreply@aviva.com.br;Service;;noreply@aviva.com.br;Ativo;07/09/2020 20:58
+Grupo Rio Quente Resorts;svc.smtp.o365;svc.smtp.o365@aviva.com.br;Service;;svc.smtp.o365@aviva.com.br;Ativo;07/05/2020 11:38
+Grupos;grupos.old;grupos.old@aviva.com.br;Service;;;Inativo;
+Grupos Inter;grupos.inter;grupos.inter@aviva.com.br;Service;;grupos.inter@aviva.com.br;Ativo;04/08/2020 14:51
+Grupos Lazer;grupos.lazer;grupos.lazer@aviva.com.br;Service;;grupos.lazer@aviva.com.br;Ativo;04/08/2020 14:01
+Guilherme Cavalcante;ext.guilherme;ext.guilherme@rioquenteresorts.com.br;Terceiro;;;Inativo;
+GW Internet;ext.gw.internet;ext.gw.internet@rioquenteresorts.com.br;Terceiro;;ext.gw.internet@aviva.com.br;Inativo;
+Henrique Ferreira Gomes;ext.henrique.gomes;ext.henrique.gomes@rioquenteresorts.com.br;Terceiro;;ext.henrique.gomes@aviva.com.br;Inativo;
+Hoteis;hoteis;hoteis@aviva.com.br;Generico;;;Ativo;06/09/2020 11:48
+Hub do Bem;hubdobem;hubdobem@aviva.com.br;Service;;hubdobem@aviva.com.br;Ativo;
+Ilda Aparecida Beraldi Ferreira;ext.ilda.ferreira;ext.ilda.ferreira@aviva.com.br;Unitono;;ext.ilda.ferreira@aviva.com.br;Inativo;11/04/2020 15:56
+Incasa Residence Club;incasaresidenceclub;incasaresidenceclub@aviva.com.br;Service;;incasaresidenceclub@aviva.com.br;Ativo;
+indicacao;indicacao;indicacao@aviva.com.br;Service;;indicacao@aviva.com.br;Inativo;
+Indico Consultoria;indico.consultoria;indico.consultoria@aviva.com.br;Terceiro;;;Inativo;13/03/2020 09:36
+Ines Monteiro Miranda;ext.ines.miranda;ext.ines.miranda@aviva.com.br;Unitono;;ext.ines.miranda@aviva.com.br;Ativo;31/05/2020 12:22
+Informatec;ext.tarifa;ext.tarifa@rioquenteresorts.com.br;Terceiro;;;Ativo;
+Informeambiental;informeambiental;informeambiental@aviva.com.br;Service;;informeambiental@aviva.com.br;Ativo;11/09/2020 10:14
+InfoTera;ext.infotera;ext.infotera@rioquenteresorts.com.br;Terceiro;;;Ativo;
+Ingrid Maria da Silva;ext.ingrid.silva;ext.ingrid.silva@aviva.com.br;Unitono;;ext.ingrid.silva@aviva.com.br;Ativo;12/08/2020 16:29
+Inovação;imoinovacao;imoinovacao@aviva.com.br;Service;;imoinovacao@aviva.com.br;Ativo;
+Instituto de Vendas AVIVA;institutodevendas;institutodevendas@aviva.com.br;Service;;institutodevendas@aviva.com.br;Ativo;
+Integratto Tecnologia;ext.integratto;ext.integratto@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Iria Jaquicilene fernandes Campelo;ext.iria.campelo;ext.iria.campelo@aviva.com.br;Unitono;;ext.iria.campelo@aviva.com.br;Ativo;14/09/2020 13:07
+Isabella Lemos;isabella.lemos;isabella.lemos@rioquenteresorts.com.br;Terceiro;;isabella.lemos@aviva.com.br;Ativo;
+Isaque Cunha da Silva;isaque.silva;isaque.silva@aviva.com.br;280386;;isaque.silva@aviva.com.br;Ativo;
+Itransport;itransport;itransport@aviva.com.br;Service;;;Inativo;
+Ivan Barbosa da Silva;ext.ivan.silva;ext.ivan.silva@aviva.com.br;Unitono;;ext.ivan.silva@aviva.com.br;Ativo;08/09/2020 11:12
+Ivannoly Joanara da Silva Secundino;ext.ivannoly.silva;ext.ivannoly.silva@aviva.com.br;Unitono;;ext.ivannoly.silva@aviva.com.br;Ativo;08/09/2020 11:27
+Jamily de Oliveira Paixão;ext.jamily.paixao;ext.jamily.paixao@rioquenteresorts.com.br;Terceiro;;ext.jamily.paixao@aviva.com.br;Ativo;
+Jaqueline Santos de Vasconcelos;ext.jaqueline.vascon;ext.jaqueline.vasconcelos@aviva.com.br;Terceiro;;ext.jaqueline.vasconcelos@aviva.com.br;Ativo;04/09/2020 10:06
+JCR Tecnologia;jcrtelecom;jcrtelecom@aviva.com.br;Terceiro;;;Ativo;
+Jefferson Neves;kpmg.jefferson;kpmg.jefferson@aviva.com.br;Terceiro;;kpmg.jefferson@aviva.com.br;Ativo;
+Jessica do Nascimento Sena;jessica.sena;jessica.sena@aviva.com.br;Terceiro;;jessica.sena@aviva.com.br;Ativo;
+Jhony Reverson Siqueira Nunes;ext.jhony.nunes;ext.jhony.nunes@rioquenteresorts.com.br;Terceiro;;ext.jhony.nunes@aviva.com.br;Inativo;
+Joao Vitor Garcia;joao.garcia;joao.garcia@aviva.com.br;Terceiro;;joao.garcia@aviva.com.br;Ativo;
+Jonailson Roque da Silva;ext.jonailson;ext.jonailson@aviva.com.br;Terceiro;;ext.jonailson@aviva.com.br;Inativo;
+Jones Keis Francisco da Silva;ext.jones.silva;ext.jones.silva@aviva.com.br;Unitono;;ext.jones.silva@aviva.com.br;Inativo;
+jose Augusto Cintra Molla;ext.jose.molla;ext.jose.molla@aviva.com.br;Terceiro;;ext.jose.molla@aviva.com.br;Inativo;
+Jose Carlos dos Santos Mattiuzzi;ext.jose.mattiuzzi;ext.jose.mattiuzzi@aviva.com.br;Terceiro;;ext.jose.mattiuzzi@aviva.com.br;Inativo;
+Joyce Rayane dos Santos;ext.joyce.santos;ext.joyce.santos@aviva.com.br;Unitono;;ext.joyce.santos@aviva.com.br;Inativo;
+Jully dos Reis Correa;ext.jully.correa;ext.jully.correa@aviva.com.br;Unitono;;ext.jully.correa@aviva.com.br;Ativo;03/08/2020 16:51
+Junior Amancio Ferreira da Silva;ext.junior.silva;ext.junior.silva@aviva.com.br;Unitono;;ext.junior.silva@aviva.com.br;Inativo;
+Karina Alves Retamiro;ext.karina.retamiro;ext.karina.retamiro@aviva.com.br;Unitono;;ext.karina.retamiro@aviva.com.br;Ativo;25/08/2020 12:47
+Kevin de Morais Gonzaga;ext.kevin.gonzaga;ext.kevin.gonzaga@aviva.com.br;Unitono;;ext.kevin.gonzaga@aviva.com.br;Inativo;
+Khamyla Pereira dos Santos;ext.khamyla.santos;ext.khamyla.santos@rioquenteresorts.com.br;Terceiro;;ext.khamyla.santos@aviva.com.br;Ativo;
+KPMG - Terceiro;ext.kpmg;ext.kpmg@aviva.com.br;Terceiro;;;Ativo;02/09/2020 14:49
+Laercio Ananias;ext.laercio.ananias;ext.laercio.ananias@rioquenteresorts.com.br;Terceiro;;ext.laercio.ananias@aviva.com.br;Inativo;
+Lan Sweeper;svc.lansweeper;svc.lansweeper@rqr.om.br;Service;;svc.lansweeper@aviva.com.br;Ativo;15/09/2020 09:17
+Larissa Evellyn Correia Machado;ext.larissa.machado;ext.larissa.machado@aviva.com.br;Unitono;;ext.larissa.machado@aviva.com.br;Ativo;04/09/2020 16:02
+Lauro David Gomes;ext.lauro;ext.lauro@aviva.com.br;Terceiro;;ext.lauro@aviva.com.br;Inativo;
+LDC Fabiano;ldc.fabiano;ldc.fabiano@aviva.com.br;Terceiro;;;Ativo;
+LDC Suporte;suporte.ldc;suporte.ldc@rqr.com.br;Terceiro;;;Ativo;18/05/2020 17:38
+Leonardo Cesar Silva e Sousa;ext.leonardo.sousa;ext.leonardo.sousa@aviva.com.br;Terceiro;;ext.leonardo.sousa@aviva.com.br;Inativo;
+Leticia Freire Ribeiro;leticia.ribeiro;leticia.ribeiro@aviva.com.br;Terceiro;;leticia.ribeiro@aviva.com.br;Ativo;
+liberacaoacessogesto Geti;liberacaoacessogesto;liberacaoacessogesto@rioquenteresorts.com.br;Service;;liberacaoacessogesto@aviva.com.br;Ativo;
+Lidiely Sousa Santos;ext.lidiely.santos;ext.lidiely.santos@rioquenteresorts.com.br;Terceiro;;ext.lidiely.santos@aviva.com.br;Ativo;
+LOGISTICA;logistica;logistica@aviva.com.br;Service;;logistica@aviva.com.br;Inativo;08/04/2020 11:27
+Lorena Carvalho Ribeiro;ext.4mm.lorena;ext.4mm.lorena@aviva.com.br;Terceiro;;ext.4mm.lorena@aviva.com.br;Inativo;
+Lourdes Marques de Souza Lopes;ext.lourdes.lopes;ext.lourdes.lopes@aviva.com.br;Unitono;;ext.lourdes.lopes@aviva.com.br;Ativo;13/09/2020 12:42
+Luana Almeida da Silva Delvechio;ext.luana.delvechio;ext.luana.delvechio@aviva.com.br;Unitono;;ext.luana.delvechio@aviva.com.br;Ativo;08/09/2020 00:29
+Luca Santo;kpmg.luca;kpmg.luca@aviva.com.br;Terceiro;;kpmg.luca@aviva.com.br;Ativo;
+Lucas Bomfim;kpmg.lucasb;kpmg.lucasb@aviva.com.br;Terceiro;;kpmg.lucasb@aviva.com.br;Ativo;
+Lucas Nascimento;kpmg.lucasn;kpmg.lucasn@aviva.com.br;Terceiro;;kpmg.lucasn@aviva.com.br;Ativo;
+Luciana Martins Costa;luciana.costa;luciana.costa@aviva.com.br;Terceiro;;luciana.costa@aviva.com.br;Ativo;
+Lucineide da Cruz Rodrigues;ext.lucineide.cruz;ext.lucineide.cruz@aviva.com.br;Unitono;;ext.lucineide.cruz@aviva.com.br;Inativo;
+Lync Hospitalidade;lync_sao-sr02;lync_sao-sr02@rioquenteresorts.com.br;Service;;lync_sao-sr02@aviva.com.br;Ativo;
+Maiara Rodrigues da SIlva;ext.maiara.silva;ext.maiara.silva@aviva.com.br;Terceiro;;ext.maiara.silva@aviva.com.br;Inativo;
+Marcelo Caetano;marcelo.caetano;marcelo.caetano@aviva.com.br;Terceiro;;;Ativo;14/03/2020 09:25
+Marcius Machado;kpmg.marcius;kpmg.marcius@aviva.com.br;Terceiro;;kpmg.marcius@aviva.com.br;Ativo;
+Marco Aurelio da Slveira;ext.marco.silveira;ext.marco.silveira@aviva.com.br;Terceiro;;ext.marco.silveira@aviva.com.br;Ativo;
+Marcos Pereira da Silva;ext.marcos.silva;ext.marcos.silva@rioquenteresorts.com.br;Terceiro;;ext.marcos.silva@aviva.com.br;Inativo;
+Maria Leonice Santos da Silva;ext.maria.silva;ext.maria.silva@aviva.com.br;Unitono;;ext.maria.silva@aviva.com.br;Inativo;
+Mariana Duarte;kpmg.mariana;kpmg.mariana@aviva.com.br;Terceiro;;kpmg.mariana@aviva.com.br;Ativo;
+Marianna Garcia;marianna.garcia;marianna.garcia@aviva.com.br;Terceiro;;;Ativo;
+Marina Silva Sanches;ext.marina.sanches;ext.marina.sanches@aviva.com.br;Unitono;;ext.marina.sanches@aviva.com.br;Inativo;
+Maristel Bergamasco;kpmg.maristel;kpmg.maristel@aviva.com.br;Terceiro;;kpmg.maristel@aviva.com.br;Ativo;
+Marketing - Sauipe;mkt;mkt@costadosauipe.com.br;Service;;mkt@costadosauipe.com.br;Ativo;29/06/2020 11:52
+Marketing Aviva;marketingaviva;marketingaviva@aviva.com.br;Service;;marketingaviva@aviva.com.br;Ativo;11/09/2020 16:43
+Matheus Henrique da Conceição;ext.matheus.conceica;ext.matheus.conceica@aviva.com.br;Unitono;;ext.matheus.conceica@aviva.com.br;Inativo;
+Matheus Vinicius Ribeiro Goncalves;ext.matheus.ribeiro;ext.matheus.ribeiro@aviva.com.br;Unitono;;ext.matheus.ribeiro@aviva.com.br;Ativo;08/09/2020 12:38
+Maura Machado Portela Cavalcante;ext.maura.cavalcante;ext.maura.cavalcante@aviva.com.br;Terceiro;;ext.maura.cavalcante@aviva.com.br;Ativo;14/09/2020 09:13
+Mayara Santana Lima;ext.mayara.lima;ext.mayara.lima@aviva.com.br;Unitono;;ext.mayara.lima@aviva.com.br;Ativo;
+Melissa Goncalves da Cunha;ext.melissa.cunha;ext.melissa.cunha@aviva.com.br;Unitono;;ext.melissa.cunha@aviva.com.br;Inativo;
+Meliza Lima dos Santos;ext.meliza.santos;ext.meliza.santos@aviva.com.br;Unitono;;ext.meliza.santos@aviva.com.br;Inativo;
+Micaela Torres Pereira;ext.micaela.pereira;ext.micaela.pereira@aviva.com.br;Unitono;;ext.micaela.pereira@aviva.com.br;Inativo;
+Milena Moraes de Oliveira;milena.moraes;milena.moraes@aviva.com.br;Terceiro;;milena.moraes@aviva.com.br;Ativo;
+Mireli Cristina de Oliveira;ext.mireli.oliveira;ext.mireli.oliveira@rioquenteresorts.com.br;Terceiro;;ext.mireli.oliveira@aviva.com.br;Ativo;
+moderacao emails;moderacao;moderacao@aviva.com.br;Service;;moderacao@aviva.com.br;Inativo;
+Moderacao Onprem;Moderacao.Onprem;Moderacao.Onprem@ctrq.com.br;Service;;Moderacao.Onprem@aviva.com.br;Ativo;28/04/2020 19:25
+Monalisa de Souza Rocha;ext.monalisa.rocha;ext.monalisa.rocha@aviva.com.br;Unitono;;ext.monalisa.rocha@aviva.com.br;Inativo;
+Monica Silvana Amaral;ext.monica.amaral;ext.monica.amaral@aviva.com.br;Terceiro;;ext.monica.amaral@aviva.com.br;Inativo;
+Monique Mendes Roque;monique.roque;monique.roque@aviva.com.br;Terceiro;;monique.roque@aviva.com.br;Ativo;
+Natalia Silva Barbosa;ext.natalia.barbosa;ext.natalia.barbosa@aviva.com.br;Unitono;;ext.natalia.barbosa@aviva.com.br;Ativo;
+Natasha Nepomuceno da Silva;ext.natasha.silva;ext.natasha.silva@aviva.com.br;Unitono;;ext.natasha.silva@aviva.com.br;Ativo;29/07/2020 08:03
+Nathália Maria Abdalla Silva;ext.nathalia.silva;ext.nathalia.silva@aviva.com.br;Terceiro;;ext.nathalia.silva@aviva.com.br;Ativo;13/09/2020 14:47
+Neide Etelvina da Rocha;ext.neide.rocha;ext.neide.rocha@aviva.com.br;Unitono;;ext.neide.rocha@aviva.com.br;Inativo;
+Neppo Tecnologia;ext.neppo;ext.neppo@aviva.com.br;Terceiro;;;Inativo;
+Nessus SVC;svc.nes;svc.nes@rioquenteresorts.com.br;Service;;svc.nes@aviva.com.br;Ativo;
+Netactica;netactica;netactica@rioquenteresorts.com.br;Terceiro;;netactica@aviva.com.br;Ativo;
+NF Produto;nfproduto;nfproduto@aviva.com.br;Service;;nfproduto@aviva.com.br;Ativo;
+NF Serviço;nfservico;nfservico@aviva.com.br;Service;;nfservico@aviva.com.br;Ativo;
+Nicolly Fabris Domingues;ext.nicolly.domingue;ext.nicolly.domingues@aviva.com.br;Unitono;;ext.nicolly.domingues@aviva.com.br;Ativo;25/05/2020 11:01
+Nobreak_TI_01 Data Center RQE;nobreak_ti_01;nobreak_ti_01@rioquenteresorts.com.br;Service;;nobreak_ti_01@aviva.com.br;Ativo;
+Nobreak_TI_02 Data Center RQE;nobreak_ti_02;nobreak_ti_02@rioquenteresorts.com.br;Service;;nobreak_ti_02@aviva.com.br;Ativo;
+No-Reply;no-reply;no-reply@hotpark.com;Service;;no-reply@aviva.com.br;Ativo;
+NoReply CMS App;noreply.cmsapp;noreply.cmsapp@aviva.com.br;Service;;noreply.cmsapp@aviva.com.br;Ativo;
+Notificacao;notificacao;notificacao@rioquenteresorts.com.br;Service;;notificacao@aviva.com.br;Ativo;
+Novos Negocios;novosnegocios;novosnegocios@rioquenteresorts.com.br;Service;;novosnegocios@aviva.com.br;Ativo;
+Ocomon Service Desk;ocomon-servicedesk;ocomon-servicedesk@aviva.com.br;Service;;ocomon-servicedesk@aviva.com.br;Ativo;
+oivex;oivex;oivex@aviva.com.br;Service;;;Ativo;10/09/2020 15:19
+OktaService;OktaService;OktaService@aviva.com.br;Service;;;Ativo;02/09/2020 12:42
+Olá Aviva - Costa do Sauipe;ola.aviva.cds;ola.aviva.cds@aviva.com.br;Service;;ola.aviva.cds@aviva.com.br;Ativo;12/09/2020 06:55
+Olá Aviva - Rio Quente;ola.aviva.rq;ola.aviva.rq@aviva.com.br;Service;;ola.aviva.rq@aviva.com.br;Ativo;
+Olivia Lauriucci Arantes Vieira Bragato;tolivia.bragato;tolivia.bragato@aviva.com.br;Terceiro;;tolivia.bragato@aviva.com.br;Ativo;
+On Line;online.sauipe;online.sauipe@aviva.com.br;Service;;online.sauipe@aviva.com.br;Ativo;
+OnPrem MigAdmin1;OnPremMigAdmin1;OnPremMigAdmin1@rioquenteresorts.com.br;Service;;OnPremMigAdmin1@aviva.com.br;Ativo;
+OnPremAdmin1;OnPremAdmin1;OnPremAdmin1@rioquenteresorts.com.br;Service;;;Inativo;
+Operacoes e Reservas;operacoesereservas;operacoesereservas@aviva.com.br;Service;;operacoesereservas@aviva.com.br;Ativo;
+Oracle Micros Hospitality;ext.micros;ext.micros@rioquenteresorts.com.br;Terceiro;;;Inativo;
+oracle sun;ext.oracle;ext.oracle@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Otas Aviva;otas;otas@aviva.com.br;Service;;otas@aviva.com.br;Ativo;
+Ouvidoria RQVC;ouvidoria;ouvidoria@aviva.com.br;Service;;ouvidoria@aviva.com.br;Ativo;10/09/2020 08:23
+pada;pada;pada@rioquenteresorts.com.br;Service;;pada@aviva.com.br;Ativo;
+Pagamento;pagamento;pagamento@aviva.com.br;Service;;pagamento@aviva.com.br;Inativo;
+Pagamento Sauipe;pagamento.sauipe;pagamento.sauipe@aviva.com.br;Service;;pagamento.sauipe@aviva.com.br;Ativo;
+Palloma Fernanda Silva Reis;ext.palloma.reis;ext.palloma.reis@rioquenteresorts.com.br;Terceiro;;ext.palloma.reis@aviva.com.br;Ativo;
+Paloma Kimberlly de Moura Silva;ext.paloma.silva;ext.paloma.silva@aviva.com.br;Unitono;;ext.paloma.silva@aviva.com.br;Ativo;12/08/2020 16:27
+Paola de Mello Cassimiro;ext.paola.cassimiro;ext.paola.cassimiro@aviva.com.br;Unitono;;ext.paola.cassimiro@aviva.com.br;Inativo;
+Patricia Maria santos Cunha;ext.patricia.cunha;ext.patricia.cunha@aviva.com.br;Terceiro;;;Inativo;
+Paula Cristina Marques da silva;ext.paula.silva;ext.paula.silva@rioquenteresorts.com.br;Terceiro;;ext.paula.silva@aviva.com.br;Ativo;
+Paulo Henrique Costa de Araujo;paraujo;paraujo@aviva.com.br;Terceiro;;paraujo@aviva.com.br;Ativo;10/09/2020 10:51
+Paulo Roberto das Chagas Santos;ext.paulo.santos;ext.paulo.santos@aviva.com.br;Unitono;;ext.paulo.santos@aviva.com.br;Ativo;26/05/2020 15:40
+PDV Goiania;svc.gyn;svc.gyn@aviva.com.br;Service;;;Ativo;13/03/2020 09:24
+PDV Uberlandia;svc.udia;svc.udia@aviva.com.br;Service;;;Ativo;13/03/2020 11:04
+Pedro Henrique Santana;ext.pedro;ext.pedro@aviva.com.br;Terceiro;;ext.pedro@aviva.com.br;Inativo;
+Pedro Madeira;kpmg.pedro;kpmg.pedro@aviva.com.br;Terceiro;;kpmg.pedro@aviva.com.br;Ativo;
+phpmailer;phpmailer;phpmailer@rioquenteresorts.com.br;Service;;phpmailer@aviva.com.br;Ativo;
+Pisomtech;ext.pisomtech;ext.pisomtech@aviva.com.br;Terceiro;;;Inativo;
+Polliana Aires Monteiro;ext.ibmt3;ext.ibmt3@aviva.com.br;Terceiro;;ext.ibmt3@aviva.com.br;Inativo;
+Ponto de Venda PDV.;pdv.rqr;pdv.rqr@aviva.com.br;Service;;pdv.rqr@aviva.com.br;Ativo;06/09/2020 09:19
+Ponto Eletronico;pontoeletronico;pontoeletronico@aviva.com.br;Service;;pontoeletronico@aviva.com.br;Ativo;
+Portais Sauipe;portais.sauipe;portais.sauipe@aviva.com.br;Service;;portais.sauipe@aviva.com.br;Ativo;
+Printer Scan;svc.printer.scan;svc.printer.scan@aviva.com.br;Service;;svc.printer.scan@aviva.com.br;Ativo;08/09/2020 07:53
+Priscila Pereira Dias Moreira;ext.priscila.moreira;ext.priscila.moreira@rioquenteresorts.com.br;Terceiro;;ext.priscila.moreira@aviva.com.br;Ativo;
+Protheus;protheus;protheus@ctrq.com.br;Service;;Protheus@aviva.com.br;Ativo;
+Protheus Esocial;protheusesocial;protheusesocial@rioquenteresorts.com.br;Service;;protheusesocial@aviva.com.br;Ativo;
+PWC Consultoria;ext.pwc;ext.pwc@aviva.com.br;Terceiro;;;Ativo;14/09/2020 10:52
+Quero ir;queroir;queroir@aviva.com.br;Service;;queroir@aviva.com.br;Inativo;
+RAD;rad;rad@aviva.com.br;Service;;rad@aviva.com.br;Ativo;04/02/2020 00:04
+Rafael Ferreira Rodrigues;ext.rafael.rodrigues;ext.rafael.rodrigues@aviva.com.br;Terceiro;;;Inativo;
+Rafael Spagnollo;ext.rafael.spagnollo;ext.rafael.spagnollo@aviva.com.br;Unitono;;ext.rafael.spagnollo@aviva.com.br;Inativo;
+Ramon Montes dos Santos;ramon.santos;ramon.santos@aviva.com.br;Terceiro;;;Ativo;09/09/2020 14:23
+Raphael Silva;ext.raphael.silva;ext.raphael.silva@rioquenteresorts.com.br;Terceiro;;ext.raphael.silva@aviva.com.br;Inativo;
+Raquel Yamagut Chaud;raquel.chaud;raquel.chaud@aviva.com.br;Terceiro;;;Ativo;
+Rayane Alves da Silva;ext.rayane.silva;ext.rayane.silva@rioquenteresorts.com.br;Terceiro;;ext.rayane.silva@aviva.com.br;Ativo;
+Rayza Garcia;rayza.garcia;rayza.garcia@aviva.com.br;Terceiro;;rayza.garcia@aviva.com.br;Ativo;
+RCF;ext.rcf;ext.rcf@rioquenteresorts.com.br;Service;;;Inativo;
+Reagendamento Hot Park;reagendamentohotpark;reagendamentohotpark@aviva.com.br;Service;;reagendamentohotpark@aviva.com.br;Ativo;07/09/2020 17:28
+Recepcao Central;recepcao.central;recepcao.central@aviva.com.br;Service;;;Ativo;06/09/2020 15:21
+Receptivo Local - Costa do Sauipe;receptivo.sauipe;receptivo.sauipe@aviva.com.br;Service;;receptivo.sauipe@aviva.com.br;Ativo;11/09/2020 22:51
+Receptivo Local - NAC;receptivo;receptivo@aviva.com.br;Service;;receptivo@aviva.com.br;Ativo;22/05/2020 23:47
+Recrutamento TH;recrutamento;recrutamento@aviva.com.br;Service;;recrutamento@aviva.com.br;Ativo;10/09/2020 14:47
+Renata Rodrigues;ext.renata.rodrigues;ext.renata.rodrigues@rioquenteresorts.com.br;Terceiro;;ext.renata.rodrigues@aviva.com.br;Ativo;
+Reply Responsys;reply;reply@aviva.com.br;Service;;reply@aviva.com.br;Ativo;
+Reportes Sauipe;reportes.sauipe;reportes.sauipe@aviva.com.br;Service;;reportes.sauipe@aviva.com.br;Ativo;
+Reservas 1;reservas1.sauipe;reservas1.sauipe@aviva.com.br;Service;;reservas1.sauipe@aviva.com.br;Ativo;
+Reservas 2;reservas2.sauipe;reservas2.sauipe@aviva.com.br;Service;;reservas2.sauipe@aviva.com.br;Ativo;
+Reservas Internacionais;reservasinter.sauipe;reservasinter.sauipe@aviva.com.br;Service;;reservasinter.sauipe@aviva.com.br;Ativo;
+Revenue Aviva;revenue.aviva;revenue.aviva@aviva.com.br;Service;;revenue.aviva@aviva.com.br;Ativo;10/09/2020 09:26
+Rhamon Lucas Lira;ext.lucas.lira;ext.lucas.lira@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Rian Victor Faria Gonçalves Silva;rian.silva;rian.silva@aviva.com.br;Terceiro;;rian.silva@aviva.com.br;Ativo;
+Riane Gomes;kpmg.riane;kpmg.riane@aviva.com.br;Terceiro;;kpmg.riane@aviva.com.br;Ativo;
+Ricardo Cesar da Silveira;ext.4mm.ricardo;ext.4mm.ricardo@aviva.com.br;Terceiro;;ext.4mm.ricardo@aviva.com.br;Inativo;
+Ricardo Paula;kpmg.ricardo;kpmg.ricardo@aviva.com.br;Terceiro;;kpmg.ricardo@aviva.com.br;Ativo;
+Ricardo Sousa Rodrigues;ext.ricardo.sousa;ext.ricardo.sousa@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Richard de Oliveira Santos;ext.richard.santos;ext.richard.santos@aviva.com.br;Unitono;;ext.richard.santos@aviva.com.br;Inativo;
+Rio Quente Resorts & Costa do Sauipe;rsvp;rsvp@rioquenteresorts.com.br;Service;;rsvp@aviva.com.br;Ativo;
+Rio Quente Vacation Club;rqvacationclub;rqvacationclub@rioquenteresorts.com.br;Service;;rqvacationclub@aviva.com.br;Ativo;
+Roberta Suzi Correa;ext.roberta.correa;ext.roberta.correa@aviva.com.br;Unitono;;ext.roberta.correa@aviva.com.br;Ativo;22/05/2020 14:03
+Roberto Gomes da Costa;rjpaisagismo;rjpaisagismo@aviva.com.br;AUT00393;;rjpaisagismo@aviva.com.br;Ativo;14/09/2020 08:40
+Robo Ubicua;svc.ubicua;svc.ubicua@aviva.com.br;Service;;svc.ubicua@aviva.com.br;Ativo;
+Rogerio Soares da Silva;ext.4mm.rogerio;ext.4mm.rogerio@aviva.com.br;Terceiro;;ext.4mm.rogerio@aviva.com.br;Inativo;
+Roque Bridi Junior;ext.4mm;ext.4mm@aviva.com.br;Terceiro;;ext.4mm@aviva.com.br;Inativo;
+Rosana Aparecida de Oliveira;ext.rosana.oliveira;ext.rosana.oliveira@aviva.com.br;Unitono;;ext.rosana.oliveira@aviva.com.br;Inativo;
+Rouparia;rouparia.gov;rouparia.gov@aviva.com.br;Terceiro;;rouparia.gov@aviva.com.br;Inativo;
+RQVC;rqvc;rqvc@rioquenteresorts.com.br;Service;;rqvc@aviva.com.br;Ativo;
+SAC Hospitalidade;sac.hospitalidade;sac.hospitalidade@aviva.com.br;Service;;sac.hospitalidade@aviva.com.br;Ativo;02/03/2020 09:16
+SAC Hotpark;sac.hotpark;sac.hotpark@rioquenteresorts.com.br;Service;;sac.hotpark@aviva.com.br;Ativo;
+Sala Alta Performance;rqe-sr01;rqe-sr01@aviva.com.br;Service;;rqe-sr01@aviva.com.br;Ativo;
+Sala Casa Conceito Aviva;sao-sr05;sao-sr05@aviva.com.br;Service;;sao-sr05@aviva.com.br;Ativo;
+Sala Cinema;sao-sr03;sao-sr03@aviva.com.br;Service;;sao-sr03@aviva.com.br;Ativo;
+Sala Familias Felizes;rqe-sr07;rqe-sr07@aviva.com.br;Service;;rqe-sr07@aviva.com.br;Ativo;
+Sala Hospitalidade;sao-sr02;sao-sr02@rioquenteresorts.com.br;Service;;sao-sr02@aviva.com.br;Ativo;
+Sala Natureza;sao-sr01;sao-sr01@aviva.com.br;Service;;sao-sr01@aviva.com.br;Ativo;
+Sala Orla da Costa;cds-sr02;cds-sr02@aviva.com.br;Service;;cds-sr02@aviva.com.br;Ativo;
+Sala Quermesse da Vila;cds-sr01;cds-sr01@aviva.com.br;Service;;cds-sr01@aviva.com.br;Ativo;
+Samanta Soares Carvalho;ext.samanta.carvalho;ext.samanta.carvalho@aviva.com.br;Unitono;;ext.samanta.carvalho@aviva.com.br;Inativo;
+Sannya Araujo de Oliveira;ext.sannya.oliveira;ext.sannya.oliveira@rioquenteresorts.com.br;Terceiro;;ext.sannya.oliveira@aviva.com.br;Ativo;
+SCCM ADMIN;sccm.admin;sccm.admin@rioquenteresorts.com.br;Service;;;Inativo;13/02/2020 12:09
+SCOM ADMIN;scom.admin;scom.admin@rioquenteresorts.com.br;Service;;;Inativo;
+SCOM DA;svc.scom.da;svc.scom.da@rioquenteresorts.com.br;Service;;;Inativo;
+SCOM Escrita do SQL;svc.scom.sql.write;svc.scom.sql.write@rioquenteresorts.com.br;Service;;;Inativo;
+SCOM Leitura do SQL;svc.scom.sql.read;svc.scom.sql.read@rioquenteresorts.com.br;Service;;;Inativo;
+Seleção Costa do Sauipe;selecao.sauipe;selecao.sauipe@aviva.com.br;Service;;selecao.sauipe@aviva.com.br;Ativo;14/09/2020 16:21
+Selma Vilma Folino;ext.selma.folino;ext.selma.folino@aviva.com.br;Unitono;;ext.selma.folino@aviva.com.br;Inativo;
+Senior Ronda;svc.senior;svc.senior@aviva.com.br;Service;;;Ativo;15/09/2020 16:38
+Senior Sistemas;senior;senior@aviva.com.br;Terceiro;;;Ativo;
+Sergio Roberto Calura;ext.drasi;ext.drasi@aviva.com.br;Terceiro;;;Inativo;
+Service ARCServe Backup;serv_arcserve;serv_arcserve@aviva.com.br;Service;;serv_arcserve@aviva.com.br;Inativo;
+Service Monitor;svc.mon;svc.mon@rioquenteresorts.com.br;Service;;svc.mon@aviva.com.br;Inativo;
+ServiceDeskTI;servicedeskti;servicedeskti@rioquenteresorts.com.br;Service;;servicedeskti@aviva.com.br;Ativo;
+Serviço TFS;tfs.services;tfs.services@rioquenteresorts.com.br;Service;;;Inativo;
+Sharepoint Server 2013;sharepoint.server;sharepoint.server@aviva.com.br;Service;;;Ativo;13/12/2019 18:02
+Sheyla Vivianne Lopes de Goes Farias;sheyla.farias;sheyla.farias@aviva.com.br;102620;72761148568;;Inativo;
+Silmara Marta Trocini;ext.silmara.trocini;ext.silmara.trocini@aviva.com.br;Unitono;;ext.silmara.trocini@aviva.com.br;Ativo;
+Silvio da Silva Provenzzano;ext.silvio.silva;ext.silvio.silva@aviva.com.br;Unitono;;ext.silvio.silva@aviva.com.br;Inativo;
+Silvio Pereira Naves;ext.silvio.naves;ext.silvio.naves@rioquenteresorts.com.br;Terceiro;;ext.silvio.naves@aviva.com.br;Ativo;
+Sistema Fornecedores;sistemafornecedores;sistemafornecedores@rioquenteresorts.com.br;Service;;sistemafornecedores@aviva.com.br;Inativo;
+Site Costa do Sauipe Resorts;cds_site_eventos;cds_site_eventos@aviva.com.br;Service;;cds_site_eventos@aviva.com.br;Ativo;13/09/2020 00:07
+Site Rio Quente Resorts;rqr_site_eventos;rqr_site_eventos@aviva.com.br;Service;;rqr_site_eventos@aviva.com.br;Ativo;14/09/2020 21:22
+SMART AUTOMAÇÃO;ext.smart;ext.smart@aviva.com.br;Service;;;Inativo;
+Solange de Souza Silva;ext.solange.silva;ext.solange.silva@aviva.com.br;Unitono;;ext.solange.silva@aviva.com.br;Inativo;
+Som Lazer Sauipe;somlazer.sauipe;somlazer.sauipe@aviva.com.br;Service;;;Ativo;06/09/2020 13:16
+Sonia Alves Souza;ext.sonia.souza;ext.sonia.souza@aviva.com.br;Unitono;;ext.sonia.souza@aviva.com.br;Inativo;
+Sonicwall;sonicwall;sonicwall@rioquenteresorts.com.br;Service;;;Inativo;
+Sorveteria;sorveteria;sorveteria@aviva.com.br;Service;;sorveteria@aviva.com.br;Ativo;
+sp_admin;sp_admin;sp_admin@rioquenteresorts.com.br;Service;;sp_admin@aviva.com.br;Inativo;
+sp_exec;sp_exec;sp_exec@rioquenteresorts.com.br;Service;;sp_exec@aviva.com.br;Inativo;
+sp_workflow;sp_workflow;sp_workflow@rioquenteresorts.com.br;Service;;sp_workflow@aviva.com.br;Inativo;
+Stephanie Silva Machado;ext.stephanie.machad;ext.stephanie.machado@aviva.com.br;Terceiro;;ext.stephanie.machado@aviva.com.br;Inativo;02/04/2020 14:54
+Suelen de Lima Silva;ext.suelen.silva;ext.suelen.silva@aviva.com.br;Terceiro;;ext.suelen.silva@aviva.com.br;Inativo;
+Suelen dos Santos Portasio;ext.suelen.portasio;ext.suelen.portasio@aviva.com.br;Unitono;;ext.suelen.portasio@aviva.com.br;Inativo;
+Supera;supera;supera@aviva.com.br;Service;;supera@aviva.com.br;Ativo;06/07/2020 11:08
+Supervisores - Governança;supervisores.gov;supervisores.gov@aviva.com.br;Service;;supervisores.gov@aviva.com.br;Inativo;
+Supervisores Reservas;supervisores.reserva;supervisores.reservas@aviva.com.br;Service;;;Inativo;
+Supply;supply;supply@aviva.com.br;Service;;supply@aviva.com.br;Inativo;22/05/2020 10:11
+Susana Santander Chavez;ext.susana.chavez;ext.susana.chavez@aviva.com.br;Unitono;;ext.susana.chavez@aviva.com.br;Ativo;09/06/2020 13:24
+SVC - Netconn;svc.netconn;svc.netconn@aviva.com.br;Service;;;Inativo;
+svc AcSendo;svc.acsendo;svc.acsendo@aviva.com.br;Service;;;Ativo;
+SVC ADM;svc.adm;svc.adm@rioquenteresorts.com.br;Service;;;Inativo;
+SVC AntiSpam - CSE;svc.ces;svc.ces@aviva.com.br;Service;;;Ativo;15/09/2020 07:22
+svc atd;svc.atd;svc.atd@rioquenteresorts.com.br;Service;;svc.atd@aviva.com.br;Ativo;
+SVC Autoseg;svc.autoseg;svc.autoseg@aviva.com.br;Service;;SVC.Autoseg@aviva.com.br;Ativo;10/09/2020 05:24
+SVC AutoSeg O365;svc.asg.o365;svc.asg.o365@aviva.com.br;Service;;svc.asg.o365@aviva.com.br;Ativo;30/08/2020 05:39
+SVC Checkin Smartpass;checkin;checkin@aviva.com.br;Service;;checkin@aviva.com.br;Ativo;
+svc Engeman;svc.engeman;svc.engeman@aviva.com.br;Service;;;Ativo;
+SVC Informatec;svc.info;svc.info@aviva.com.br;Service;;;Ativo;
+SVC Monitoramento Rio Quente;svc.monitor.rqr;svc.monitor.rqr@aviva.com.br;Service;;svc.monitoramento.rqr@aviva.com.br;Ativo;26/05/2020 17:19
+SVC Monitoramento Sauipe PRTG;svc.monitor.sauipe;svc.monitor.sauipe@aviva.com.br;Service;;svc.monitor.sauipe@aviva.com.br;Ativo;
+SVC Oniti;svc.oniti;svc.oniti@aviva.com.br;Service;;;Ativo;04/12/2019 20:22
+SVC Opera;svc.opr;svc.opr@aviva.com.br;Service;;;Ativo;11/09/2020 22:58
+SVC PALO ALTO;svc.pat.sauipe;svc.pat.sauipe@aviva.com.br;Service;;;Inativo;
+SVC Palo Alto;svc.paloalto;svc.paloalto@aviva.com.br;Service;;;Ativo;15/09/2020 15:26
+SVC PALO ALTO;svc.pat;svc.pat@aviva.com.br;Service;;;Inativo;19/05/2020 21:03
+SVC Pentaho;svc.pentaho;svc.pentaho@aviva.com.br;Service;;;Ativo;09/09/2020 15:30
+SVC Printer Scan;svc.printerscan;svc.printerscan@aviva.com.br;Service;;;Ativo;30/01/2020 13:39
+svc PRTG;svc.prtg;svc.prtg@rqr.com.br;Service;;;Ativo;09/09/2020 00:01
+svc qlik;svc.qlik;svc.qlik@aviva.com.br;Service;;;Ativo;11/01/2020 21:20
+svc Ruckus;svc.ruckus;svc.ruckus@rioquenteresorts.com.br;Service;;;Ativo;
+SVC SMTP;svc.smtp;svc.smtp@ctrq.com.br;Service;;SVC.SMTP@aviva.com.br;Ativo;22/06/2020 10:48
+svc TSE;svc.tse;svc.tse@aviva.com.br;Service;;svc.tse@aviva.com.br;Ativo;
+svc ubt;svc.ubt;svc.ubt@rioquenteresorts.com.br;Service;;svc.ubt@aviva.com.br;Ativo;
+SVC Unifi;svc.unifi;svc.unifi@aviva.com.br;Service;;;Ativo;08/09/2020 16:42
+SVC VMware;svc.vmw;svc.vmw@aviva.com.br;Service;;;Ativo;23/07/2020 14:54
+SVC VMware Report;svc.vmw_report;svc.vmw_report@aviva.com.br;Service;;;Inativo;
+svc.arc;svc.arc;svc.arc@aviva.com.br;Service;;;Ativo;16/09/2020 03:24
+svc.caps;svc.caps;svc.caps@rioquenteresorts.com.br;Service;;;Inativo;26/02/2020 12:45
+svc.pfs;svc.pfs;svc.pfs@rioquenteresorts.com.br;Service;;;Inativo;
+svc.pth;svc.pth;svc.pth@rioquenteresorts.com.br;Service;;;Ativo;11/09/2020 08:11
+svc.qlk;svc.qlk;svc.qlk@rioquenteresorts.com.br;Service;;;Ativo;13/09/2020 00:00
+SVC.SCS;SVC.SCS;SVC.SCS@rioquenteresorts.com.br;Service;;;Inativo;
+svc.zbx;svc.zbx;svc.zbx@rioquenteresorts.com.br;Service;;;Inativo;
+SysDesign;sysdesign;sysdesign@aviva.com.br;Service;;;Inativo;16/12/2019 16:07
+System Center Virtual Machine Manage;serv_scvmm;serv_scvmm@aviva.com.br;Service;;;Inativo;
+Talita da Silva Fernandes;ext.talita.silva;ext.talita.silva@aviva.com.br;Unitono;;ext.talita.silva@aviva.com.br;Ativo;08/09/2020 12:25
+Tamires Freitas Oliveira;tamires.oliveira;tamires.oliveira@aviva.com.br;Terceiro;;;Ativo;
+Tarcisio Candido da Silveira Junior;ext.tarcisio;ext.tarcisio@aviva.com.br;Terceiro;;ext.tarcisio@aviva.com.br;Inativo;
+Tatiane de Jesus Alves;ext.tatiane.alves;ext.tatiane.alves@aviva.com.br;Unitono;;ext.tatiane.alves@aviva.com.br;Inativo;
+Tatiane Ramos dos Santos;ext.tsantos;ext.tsantos@aviva.com.br;Terceiro;;;Inativo;
+Teknisa Sistemas;ext.teknisa;ext.teknisa@aviva.com.br;Terceiro;;;Ativo;
+Telao - Tecnologia da Informação;telaoti;telaoti@aviva.com.br;Service;;;Ativo;02/09/2020 17:13
+Telecom GETI;TelecomGETI;TelecomGETI@rioquente.com.br;Service;;TelecomGETI@aviva.com.br;Ativo;
+Tenis;tenis;tenis@aviva.com.br;Service;;tenis@aviva.com.br;Inativo;
+teste exc2016;testeexc2016;testeexc2016@rioquenteresorts.com.br;Teste;;testeexc2016@aviva.com.br;Inativo;
+teste exchange;testeexchange;testeexchange@aviva.com.br;Teste;;testeexchange@aviva.com.br;Inativo;
+teste gsuite;teste.gsuite;teste.gsuite@aviva.com.br;Teste;;;Ativo;10/06/2020 16:30
+Teste Mail;teste.mail;teste.mail@aviva.com.br;Teste;;teste.mail@aviva.com.br;Ativo;11/09/2020 16:47
+Teste Teste exchange;teste.email;teste.email@aviva.com.br;Teste;;;Inativo;
+Teste VPN;teste.vpn;teste.vpn@aviva.com.br;Teste;;;Inativo;19/03/2020 14:01
+teste4;teste4;teste4@aviva.com.br;Teste;;;Inativo;27/03/2020 17:46
+Thamires Medeiros Araujo;ext.thamires.araujo;ext.thamires.araujo@rioquenteresorts.com.br;Terceiro;;ext.thamires.araujo@aviva.com.br;Ativo;
+Thaynara Jhennef dos Santos;ext.thaynara.santos;ext.thaynara.santos@rioquenteresorts.com.br;Terceiro;;ext.thaynara.santos@aviva.com.br;Ativo;
+Thiago Portes Teixeira;ext.ibmt5;ext.ibmt5@aviva.com.br;Terceiro;;ext.ibmt5@aviva.com.br;Ativo;08/09/2020 08:39
+Thyago de Oliveira Batista;ext.thyago.batista;ext.thyago.batista@aviva.com.br;Terceiro;;ext.thyago.batista@aviva.com.br;Inativo;
+TI PowerBI;tipowerbi;tipowerbi@aviva.com.br;Service;;tipowerbi@aviva.com.br;Ativo;
+Tifanny Gomes de Almeida;tifanny.almeida;tifanny.almeida@aviva.com.br;Terceiro;;tifanny.almeida@aviva.com.br;Ativo;
+Time Share Soluções;ext.tss;ext.tss@aviva.com.br;Service;;;Ativo;09/09/2020 10:43
+Timeshare;timeshare;timeshare@aviva.com.br;Service;;;Ativo;13/03/2020 08:34
+tmpdataguard;tmpdataguard;tmpdataguard@rioquenteresorts.com.br;Service;;tmpdataguard@aviva.com.br;Inativo;
+TOTVS Fernando Americo;totvs.fernando;totvs.fernando@aviva.com.br;Terceiro;;;Inativo;
+TOTVS Luiz Alberto de Oliveira;totvs.luiz;totvs.luiz@aviva.com.br;Terceiro;;;Ativo;07/05/2020 10:59
+Trbo Net;ext.trbonet;ext.trbonet@rioquenteresorts.com.br;Terceiro;;;Inativo;
+Triade Soluções Inteligentes;ext.triade;ext.triade@aviva.com.br;Terceiro;;;Ativo;11/09/2020 12:27
+Turminha da Zoeira;turminhadazoeira;turminhadazoeira@aviva.com.br;Service;;turminhadazoeira@aviva.com.br;Ativo;02/09/2020 17:57
+Ueder Moreira da Cruz Filho;ext.ueder.filho;ext.ueder.filho@rioquenteresorts.com.br;Terceiro;;ext.ueder.filho@aviva.com.br;Ativo;
+Users Report;serv_report;serv_report@aviva.com.br;Service;;;Inativo;
+Usuario dos Sistemas;sistemas;sistemas@aviva.com.br;Generico;;sistemas@aviva.com.br;Ativo;14/09/2020 10:31
+Usuarios Recepçoes;usuarios;usuarios@rioquenteresorts.com.br;Generico;;;Ativo;06/09/2020 22:53
+Vacation Ownership Quality;voquality;voquality@aviva.com.br;Service;;voquality@aviva.com.br;Ativo;14/09/2020 08:09
+vccds01;vccds01;vccds01@aviva.com.br;Service;;vccds01@aviva.com.br;Ativo;
+vcrqe01;vcrqe01;vcrqe01@aviva.com.br;Service;;vcrqe01@aviva.com.br;Ativo;
+vcrqe02;vcrqe02;vcrqe02@aviva.com.br;Service;;vcrqe02@aviva.com.br;Ativo;
+vcspo01;vcspo01;vcspo01@aviva.com.br;Service;;vcspo01@aviva.com.br;Ativo;
+vcspo02;vcspo02;vcspo02@aviva.com.br;Service;;vcspo02@aviva.com.br;Ativo;
+Vendas;vendas;vendas@aviva.com.br;Service;;vendas@aviva.com.br;Inativo;
+Vendas Nacional;vendasnacional;vendasnacional@rioquenteresorts.com.br;Service;;vendasnacional@aviva.com.br;Ativo;
+Vendas Rio Quente Resorts;vendasrqr;vendasrqr@rioquenteresorts.com.br;Service;;vendasrqr@aviva.com.br;Ativo;
+Vibra;vibra;vibra@aviva.com.br;Service;;vibra@aviva.com.br;Ativo;06/07/2020 11:08
+Victor Bertoli;kpmg.victor;kpmg.victor@aviva.com.br;Terceiro;;kpmg.victor@aviva.com.br;Ativo;
+Vingcard;vingcard;vingcard@aviva.com.br;Service;;;Ativo;09/09/2020 21:45
+Vitoria Regina de Jesus Vieira dos Santos;ext.vitoria.santos;ext.vitoria.santos@aviva.com.br;Unitono;;ext.vitoria.santos@aviva.com.br;Inativo;
+Wagner Vilarino;ext.wagner;ext.wagner@aviva.com.br;Terceiro;;ext.wagner@aviva.com.br;Inativo;
+web;web;web@rioquente.com.br;Service;;web@aviva.com.br;Ativo;
+Web Reports;webreports;webreports@rioquenteresorts.com.br;Service;;webreports@aviva.com.br;Ativo;
+Welcome Weddings;welcome.weddings;welcome.weddings@aviva.com.br;Service;;;Ativo;
+wifi oi;oi.wifi;oi.wifi@aviva.com.br;Service;;;Inativo;
+William de Souza Veras;ext.william.veras;ext.william.veras@aviva.com.br;Unitono;;ext.william.veras@aviva.com.br;Inativo;
+Yoshi Kashiwaba;ext.yoshi.kashiwaba;ext.yoshi.kashiwaba@rioquenteresorts.com.br;Terceiro;;ext.yoshi.kashiwaba@aviva.com.br;Inativo;

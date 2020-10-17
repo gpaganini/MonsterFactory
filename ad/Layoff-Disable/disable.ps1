@@ -1,13 +1,13 @@
 Import-Module ActiveDirectory
 
-$csv = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\disable-27052020.csv"
+$csv = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\ferias-092020.csv"
 $arquivo = Import-Csv -Path $csv -Delimiter ";"
 
 $i = 0
 
 foreach ($user in $arquivo) {
-    #$oldname = Get-ADUser -Identity $user.usuario -Properties * | select DisplayName,IPPhone
-    <#if ($oldname.DisplayName -like "*AUSENTE*") {
+    <# $oldname = Get-ADUser -Identity $user.usuario -Properties * | select DisplayName,IPPhone
+    if ($oldname.DisplayName -like "*AUSENTE*") {
         $newName = $oldname.DisplayName -replace ("AUSENTE - ","")
         Set-ADUser -Identity $user.usuario -DisplayName $newName
         $oldname.DisplayName = $newName
@@ -30,8 +30,8 @@ foreach ($user in $arquivo) {
     $oldname.DisplayName = $newName    
 
     Set-ADUser -Identity $user.usuario -Replace @{'ipPhone'=$user.MAT}
-    $oldname
-    #>
+    $oldname #>
+
     Disable-ADAccount -Identity $user.usuario
 
     $i++
@@ -42,8 +42,7 @@ foreach ($user in $arquivo) {
 }
 
 
-
-$usuarios = Get-ADUser -Filter 'DisplayName -like "AUSENTE *" -and DisplayName -notlike "AUSENTE - *"' -Properties * | select DisplayName,SamAccountName
+<#$usuarios = Get-ADUser -Filter 'DisplayName -like "AUSENTE *" -and DisplayName -notlike "AUSENTE - *"' -Properties * | select DisplayName,SamAccountName
 
 foreach ($usuario in $usuarios) {
     $oldname = $usuario.DisplayName
@@ -55,4 +54,4 @@ foreach ($usuario in $usuarios) {
         
         Set-ADUser -Identity $usuario.SamAccountName -DisplayName $newName
     }
-}
+} #>
