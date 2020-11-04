@@ -453,8 +453,8 @@ $userObj | Add-Member NoteProperty -Name "RecipientType" -Value $Mbx.RecipientTy
 $userObj | Add-Member NoteProperty -Name "LitigationHoldEnabled" -Value $Mbx.LitigationHoldEnabled
 $userObj | Add-Member NoteProperty -Name "LitigationHoldDuration" -Value $Mbx.LitigationHoldDuration
 $userObj | Add-Member NoteProperty -Name "TotalItemSize" -Value $Stats.TotalItemSize
-$userObj | Add-Member NoteProperty -Name "ItemCount" -Value $Stats.ItemCount
-$userObj | Add-Member NoteProperty -Name "DeletedItemCount" -Value $Stats.DeletedItemCount
+#$userObj | Add-Member NoteProperty -Name "ItemCount" -Value $Stats.ItemCount
+#$userObj | Add-Member NoteProperty -Name "DeletedItemCount" -Value $Stats.DeletedItemCount
 $userObj | Add-Member NoteProperty -Name "TotalDeletedItemSize" -Value $Stats.TotalDeletedItemSize
 $userObj | Add-Member NoteProperty -Name "ProhibitSendReceiveQuota-In-MB" -Value $Mbx.ProhibitSendReceiveQuota
 $userObj | Add-Member NoteProperty -Name "UseDatabaseQuotaDefaults" -Value $Mbx.UseDatabaseQuotaDefaults

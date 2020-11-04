@@ -12,7 +12,7 @@ $action = 'Logon'
 $boottime = Get-CimInstance -ClassName win32_operatingsystem | select lastbootuptime | foreach { $_.lastbootuptime } 
  
 #Specifies filename, and directory
-$directory = "$env:logonserver.$env:userdnsdomain\User_logs$\Events"
+$directory = "C:\temp"
 $filedate = 'dd-MM-yyyy'
 $filename = 'Logon' + '-' + $(((get-date)).ToString("yyyyMMdd"))
 $file = "$filename.csv"
