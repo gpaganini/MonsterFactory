@@ -1,5 +1,5 @@
-$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados-28102020.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
-$arquivo = Import-CSV $CSV 
+$CSV = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\unitono-disable.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$arquivo = Import-CSV $CSV -Delimiter ";"
 
 function credO365 {
     $usuario = 'gpaganini@aviva.com.br'

@@ -1,6 +1,6 @@
 Import-Module ActiveDirectory
 
-$csv = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\ferias-092020.csv"
+$csv = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\unitono-disable.csv"
 $arquivo = Import-Csv -Path $csv -Delimiter ";"
 
 $i = 0
