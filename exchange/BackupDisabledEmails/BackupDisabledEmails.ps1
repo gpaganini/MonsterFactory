@@ -1,4 +1,4 @@
-$CSV = "C:\Users\giovani.paganini\powershellson\ad\Layoff-Disable\unitono-disable.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_12022021.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV -Delimiter ";"
 
 function credO365 {
@@ -57,7 +57,7 @@ function converteCaixa {
         $isShared = $mailbox.RecipientTypeDetails.Equals("SharedMailbox") #verificando se a caixa ja e compartilhada ou nao
 
         if($isShared -eq $True) { #se isShared retornar True, entao a caixa ja e compartilhada
-            Write-Host "A caixa de $_.upn ja esta compartilhada." -ForegroundColor Yellow
+            Write-Host "A caixa de $($_.upn) ja esta compartilhada." -ForegroundColor Yellow
         } else {
             Set-Mailbox -Identity $_.upn -Type Shared #se nao, converte a caixa para Shared Mailbox
             if(!$?) {
@@ -135,6 +135,6 @@ function removeLicenca {
 
 converteCaixa
 removeLicenca
-#ocultaEndereco
+ocultaEndereco
 
 #v1.5 @gpaganini

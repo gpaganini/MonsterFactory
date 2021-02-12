@@ -1,0 +1,2 @@
+New-Mailbox -InactiveMailbox $inactiveMailbox.DistinguishedName -Name "Alda Tatiane Cordeiro" -FirstName "Alda" -LastName "Tatiane Cordeiro" -DisplayName "Alda Tatiane Cordeiro" -MicrosoftOnlineServicesID aldat@aviva.com.brNew-MailboxRestoreRequest -SourceMailbox 
+$inactiveMailbox.DistinguishedName -TargetMailbox aldat@grq.mail.onmicrosoft.com -AllowLegacyDNMismatch
