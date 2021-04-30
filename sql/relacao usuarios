@@ -1,0 +1,28 @@
+SELECT us.nomeusuario AS usuario,
+  p.nome AS nome,
+  nomegrupo AS grupo,
+  ga.descricao AS descricao,
+  To_Char(lg.data, 'dd/mm/yyyy') AS dataultimoacesso
+FROM  pessoa p
+  JOIN usuariosistema us ON p.idpessoa = us.idusuario
+  JOIN grupousu gu ON us.idusuario = gu.idusuario
+  JOIN grupoacesso ga ON gu.idgrupo = ga.idgrupo
+  JOIN logacessosis lg ON lg.idusuario = us.idusuario
+  ORDER BY P.NOME ASC
+  
+  SELECT  p.nome AS nome,
+  p.numdocumento AS cpf,
+  us.nomeusuario AS login,
+  CASE WHEN us.desativado = 'S' THEN 'DESATIVADO'
+  ELSE 'ATIVO' END AS status,
+  us.trgdtinclusao AS datacadastro,
+  l.data AS dataultimoacesso
+FROM  usuariosistema us
+  JOIN pessoa p ON p.idpessoa = us.idusuario
+  left JOIN (SELECT Max(idlogacessosis) AS idlogacessosis,
+    idusuario
+    FROM logacessosis
+    GROUP BY idusuario) 
+  lg ON lg.idusuario = us.idusuario
+  left JOIN logacessosis l ON l.idlogacessosis = lg.idlogacessosis
+  ORDER BY 1;

@@ -1,4 +1,4 @@
-﻿$CSV = "C:\Users\giovani.paganini\powershellson\exchange\EnableRemoteMailbox\LicensedShared.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+﻿$CSV = "C:\Users\giovani.paganini\powershellson\exchange\EnableRemoteMailbox\LicensedShared_15042021.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV -Delimiter ";"
 
 function credO365 {

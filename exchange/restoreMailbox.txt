@@ -1,2 +1,12 @@
-New-Mailbox -InactiveMailbox $inactiveMailbox.DistinguishedName -Name "Alda Tatiane Cordeiro" -FirstName "Alda" -LastName "Tatiane Cordeiro" -DisplayName "Alda Tatiane Cordeiro" -MicrosoftOnlineServicesID aldat@aviva.com.brNew-MailboxRestoreRequest -SourceMailbox 
+New-Mailbox -InactiveMailbox $inactiveMailbox.DistinguishedName -Name "Alda Tatiane Cordeiro" -FirstName "Alda" -LastName "Tatiane Cordeiro" -DisplayName "Alda Tatiane Cordeiro" -MicrosoftOnlineServicesID aldat@aviva.com.br
+
+New-MailboxRestoreRequest -SourceMailbox 
 $inactiveMailbox.DistinguishedName -TargetMailbox aldat@grq.mail.onmicrosoft.com -AllowLegacyDNMismatch
+
+
+$InactiveMailbox = Get-Mailbox -InactiveMailboxOnly -Identity fabio.stanize@aviva.com.br
+New-Mailbox -InactiveMailbox $InactiveMailbox.DistinguishedName -Name "Thiago Stanize Paiva" -FirstName "Thiago" -LastName "Stanize Paiva" -DisplayName "Fabio Stanize Paiva" -MicrosoftOnlineServicesID fabio.stanize@aviva.com.br -Password (ConvertTo-SecureString -String 'BA8=g#wrN%2cs&uL' -AsPlainText -Force)
+
+
+
+O Consultor de eventos Fabio Stanize Paiva não faz mais parte do nosso quadro de associados. Por gentileza encaminhar sua solicitação para eventoscomercial@aviva.com.br  /  analucia.frabetti@aviva.com.br / silvia.povoa@aviva.com.br. Obrigada!

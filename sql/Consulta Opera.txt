@@ -1,0 +1,63 @@
+SELECT A.APP_USER_ID AS ID,
+       A.APP_USER AS LOGIN,
+       N.FIRST || ' ' || N.LAST AS NOME,
+       D.DEPT_NAME AS DEPARTAMENTO,
+       A.INSERT_DATE AS DATAINSERCAO,
+       CASE EMP_STATUS
+           WHEN 'I' THEN 'INATIVO'
+           WHEN 'A' THEN 'ATIVO'
+           ELSE ''
+       END AS STATUS,
+       A.UPDATE_DATE AS DATAULTIMOUPDATE,
+       A.LAST_LOGGED_TIMESTAMP AS ULTIMOLOGIN,
+       A.TERMINATED_DATE AS DATABLOQUEIO,
+       CASE A.USER_GROUP_ADMIN
+           WHEN 'Y' THEN 'Y'
+           ELSE 'N'
+       END AS ADMIN,
+       A.ACCESS_PMS,
+       A.ACCESS_CONFIG,
+       A.ACCESS_EOD,
+       A.ACCESS_OBI,
+       A.ACCESS_OCIS,
+       A.ACCESS_OCM,
+       A.ACCESS_OCRM,
+       A.ACCESS_ORMS,
+       A.ACCESS_ORS,
+       A.ACCESS_OXI,
+       A.ACCESS_OXIHUB,
+       A.ACCESS_SC,
+       A.ACCESS_SCBI,
+       A.ACCESS_SFA,
+       A.ACCESS_UTIL
+FROM OPERA.APPLICATION$_USER A
+JOIN OPERA.NAME N ON A.PERSON_NAME_ID = N.NAME_ID
+JOIN OPERA.DEPARTMENT D ON A.DEPT_ID = D.DEPT_ID
+AND D.RESORT = A.DEFAULT_RESORT
+WHERE A.INSERT_DATE >= '01/01/19' AND A.INSERT_DATE <= '30/06/19'
+ORDER BY A.INSERT_DATE;
+
+update opera.application$_user set emp_status = 'I' where app_user_id in (xxx,xxxx,xxxx,xxx)
+
+
+
+
+select a.app_user_id as ID,
+    a.app_user as LOGIN,    
+    N.FIRST || ' ' || N.LAST AS NAME,
+    a.insert_date AS DATAINSERCAO,
+    CASE EMP_STATUS
+        WHEN 'I' THEN 'INATIVO'
+        WHEN 'A' THEN 'ATIVO'
+        ELSE ''
+    END AS STATUS,
+    a.update_date AS DATAULTIMOUPDATE,
+    a.last_logged_timestamp AS ULTIMOLOGON,
+    a.terminated_date AS DATABLOQUEIO,
+    CASE a.user_group_admin
+        when 'Y' THEN 'Y'
+        else 'N'    
+    end as ADMIN    
+from OPERA.application$_user A 
+    LEFT JOIN OPERA.NAME N ON a.person_name_id = n.name_id
+order by NOME;    

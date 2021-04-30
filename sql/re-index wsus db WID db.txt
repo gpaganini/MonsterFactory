@@ -1,0 +1,1 @@
+sqlcmd -E -S np:\\.\pipe\MICROSOFT##WID\tsql\query -i WSUSSQLMaintenance_1_ReIndex.sql
