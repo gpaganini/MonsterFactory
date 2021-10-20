@@ -2,7 +2,7 @@
 
 $i = 0
 
-$CSVfile = "C:\temp\mbreport_15042021.csv"
+$CSVfile = "C:\temp\mbreport_29062021.csv"
 
 $AllMailbox = Get-mailbox -resultsize unlimited
 

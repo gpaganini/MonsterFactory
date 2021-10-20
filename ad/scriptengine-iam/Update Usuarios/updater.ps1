@@ -1,9 +1,23 @@
 Import-Module ActiveDirectory
 
-$csv = "C:\Users\giovani.paganini\powershellson\ad\scriptengine-iam\Update Usuarios\reconciliation_18012021.csv"
+$csv = "C:\Users\giovani.paganini\powershellson\ad\scriptengine-iam\Update Usuarios\Update Usuarios - 07062021.csv"
 $arquivo = Import-Csv -Path $csv -Encoding UTF8 -Delimiter ";"
 
 $i = 0
+
+foreach ($user in $arquivo) {
+    $aduser = Get-ADUser -Identity $user.Usuario -Properties *
+    Set-ADUser -Identity $user.Usuario -Replace @{'ipPhone'=$user.Mat}
+
+    $i++
+
+    Write-Progress -Activity "Updating User Attributes..." `
+    -Status "Updated $i de $($arquivo.Count)" `
+    -PercentComplete ($i/$arquivo.Count*100)
+}
+
+#$i = 0
+
 
 <# foreach ($user in $arquivo) {
     #$aduser = Get-ADUser -Identity $user.Usuario -Properties *
@@ -20,7 +34,7 @@ $i++
     -PercentComplete ($i/$arquivo.Count*100)
 } #>
 
-function updateAddress {
+<#function updateAddress {
     foreach ($user in $arquivo) {
         $ud = Get-ADUser -Identity $user.Usuario -Properties *
         
@@ -35,4 +49,4 @@ function updateAddress {
     }
 }
 
-updateAddress
+updateAddress#>

@@ -1,4 +1,4 @@
-$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_15042021.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_13102021.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV -Delimiter ";"
 
 function credO365 {
@@ -103,6 +103,31 @@ function ocultaEndereco {
 	Get-PSSession | Remove-PSSession
 }
 
+function ocultaEndOnline {
+    conectaExchOnline
+    $i = 0
+
+    $arquivo | foreach {
+        $mailbox = (Get-Mailbox -Identity $_.upn)
+        $isHidden = $mailbox.HiddenFromAddressListsEnabled
+
+        if($isHidden -eq $true) {
+            Write-Host "A caixa de $($_.upn) ja esta oculta da lista global de enderecos!" -ForegroundColor Yellow
+        } else {
+            Set-Mailbox -Identity $_.upn -HiddenFromAddressListsEnabled $true
+            if(!$?){
+                Write-Host "Erro ocultando o email de $($_.upn)" -ForegroundColor Red
+            } else {
+                Write-Host "Ocultado a caixa de $($_.upn)" -ForegroundColor Green
+            }
+        }
+        $i++
+        Write-Progress -Activity "Ocultando caixas . . ." -Status "Ocultado: $i de $($arquivo.Count)" -PercentComplete ($i/$arquivo.Count*100)        
+    }
+    Write-Host "Fechando o conector com o exchange Online" -ForegroundColor Cyan
+    Get-PSSession | Remove-PSSession
+}
+
 function removeLicenca {
 	conectaO365
 	
@@ -132,6 +157,9 @@ function removeLicenca {
 	Write-Host "Fechando conector com o office 365" -ForegroundColor Cyan
 	Get-PSSession | Remove-PSSession
 }
+
+#ocultaEndOnline
+#conectaExchOnline
 
 converteCaixa
 removeLicenca

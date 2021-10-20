@@ -12,5 +12,3 @@ SELECT nomeusuario AS Usuario,
         --p.nome LIKE '%LOAMY%' -- Pegando por nome do usuario
        --ga.idgrupo IN (12,157,132,173,27,20,143,13,14,120,136,17,170,2,190,18,51,68,92,33,35,122,21)  --Pegando por id do grupo
        ORDER BY 3,2;
-
-

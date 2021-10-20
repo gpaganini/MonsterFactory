@@ -1,0 +1,3 @@
+#Cancel meetings organized by this user
+Remove-CalendarEvents -Identity $Mailbox.Alias -CancelOrganizedMeetings -QueryWindowInDays 30 -confirm:$False
+Write-Host "Cancelled all meetings organized by user" -ForegroundColor green
