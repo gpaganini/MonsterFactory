@@ -1,0 +1,114 @@
+uLW^y4JQaWTf$V78 -  zabbix vmw
+
+4VmufNP7x_NxnvNV => grafana api
+
+
+
+1  sudo su
+2  su root
+3  su - root
+4  sudo
+5  sudo su
+6  exit
+7  cat /etc/group
+8  sudo su
+9  celar
+10  clear
+11  aptitude search php
+12  clear
+13  wget https://repo.zabbix.com/zabbix/6.2/debian/pool/main/z/zabbix-release/zabbix-release_6.2-1+debian11_all.deb
+14  sudo dpkg -i zabbix-release_6.2-1+debian11_all.deb 
+15  apt update
+16  sudo apt update
+17  apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent
+18  sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent
+19  apt --purge remove apache2
+20  sudo apt --purge remove apache2
+21  apt autoremove
+22  sudo apt autoremove
+23  clear
+24  su -
+25  sudo su
+26  exi
+27  exit
+28  history
+
+
+	1  apt install sudo
+    2  visudo
+    3  sudo visudo
+    4  usermod -aG sudo infra
+    5  exit
+    6  usermod -aG sudo infra
+    7  exit
+    8  exit
+    9  cd /etc/zabbix/
+   10  ls
+   11  vim nginx.conf 
+   12  vim zabbix_server.conf 
+   13  systemctl restart zabbix-server zabbix-agent nginx php7.4-fpm
+   14  vim zabbix_server.conf 
+   15  vim nginx.conf 
+   16  cat /var/log/zabbix/zabbix_server.log 
+   17  systemctl restart zabbix-server
+   18  tail -f /var/log/zabbix/zabbix_server.log 
+   19  tail -f /var/log/zabbix/zabbix_server.log | grep database
+   20  cat /var/log/zabbix/zabbix_server.log 
+   21  cat /var/log/zabbix/zabbix_server.log | grep database
+   22  ls
+   23  vim nginx.conf 
+   24  cd /etc/nginx/conf.d/
+   25  ls
+   26  vim zabbix.conf 
+   27  mkdir /etc/ssl/private
+   28  ls /etc/ssl/private/
+   29  cp /home/infra/STAR_aviva_com_br.crt /etc/ssl/certs/aviva.crt
+   30  cp /home/infra/star_aviva_com_br.key /etc/ssl/private/aviva.key
+   31  ls /etc/ssl/certs/aviva.crt 
+   32  ls -lh /etc/ssl/certs/aviva.crt 
+   33  chmod 0400 /etc/ssl/certs/aviva.crt 
+   34  chmod 0400 /etc/ssl/private/aviva.crt 
+   35  chmod 0400 /etc/ssl/private/aviva.key
+   36  ls
+   37  mv zabbix.conf zabbix-ssl.conf
+   38  vim zabbix-ssl.conf 
+   39  vim zabbix.conf
+   40  systemctl restart nginx
+   41  cd /etc/zabbix/
+   42  ls
+   43  vim nginx.conf 
+   44  ls -lha
+   45  cd /etc/nginx/
+   46  ls
+   47  cd sites-enabled/
+   48  ls
+   49  cd ../conf.d/
+   50  ls
+   51  vim zabbix.conf 
+   52  vim zabbix-ssl.conf
+   53  systemctl restart nginx
+   54  cd ../sites-available/
+   55  ls
+   56  vim default 
+   57  cd ../sites-enabled/
+   58  ls
+   59  rm -f default 
+   60  systemctl restart nginx
+   61  cd /etc/zabbix/
+   62  ls
+   63  vim zabbix_server.conf 
+   64  systemctl restart zabbix-server
+   65  vim zabbix_server.conf 
+   66  cat /var/log/zabbix/zabbix_server.log 
+   67  cd
+   68  cat /var/log/zabbix/zabbix_server.log 
+   69  cat /var/log/zabbix/zabbix_server.log | grep vmware
+   70  cd /etc/nginx/
+   71  ls
+   72  cd conf.d/
+   73  ls
+   74  vim zabbix-ssl.conf 
+   75  ls
+   76  vim zabbix.conf 
+   77  exit
+   78  history

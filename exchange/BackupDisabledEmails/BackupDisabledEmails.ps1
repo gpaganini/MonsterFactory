@@ -1,4 +1,4 @@
-$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_13102021.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_24052022.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV -Delimiter ";"
 
 function credO365 {
@@ -158,11 +158,17 @@ function removeLicenca {
 	Get-PSSession | Remove-PSSession
 }
 
+function disconnect {
+    Get-PSSession | Remove-PSSession
+}
+
 #ocultaEndOnline
 #conectaExchOnline
 
-converteCaixa
-removeLicenca
-ocultaEndereco
+#converteCaixa
+#removeLicenca
+#ocultaEndereco
+
+#conectaExchOnline
 
 #v1.5 @gpaganini

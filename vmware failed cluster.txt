@@ -1,0 +1,8 @@
+retreat cluster: https://kb.vmware.com/s/article/80472
+no-retreat again
+
+disable drs
+enable drs
+
+disable ha
+enable ha

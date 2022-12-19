@@ -1,0 +1,21 @@
+# increase disk in vmware
+# install growpart
+yum -y install cloud-utils-growpart
+
+# list scsi devices
+ls /sys/class/scsi_device/
+
+# scan & update scsi devices size
+echo 1 > /sys/class/scsi_device/0\:0\:0\:0/device/rescan
+
+# increase partition
+growpart /dev/sda 2
+
+# extend physical volume
+pvresize /dev/sda2
+
+# extend logical volume
+lvextend -r -l +100%FREE /dev/mapper/centos-root
+
+# in case needed, increase filesystem size
+resize2fs /dev/mapper/centos-root
