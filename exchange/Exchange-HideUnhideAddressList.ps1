@@ -1,14 +1,14 @@
 ﻿	<# 
 		.Synopsis
-        Realiza a ocultação/exibição de um email no catálogo de endereços de acordo com seu status no 
+         Automaticamente Oculta e Reexibe usuarios inativos e ativos, respectivamente, do catálogo de endereços do Exchange On-Premise.
 		.Description
-        Realiza a ocultação/exibição de um email no catálogo de endereços de acordo com seu status no AD.
+         Automaticamente Oculta e Reexibe usuarios inativos e ativos, respectivamente, do catálogo de endereços do Exchange On-Premise, setando o parâmetro HiddenFromAddressListEnabled.
 		.Example
 		.\Exchange-HideUnhideAddressList.ps1
 		.Notes
 		NAME: Exchange-HideUnhideAddressList
 		AUTHOR: Giovani Paganini
-		CREATIONDATE: 10 November 2020
+		CREATIONDATE: 31 March 2021
 		LASTEDIT: 19 December 2022
 		VERSION: 1.0
 		
