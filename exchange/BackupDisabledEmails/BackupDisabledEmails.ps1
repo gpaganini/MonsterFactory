@@ -1,4 +1,4 @@
-$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_24052022.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
+$CSV = "C:\Users\giovani.paganini\powershellson\exchange\BackupDisabledEmails\desabilitados_19102023.csv" #caminho do arquivo csv que possui os UserPrincipalNames dos usuarios
 $arquivo = Import-CSV $CSV -Delimiter ";"
 
 function credO365 {
@@ -27,11 +27,16 @@ function credExchOnprem {
 	Write-Host "Credenciais Exchange OnPremise OK" -ForegroundColor Green
 }
 
-function conectaExchOnline {
+<#function conectaExchOnline {
     $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential (credO365) -Authentication Basic -AllowRedirection
 	Import-PSSession $Session
 	
 	Write-Host "Conectado no Exchange Online" -ForegroundColor Green
+}#>
+
+function conectaExchOnline {
+    Connect-ExchangeOnline
+	Write-Host "Conectado no Exchange OnPremise" -ForegroundColor Green
 }
 
 function conectaExchOnprem {
@@ -41,9 +46,14 @@ function conectaExchOnprem {
 	Write-Host "Conectado no Exchange OnPremise" -ForegroundColor Green
 }
 
-function conectaO365 {
+<#function conectaO365 {
     Connect-MsolService -Credential (credO365)
 	
+	Write-Host "Conectado no Office 365" -ForegroundColor Green
+}#>
+
+function conectaO365 {
+    Connect-MsolService	
 	Write-Host "Conectado no Office 365" -ForegroundColor Green
 }
 
@@ -71,8 +81,7 @@ function converteCaixa {
 		Write-Progress -Activity "Convertendo caixas . . ." -Status "Convertido: $i de $($arquivo.Count)" -PercentComplete ($i/$arquivo.Count*100)					
 	}
 	
-	Write-Host "Fechando conector com o exchange online" -ForegroundColor Cyan
-	Get-PSSession | Remove-PSSession
+	Write-Host "Fechando conector com o exchange online" -ForegroundColor Cyan	
 }
 
 function ocultaEndereco {
@@ -138,11 +147,14 @@ function removeLicenca {
 		$isLicensed = $msolUser.isLicensed #verifica se o usuario esta licenciado
 		
 		if($isLicensed){
-			$license = $msolUser.Licenses | Select -ExpandProperty AccountSkuId #se esta licenciado pega todas as licencas do usuario e as remove
-			Set-MsolUserLicense -UserPrincipalName $_.upn -RemoveLicenses $license
+			$msolUserLicenses = $msolUser.Licenses.AccountSkuId #se esta licenciado pega todas as licencas do usuario e as remove
+			foreach ($license in $msolUserLicenses) {
+				Set-MsolUserLicense -UserPrincipalName $_.upn -RemoveLicenses $license				
+			}
+			#Set-MsolUserLicense -UserPrincipalName $_.upn -RemoveLicenses $license
 			
 			if(!$?){
-				Write-Host "Erro removendo licencaa do $($_.upn)" -ForegroundColor Red
+				Write-Host "Erro removendo licenca do $($_.upn)" -ForegroundColor Red
 			} else {
 				Write-host "Removido $license de $($_.upn)" -ForegroundColor Green
 			}
@@ -154,8 +166,7 @@ function removeLicenca {
 		Write-Progress -Activity "Removendo licencas . . ." -Status "Removido: $i de $($arquivo.Count)" -PercentComplete ($i/$arquivo.Count*100)
 	}
 
-	Write-Host "Fechando conector com o office 365" -ForegroundColor Cyan
-	Get-PSSession | Remove-PSSession
+	Write-Host "Fechando conector com o office 365" -ForegroundColor Cyan	
 }
 
 function disconnect {
@@ -164,9 +175,10 @@ function disconnect {
 
 #ocultaEndOnline
 #conectaExchOnline
+#conectaO365
 
 #converteCaixa
-#removeLicenca
+removeLicenca
 #ocultaEndereco
 
 #conectaExchOnline

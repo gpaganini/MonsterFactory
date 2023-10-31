@@ -1,0 +1,18 @@
+function Write-Log {
+    [CmdletBinding()]
+    param(
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]$Message,
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [ValidateSet('Info','Warning','Error')]
+        [string]$Severity = 'Info'
+    )
+
+    [pscustomobject]@{
+        Time = (Get-Date -Format "dd/mm/yyyy HH:mm:ss")
+        Message = $Message
+        Severity = $Severity
+    } | Export-Csv -Path "C:\Scripts\Exchange-HideUnhide-Log.csv" -Append -NoTypeInformation -Encoding UTF8 -Delimiter ";" ## Defina o caminho de onde salvará o log.
+}
