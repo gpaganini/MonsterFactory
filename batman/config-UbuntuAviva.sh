@@ -1,6 +1,6 @@
 #!/bin/bash
-
 # Synopsis
+
 #	Configures and hardens Ubuntu 22.04 VM
 # Description
 #	Hardens Ubuntu, Configures sources list, secure ssh and sets other security directives.
