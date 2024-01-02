@@ -1,0 +1,9 @@
+Expand NON ROOT, NON LVM disk
+
+#1 Extend disk on VMWware
+#2 Scan disk changes on linux guest with "echo 1 > /sys/block/sdX/device/rescan
+#3 grow partition with groupart (cloud-utils) "growpart /dev/sdX 1"
+#4 extend filesystem with "resize2fs /dev/sdX"
+
+TODO
+procedures to extend root partition using lvm
