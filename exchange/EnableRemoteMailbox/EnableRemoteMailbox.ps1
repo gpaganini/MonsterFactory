@@ -39,7 +39,7 @@ $output = @()
 
 switch($number) {
     1{
-        Write-Host "Digite suas credenciais..." -ForegroundColor Green
+        Write-Host "Digite suas credenciais no formato aviva\usuario..." -ForegroundColor Green
         $UserCredential = Get-Credential
 
         Write-Host "Inicializando conexão com o Exchange Local..." -ForegroundColor Green
