@@ -13,6 +13,11 @@
 		VERSION: 1.0
 		
 		Change Log
+        v2.0, 08/08/2024 - Major script refactoration:
+                            -   Changed the way that credentials are encrypted and used by implementing key encryption.
+                            -   Functions optimized and better treated.
+                            -   New WriteLog function version.
+                            -   Functions rewritten to better understanding.
 		v1.0, 19/12/2022 - Added explanatory comments to functions.
 		v1.0, 10/11/2020 - Initial Version.
 	#>
@@ -119,9 +124,9 @@ function HideDisabledMailboxes {
     WriteLog -Message "Ocultando usuários desabilitados do catálogo."
 
     foreach ($user in $DisabledUsers) {
-        try {
-            Get-RemoteMailbox -Identity $user.SamAccountName
-            WriteLog -message "Usuário $($user.SamAccountName) ocultado com sucesso."
+        try {            
+            Set-RemoteMailbox -Identity $user.SamAccountName -HiddenFromAddressListsEnabled $true
+            #WriteLog -message "Usuário $($user.SamAccountName) ocultado com sucesso."
         }
         catch {
             WriteLog -message "Falha ao buscar usuarios." -logLevel "ERROR"
@@ -141,8 +146,8 @@ function UnhideEnabledMailboxes {
 
     foreach ($user in $EnabledUsers) {
         try {
-            Get-RemoteMailbox -Identity $user.SamAccountName
-            WriteLog -message "Usuário $($user.SamAccountName) exibido com sucesso."
+            Set-RemoteMailbox -Identity $user.SamAccountName -HiddenFromAddressListsEnabled $false
+            #WriteLog -message "Usuário $($user.SamAccountName) exibido com sucesso."
         }
         catch {
             WriteLog -message "Falha ao buscar usuarios." -logLevel "ERROR"
@@ -154,5 +159,7 @@ function UnhideEnabledMailboxes {
 }
 
 #Chama as funções e as executa.
+WriteLog -message "START"
 HideDisabledMailboxes
 UnhideEnabledMailboxes
+WriteLog -message "END"
