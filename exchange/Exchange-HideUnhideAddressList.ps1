@@ -23,7 +23,7 @@
 	#>
 
 param (
-    [string]$userLogin = 'aviva\svc.asg.o365'
+    [string]$userLogin = 'aviva\svc.ada'
 )
 
 # Importa o módulo do AD
@@ -44,8 +44,8 @@ function WriteLog {
 
 #Função que define as credenciais de conexão com o Exchange On-Premises
 function Credentials {
-    $key = Get-Content ".\asg.bin"
-    $encryptedPassword = Get-Content ".\asg.txt"
+    $key = Get-Content ".\ada.bin"
+    $encryptedPassword = Get-Content ".\ada.txt"
     $securePwd = $encryptedPassword | ConvertTo-SecureString -Key $key
 
     $userCred = New-Object System.Management.Automation.PSCredential -ArgumentList $userLogin, $securePwd
