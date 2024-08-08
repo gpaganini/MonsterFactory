@@ -17,100 +17,140 @@
 		v1.0, 10/11/2020 - Initial Version.
 	#>
 
+param (
+    [string]$userLogin = 'aviva\svc.asg.o365'
+)
+
 # Importa o módulo do AD
 Import-Module ActiveDirectory
 
 #Função de escrita de log
-function Write-Log {
-    [CmdletBinding()]
-    param(
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [string]$Message,
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [ValidateSet('Info','Warning','Error')]
-        [string]$Severity = 'Info'
+$logFile = ".\AddressListsLog_$(get-date -f dd-MM-yyyy).log"
+function WriteLog {
+    param (
+        [string]$message,
+        [string]$logLevel = "INFO"
     )
 
-    [pscustomobject]@{
-        Time = (Get-Date -Format "dd/mm/yyyy HH:mm:ss")
-        Message = $Message
-        Severity = $Severity
-    } | Export-Csv -Path "C:\Scripts\Exchange-HideUnhide-Log.csv" -Append -NoTypeInformation -Encoding UTF8 -Delimiter ";" ## Defina o caminho de onde salvará o log.
+    $logEntry = "[{0}]{1}{2}" -f (get-date -f 'dd/MM/yyyy HH:mm:ss'), "[$loglevel]", $message
+    $logEntry | Out-File -Append -FilePath $logFile
+    Write-Host $logEntry
 }
 
 #Função que define as credenciais de conexão com o Exchange On-Premises
 function Credentials {
-    $userLogin = 'aviva\svc.asg.o365'
-    $userPwd = Get-Content "C:\Scripts\ASGCred.txt" #Arquivo que contém a senha criptografada conforme o guia: https://www.pdq.com/blog/secure-password-with-powershell-encrypting-credentials-part-1/
-
-    $securePwd = $userPwd | ConvertTo-SecureString
+    $key = Get-Content ".\asg.bin"
+    $encryptedPassword = Get-Content ".\asg.txt"
+    $securePwd = $encryptedPassword | ConvertTo-SecureString -Key $key
 
     $userCred = New-Object System.Management.Automation.PSCredential -ArgumentList $userLogin, $securePwd
 
     return $userCred
 
-    Write-Log -Message "Credenciais OK." -Severity Info
+    WriteLog -message "Credenciais importadas com sucesso!"
 }
 
 # Define o conector com o servidor do exchange.
 function ConnectExchange {
     $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://SRVRQE940021/PowerShell/ -Authentication Kerberos -Credential (Credentials)
-    Import-PSSession $Session
+    Import-PSSession $Session -AllowClobber
 
-    Write-Log -Message "Conectado ao Exchange OnPremise" -Severity Info
+    WriteLog -message "Conectado ao Exchange OnPremise!"
 }
 
 #Fecha a sessão do exchange após a execução
 function CloseSession {
     Get-PSSession | Remove-PSSession
-    Write-Log -Message "Fechando conexao com o exchange" -Severity Info
+    WriteLog -Message "Fechando conexao com o exchange!"
+}
+
+function DisposeCreds {
+    if ($null -ne $userCred) {
+        $userCred.Dispose()
+        WriteLog -message "Credentials disposed!"
+    }
 }
 
 #Armazena todos os usuarios desativados do AD em uma variável
 function Get-DisabledUsers {
-    Write-Log -Message "Buscando usuarios inativos." -Severity Info
-    $DisabledUsers = Get-ADUser -Filter {Enabled -eq $false}
-    return $DisabledUsers
+    param (
+        [string]$logMessage = "Buscando usuários inativos...",
+        [string[]]$properties = @('SamAccountName','Enabled','Name')
+    )
+    
+    WriteLog -message $logMessage
+
+    try {
+        $DisabledUsers = Get-ADUser -Filter {Enabled -eq $false} -Properties $properties
+        WriteLog -message "Usuários inativos encontrados: $($DisabledUsers.Count)"
+
+        return $DisabledUsers
+    }
+    catch {
+        WriteLog -message "Erro ao buscar usuários inativos: $_" -logLevel "ERROR"        
+    }
 }
 
 #Armazena todos os usuarios ativos do AD em uma variável
 function Get-EnabledUsers {
-    Write-Log -Message "Buscando usuarios ativos." -Severity Info
-    $EnabledUsers = Get-ADUser -Filter {Enabled -eq $true}
+    param (
+        [string]$logMessage = "Buscando usuários ativos...",
+        [string[]]$properties = @('SamAccountName','Enabled','Name')
+    )
+    WriteLog -Message $logMessage
+
+    try {
+        $EnabledUsers = Get-ADUser -Filter {Enabled -eq $true} -Properties $properties
+        WriteLog -message "Usuários ativos encontrados: $($EnabledUsers.Count)"
+    }
+    catch {
+        WriteLog -message "Erro ao buscar usuários ativos: $_" -logLevel "ERROR" 
+    }
+
     return $EnabledUsers
 }
 
 # Função principal que coloca tudo junto e executa o comando
 function HideDisabledMailboxes {
-    ConnectExchange
+    ConnectExchange    
 
-    Write-Log -Message "Buscando usuarios inativos do AD." -Severity Info
-    $DisabledUsers = Get-ADUser -Filter {Enabled -eq $false}
+    $DisabledUsers = Get-DisabledUsers
 
-    Write-Log -Message "Ocultando usuarios desabilitados do catálogo." -Severity Info
+    WriteLog -Message "Ocultando usuários desabilitados do catálogo."
 
     foreach ($user in $DisabledUsers) {
-        Set-RemoteMailbox -Identity $user.SamAccountName -HiddenFromAddressListsEnabled $true
+        try {
+            Get-RemoteMailbox -Identity $user.SamAccountName
+            WriteLog -message "Usuário $($user.SamAccountName) ocultado com sucesso."
+        }
+        catch {
+            WriteLog -message "Falha ao buscar usuarios." -logLevel "ERROR"
+        }        
     }
 
     CloseSession
+    DisposeCreds
 }
 
 function UnhideEnabledMailboxes {
     ConnectExchange
 
-    Write-Log -Message "Buscando usuarios ativos do AD." -Severity Info
-    $EnabledUsers = Get-ADUser -Filter {Enabled -eq $true}
+    $EnabledUsers = Get-EnabledUsers    
 
-    Write-Log -Message "Re-exibindo usuarios ativos no catálogo." -Severity Info
+    WriteLog -Message "Exibindo usuários ativos no catálogo."
 
     foreach ($user in $EnabledUsers) {
-        Set-RemoteMailbox -Identity $user.SamAccountName -HiddenFromAddressListsEnabled $false
+        try {
+            Get-RemoteMailbox -Identity $user.SamAccountName
+            WriteLog -message "Usuário $($user.SamAccountName) exibido com sucesso."
+        }
+        catch {
+            WriteLog -message "Falha ao buscar usuarios." -logLevel "ERROR"
+        }        
     }
 
     CloseSession
+    DisposeCreds
 }
 
 #Chama as funções e as executa.
