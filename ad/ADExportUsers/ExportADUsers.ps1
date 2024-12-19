@@ -1,65 +1,69 @@
-﻿	<# 
-		.Synopsis
-        Exporta um relatório de usuários do AD em CSV
-		.Description
-        Exporta um relatório detalhado de todos os usuários do AD para um arquivo CSV. O diretório de busca pode ser especificado na variável $searchBase e o dominio na variável $domain
-		.Example
-		.\ExportADUsers.ps1
-		.Notes
-		NAME: ExportADUsers
-		AUTHOR: Giovani Paganini
-		CREATIONDATE: 08 April 2020
-		LASTEDIT: 03 February 2021
-		VERSION: 1.1
-		
-		Change Log
-        v1.1, 03/02/2021 - Removed useless comments; Added filter ignoring system and default AD accounts
-		v1.0, 08/04/2020 - Initial Version		
-	#>
-
-$ignoreUsers = Import-Csv -Path "C:\Scripts\ADExportUsers\Ignore.csv"
-
-$path = Split-Path -Parent "C:\Scripts\ADExportUsers\*.*"
-$LogDate = get-date -f ddMMyyyy-hhmm
-
-$csvfile = $path + "\ADUsers_$LogDate.csv"
+﻿<#
+.SYNOPSIS
+    EXPORTS A CSV REPORT CONTAINING ALL USERS IN ACTIVE DIRECTORY DOMAINS
+.DESCRIPTION
+.EXAMPLE
+    .\ExportADUsers.ps1
+.NOTES
+    NAME: ExportADUsers
+    AUTHOR: Giovani Paganini <giovanipaganini@outlook.com>
+    CREATED: 04/08/2020
+    MODIFIED: 12/17/2024
+    CHANGELOG:
+        V1.2, 12/17/2024 - Added support to multiple domains, overall script optimization
+        v1.1, 02/03/2021 - Removed useless comments; Added filter ignoring system and default AD accounts
+        v1.0, 04/08/2020 - Initial Version
+#>
 
 Import-Module ActiveDirectory
 
-Function Main {    
+$Domains = @(
+    'domain.local'
+)
 
-    $AllADUsers = Get-ADUser -Filter * -Properties * 
+$OutputPath = "C:\temp"
+$Date = (get-date -f MMddyyyy)
 
-    foreach ($user in $ignoreUsers) {
-        $AllADUsers = $AllADUsers | where {$_.Name -ne $user.Nome}
+$Attributes = @(
+    "Name",
+    "DisplayName",
+    "GivenName",
+    "sn",
+    "SamAccountName",
+    "UserPrincipalName",
+    #"Title",
+    "Mail",
+    #"Department",
+    "Description",
+    "Enabled",
+    #"LastLogonDate",
+    "DistinguishedName"
+)
+
+Function Invoke-GetActiveDirectoryUsers {
+    ForEach ($Domain in $Domains) {
+        $OutputFile = $OutputPath+"\$($Date)_$($Domain).csv"
+        
+        $AllADUsers = Get-ADUser -Filter * -Properties $Attributes -Server $Domain
+    
+        $AllADUsers | ForEach-Object {
+            [PSCustomObject]@{
+                Name                = $_.Name -replace ',', '' -replace '\s+', ' '
+                DisplayName         = $_.DisplayName -replace ',', '' -replace '\s+', ' '
+                FirstName           = $_.GivenName
+                LastName            = $_.sn
+                UserName            = $_.SamAccountName
+                UserPrincipalName   = $_.UserPrincipalName
+                #Title               = $_.Title
+                Mail                = $_.Mail
+                #Department          = $_.Department
+                Description         = $_.Description
+                Status              = if ($_.Enabled) {'Enabled'} else {'Disabled'}
+                #LastLogonDate       = $_.LastLogonDate
+                DN                  = $_.DistinguishedName
+            }
+        } | Export-Csv -Path $OutputFile -Delimiter ";" -NoTypeInformation -Encoding UTF8
     }
-
-    $AllADUsers | 
-    Select-Object @{Label = "Nome";Expression = {$_.Name}},
-    @{Label = "DisplayName";Expression = {$_.DisplayName}},
-    @{Label = "FirstName";Expression = {$_.GivenName}},
-    @{Label = "LastName";Expression = {$_.sn}},
-    @{Label = "Usuario";Expression = {$_.SamAccountName}},
-    @{Label = "UPN";Expression = {$_.UserPrincipalName}},
-    @{Label = "Matricula";Expression = {$_.IPPhone}},
-    @{Label = "CPF";Expression = {$_.extensionAttribute1}},
-    @{Label = "Cargo";Expression = {$_.Title}},
-    @{Label = "Email";Expression = {$_.Mail}},
-    @{Label = "Departamento";Expression = {$_.Department}},
-    @{Label = "Description";Expression = {$_.Description}},
-    @{Label = "Office";Expression = {$_.Office}},
-    @{Label = "PhoneNumber";Expression = {$_.telephoneNumber}},
-    @{Label = "Street";Expression = {$_.streetAddress}},
-    @{Label = "City";Expression = {$_.city}},
-    @{Label = "State";Expression = {$_.State}},
-    @{Label = "PostalCode";Expression = {$_.postalCode}},
-    @{Label = "Country";Expression = {$_.country}},
-    @{Label = "Company";Expression = {$_.Company}},
-    @{Label = "Status";Expression = {if (($_.Enabled -eq 'TRUE')  ) {'Ativo'} Else {'Inativo'}}},
-    @{Label = "LastLogonDate";Expression = {$_.LastLogonDate}},
-    @{Label = "DN";Expression = {$_.DistinguishedName}} |
-
-    Export-Csv -Path $csvfile -NoTypeInformation -Encoding UTF8
 }
 
-. Main
+Invoke-GetActiveDirectoryUsers
