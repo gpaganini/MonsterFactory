@@ -1,1 +1,0 @@
-psexec \\RQE-LUCAS-DT shutdown -r -f -t 1
