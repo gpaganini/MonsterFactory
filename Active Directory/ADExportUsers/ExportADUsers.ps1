@@ -1,7 +1,12 @@
-﻿<#
+﻿#region Disclaimer
+<#
 .SYNOPSIS
     EXPORTS A CSV REPORT CONTAINING ALL USERS IN ACTIVE DIRECTORY DOMAINS
 .DESCRIPTION
+    EXPORTS A CSV REPORT CONTAINING ALL USERS IN ACTIVE DIRECTORY DOMAINS.
+    It may be required to configure WinRM TrustedHosts for the domains. See example:
+
+    Set-Item WSMan:\localhost\Client\TrustedHosts -Value "domain1.local,domain2.local"
 .EXAMPLE
     .\ExportADUsers.ps1
 .NOTES
@@ -17,6 +22,18 @@
        - Work on local domain extraction script, for now has been deprecated.
        - Test if it is possible to use stored credentials on Windows Credential Manager.
 #>
+#endregion
+
+############## TODO
+<# param (
+    [Parameter()]
+    [switch]$GetAdUsers,
+
+    [Parameter()]
+    [switch]$GetRemoteAdUsers
+) #>
+
+#region Domains
 
 # Placeholder example:
 <# $Domains = @(
@@ -26,53 +43,66 @@
     'acme.org'
 ) #>
 
-# Test environment
+# Lab environment
 <# $Credential = New-Object pscredential("gpaganini\da-gpaganini",(ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force))
 $Domains = @(
     @{Domain = 'gpaganini.local'; JumpServer = "GP-DEMO-WS01.gpaganini.local"; Credential = $Credential}
 ) #>
 
 $Domains = @(
-    @{Domain = 'wexprodr.wexglobal.com'; JumpServer = "DC2-WSUS-01.wexprodr.wexglobal.com"; Credential = Get-Credential -Message "WEXPRODR Creds"},
-    @{Domain = 'phoenix.retaildecisions.com.au'; JumpServer = "SY4WFAWSUS01P.phoenix.retaildecisions.com.au"; Credential = Get-Credential -message "PHOENIX Creds"},
-    @{Domain = 'encprimary.com'; JumpServer = "DC2-ENCWSUS-01.encprimary.com"; Credential = Get-Credential -message "ENCPRIMARY Creds"},
-    @{Domain = 'floridacore.local'; JumpServer = "SE4-FLCWSUS-01.floridacore.local"; Credential = Get-Credential -message "FLORIDACORE Creds"}
+    #@{Domain = 'wexprodr.wexglobal.com'; JumpServer = "DC2-WSUS-01.wexprodr.wexglobal.com"; Credential = Get-Credential -Message "WEXPRODR Creds"},
+    #@{Domain = 'phoenix.retaildecisions.com.au'; JumpServer = "SY4WFAWSUS01P.phoenix.retaildecisions.com.au"; Credential = Get-Credential -message "PHOENIX Creds"},
+    #@{Domain = 'encprimary.com'; JumpServer = "DC2-ENCWSUS-01.encprimary.com"; Credential = Get-Credential -message "ENCPRIMARY Creds"},
+    #@{Domain = 'floridacore.local'; JumpServer = "SE4-FLCWSUS-01.floridacore.local"; Credential = Get-Credential -message "FLORIDACORE Creds"},
+    @{Domain = 'pws.local'; JumpServer = "DC2-PWSWSUS-01.pws.local"; Credential = Get-Credential -Message "PWS Creds"},
+    @{Domain = 'pwsdemo.local'; JumpServer = "SE4-PWSDTWUS-01.pwsdemo.local"; Credential = Get-Credential -Message "PWS DEMO Creds"}
 )
+#endregion
 
+#region Attributes
 $Attributes = @(
+    "CN",
     "Name",
     "DisplayName",
     "GivenName",
     "sn",
+    "EmployeeNumber",
     "SamAccountName",
     "UserPrincipalName",
     "Mail",
     "Description",
     "Enabled",
-    "DistinguishedName"
-)
+    "DistinguishedName",
+    "CanonicalName"
+) #endregion
 
+#region Functions
 Function Invoke-GetActiveDirectoryUsers {
     Import-Module ActiveDirectory
-    ForEach ($DomainInfo in $Domains) {
-        $Domain = $DomainInfo.Domain
-        $DomainCredential = $DomainInfo.Credential
-        $OutputFile = $OutputPath+"\$($Domain).csv"
 
-        $AllADUsers = Get-ADUser -Filter * -Properties $Attributes -Server $Domain -Credential $DomainCredential | Sort-Object Name
-        $AllADUsersInfo = $AllADUsers | Select-Object -Property @{
-            Name       = 'Name'
-            Expression = { $_.Name -replace ',', '' -replace '\s+', ' ' }
-        }, @{
-            Name       = 'DisplayName'
-            Expression = { $_.DisplayName -replace ',', '' -replace '\s+', ' ' }
-        }, 'GivenName', 'sn', 'SamAccountName', 'UserPrincipalName', 'Mail', 'Description', @{
-            Name       = 'Status'
-            Expression = { if ($_.Enabled) { 'Enabled' } else { 'Disabled' } }
-        }, 'DistinguishedName'
+    # Get all users from Active Directory
+    $AllADUsers = Get-ADUser -Filter * -Properties $Attributes | Sort-Object Name
 
-        $AllADUsersInfo | Export-Csv -Path $OutputFile -Delimiter ";" -NoTypeInformation
+    # Formats the information to be output properly
+    $AllADUsersInfo = $AllADUsers | Select-Object -Property @{
+        Name       = 'CN'
+        Expression = { $_.CN -replace ',', '' -replace '\s+', ' ' }
+    }, @{
+        Name       = 'Name'
+        Expression = { $_.Name -replace ',', '' -replace '\s+', ' ' }
+    }, @{
+        Name       = 'DisplayName'
+        Expression = { $_.DisplayName -replace ',', '' -replace '\s+', ' ' }
+    }, 'GivenName', 'sn', 'EmployeeNumber', 'SamAccountName', 'UserPrincipalName', 'Mail', 'Description', @{
+        Name       = 'Status'
+        Expression = { if ($_.Enabled) { 'Enabled' } else { 'Disabled' } }
+    }, 'DistinguishedName', @{
+        Name       = 'CanonicalName'
+        Expression = { $_.CanonicalName -replace ',', '' -replace '\s+', ' ' }
     }
+
+    # Output to CSV File
+    $AllADUsersInfo | Export-Csv -Path ".\ad-export.csv" -Delimiter ";" -NoTypeInformation
 }
 
 Function Invoke-GetRemoteActiveDirectoryUsers {
@@ -97,16 +127,21 @@ Function Invoke-GetRemoteActiveDirectoryUsers {
             $AllADUsers = Get-ADUser -Filter * -Properties $Attributes -Server $Domain -Credential $DomainCredential | Sort-Object Name
 
             $AllADUsersInfo = $AllADUsers | Select-Object -Property @{
+                Name       = 'CN'
+                Expression = { $_.CN -replace ',', '' -replace '\s+', ' ' }
+            }, @{
                 Name       = 'Name'
                 Expression = { $_.Name -replace ',', '' -replace '\s+', ' ' }
             }, @{
                 Name       = 'DisplayName'
                 Expression = { $_.DisplayName -replace ',', '' -replace '\s+', ' ' }
-            }, 'GivenName', 'sn', 'SamAccountName', 'UserPrincipalName', 'Mail', 'Description', @{
+            }, 'GivenName', 'sn', 'EmployeeNumber', 'SamAccountName', 'UserPrincipalName', 'Mail', 'Description', @{
                 Name       = 'Status'
                 Expression = { if ($_.Enabled) { 'Enabled' } else { 'Disabled' } }
-            }, 'DistinguishedName'
-
+            }, 'DistinguishedName', @{
+                Name       = 'CanonicalName'
+                Expression = { $_.CanonicalName -replace ',', '' -replace '\s+', ' ' }
+            }
             $AllADUsersInfo | Export-Csv -Path $RemoteOutputFile -Delimiter ";" -NoTypeInformation
         } -ArgumentList $Domain, $DomainCredential, $Attributes, $RemoteFolder, $RemoteOutputFile
 
@@ -129,6 +164,8 @@ Function Invoke-GetRemoteActiveDirectoryUsers {
         } -ArgumentList $RemoteFolder
         Get-PSSession | Remove-PSSession
     }
-}
+} #endregion
 
-Invoke-GetRemoteActiveDirectoryUsers
+#region Execution
+Invoke-GetActiveDirectoryUsers
+#Invoke-GetRemoteActiveDirectoryUsers
