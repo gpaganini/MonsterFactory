@@ -9,6 +9,7 @@
     Set-Item WSMan:\localhost\Client\TrustedHosts -Value "domain1.local,domain2.local"
 .EXAMPLE
     .\ExportADUsers.ps1
+    It will generate a CSV file with all AD Users for the domain you're logged in.
 .NOTES
     NAME: ExportADUsers
     AUTHOR: Giovani Paganini <giovanipaganini@outlook.com>
