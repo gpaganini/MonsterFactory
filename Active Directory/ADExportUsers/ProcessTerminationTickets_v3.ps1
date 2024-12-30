@@ -33,7 +33,7 @@ $InputCsv = '.\wexprodr.csv'
 $WexUsers = Import-Csv -Path $InputCsv -Delimiter ";"
 
 #$TermTicketsCsv = ".\termtickets_parsed.csv"
-#$OutputFile = ".\termtickets_processed.csv"
+$OutputFile = ".\DomainsProcessed.csv"
 $LegacyDomains = @(
     '.\phoenix.csv',
     '.\encprimary.csv',
@@ -92,22 +92,29 @@ Function Invoke-CompareADUsers () {
                     WriteLog -Message "Exact match by WID in USERPRINCIPALNAME on ${Domain}:$($LegacyUser.Name)"
                     $ExactMatch = $LegacyUser
                 }
+                elseif ($LegacyUser.Name -and ($WexUser.Name -eq $LegacyUser.Name -or $WexUser.DisplayName -eq $LegacyUser.DisplayName)) {
+                    $BestMatch = $LegacyUser
+                }
 
-                if ($ExactMatch) {
+                <# if ($ExactMatch) {
                     WriteLog -Message "Exact match: $($ExactMatch.CN), ${Domain}"
                     break
-                }
+                } #>
             }
 
             if ($ExactMatch) {
                 $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value $ExactMatch.SamAccountName
                 $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value $ExactMatch.Status
                 $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Exact" -Force
+            } elseif ($BestMatch) {
+                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value $BestMatch.CN
+                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value $BestMatch.Status
+                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Best Match" -Force
             } else {
                 #WriteLog -Message "No match found in ${Domain} for $($WexUser.Name)"
-                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value "Not Found"
-                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value "Not Found"
-                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Not Found"
+                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value ""
+                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value ""
+                $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value ""
             }
         }
         $OutputData += $OutputInfo
