@@ -11,10 +11,21 @@
     CREATED: 12/17/2024
     MODIFIED: 12/31/2024
     CHANGELOG:
-        V1.2, 12/31/2024 - Script optimization.
+        V1.2, 12/31/2024 - Script optimization, cleanup and parameters included.
         V1.1, 12/23/2024 - Added support to multiple domains, overall script optimization.
         v1.0, 12/17/2024 - Initial Version
 #>
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$true,HelpMessage="You must provide an input csv file for processing.")]
+    [string]$LegacyDomainCsv,
+
+    [Parameter(Mandatory=$true,HelpMessage="You must provide an input csv file for processing.")]
+    [string]$ProdDomainCsv,
+
+    [Parameter(Mandatory=$true,HelpMessage="You must provide an output csv file for processing.")]
+    [string]$OutputFile
+)
 
 Import-Module ".\Logger.psm1" -Force
 
@@ -30,13 +41,12 @@ Import-Module ".\Logger.psm1" -Force
     }
 } #>
 
-$LegacyDomainCsv = '.\phoenix.csv'
+#$LegacyDomainCsv = '.\phoenix.csv'
+#$ProdDomainCsv = '.\wexprodr.csv'
+#$OutputFile = ".\DomainsProcessed.csv"
+
 $LegacyDomain = Import-Csv -Path $LegacyDomainCsv -Delimiter ";"
-
-$ProdDomainCsv = '.\wexprodr.csv'
 $ProdDomain = Import-Csv -Path $ProdDomainCsv -Delimiter ";"
-
-$OutputFile = ".\DomainsProcessed.csv"
 
 $ProdHashBySam = @{}
 $ProdHashByEmployeeId = @{}
@@ -258,48 +268,7 @@ Function Invoke-CompareUsers () {
                     $MatchFound = $true
                 }
             }
-
-            <# # Search WID in EmployeeNumber
-            if ($ProdId -and ($ProdId -eq $LegacyId)) {
-                WriteLog -Message "Exact match by WID in EmployeeNumber ${Domain}:$($ProdName)"
-                $ExactMatch = $ProdUser
-            } # Search Exact Username
-            elseif ($ProdSam -eq $LegacySam) {
-                WriteLog -Message "Exact match by SAMACCOUNTNAME on ${Domain}:$($ProdName)"
-                $ExactMatch = $ProdUser
-            } # Search WID in Description
-            elseif ($ProdId -and ($LegacyDescription -like "*$($ProdId)*")){
-                WriteLog -Message "Exact match by WID in DESCRIPTION on ${Domain}:$($ProdName)"
-                $ExactMatch = $ProdUser
-            } # Search WID in SamAccountName - New
-            elseif ($ProdId -and ($LegacySam -like "*$($ProdId)*")) {
-                WriteLog -Message "Exact match by WID in SAMACCOUNTNAME on ${Domain}:$($ProdName)"
-                $ExactMatch = $ProdUser
-            } # Search WID in UserPrincipalName
-            elseif (($ProdUPN -and $ProdId) -and ($LegacyUPN -like "*$($ProdId)*")) {
-                WriteLog -Message "Exact match by WID in USERPRINCIPALNAME on ${Domain}:$($ProDName)"
-                $ExactMatch = $ProdUser
-            }
-            elseif ($LegacyName -and ($LegacyName -eq $ProdName -or $LegacyDName -eq $ProdDName)) {
-                WriteLog -Message "Exact match by NAME on ${Domain}:$($ProdName)"
-                $ExactMatch = $ProdUser
-            } #>
         }
-
-        <# if ($ExactMatch) {
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value $ExactMatch.SamAccountName
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value $ExactMatch.Status
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Exact" -Force
-        } elseif ($BestMatch) {
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value $BestMatch.CN
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value $BestMatch.Status
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Best Match" -Force
-        } else {
-            #WriteLog -Message "No match found in ${Domain} for $($WexUser.Name)"
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value ""
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value ""
-            $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value ""
-        } #>
 
         $OutputInfo = [PSCustomObject]@{
             CN = $LegacyUser.CN
@@ -389,11 +358,6 @@ Function Invoke-CompareADUsers () {
                 elseif ($LegacyUser.Name -and ($WexUser.Name -eq $LegacyUser.Name -or $WexUser.DisplayName -eq $LegacyUser.DisplayName)) {
                     $BestMatch = $LegacyUser
                 }
-
-                <# if ($ExactMatch) {
-                    WriteLog -Message "Exact match: $($ExactMatch.CN), ${Domain}"
-                    break
-                } #>
             }
 
             if ($ExactMatch) {
