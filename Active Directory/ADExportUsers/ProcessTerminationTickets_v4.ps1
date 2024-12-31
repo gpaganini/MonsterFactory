@@ -9,8 +9,9 @@
     NAME: ProcessTerminationTickets
     AUTHOR: Giovani Paganini <giovani.paganini@wexinc.com>
     CREATED: 12/17/2024
-    MODIFIED: 12/23/2024
+    MODIFIED: 12/31/2024
     CHANGELOG:
+        V1.2, 12/31/2024 - Script optimization.
         V1.1, 12/23/2024 - Added support to multiple domains, overall script optimization.
         v1.0, 12/17/2024 - Initial Version
 #>
@@ -63,8 +64,18 @@ Foreach ($ProdUser in $ProdDomain) {
 }
 
 Function Invoke-CompareUsersOptimized () {
+    WriteLog -Message "========== SCRIPT STARTED =========="
+    $start = Get-Date
     $OutputData = @()
     $i = 0
+
+    $MatchById = 0
+    $MatchBySam = 0
+    $MatchByName = 0
+    $MatchByDisplayName = 0
+    $MatchByWidDescription = 0
+    $MatchByWidSam = 0
+    $MatchByWidUpn = 0
 
     foreach ($LegacyUser in $LegacyDomain) {
         $LegacyId           = $LegacyUser.EmployeeNumber
@@ -77,40 +88,57 @@ Function Invoke-CompareUsersOptimized () {
         $ExactMatch         = $null
         $BestMatch          = $null
 
+        # Match by EmployeeNumber
         if ($ProdHashByEmployeeId.ContainsKey($LegacyId)) {
+            $MatchById++
             $ExactMatch = $ProdHashByEmployeeId[$LegacyId]
-        } elseif ($ProdHashBySam.ContainsKey($LegacySam)) {
+            WriteLog -Message "Exact match by WID in EmployeeNumber ${Domain}:$($ExactMatch.Name)"
+        } # Match by SamAccountName
+        elseif ($ProdHashBySam.ContainsKey($LegacySam)) {
+            $MatchBySam++
             $ExactMatch = $ProdHashBySam[$LegacySam]
-        } elseif ($ProdHashByName.ContainsKey($LegacyName)) {
+            WriteLog -Message "Exact match by SAMACCOUNTNAME ${Domain}:$($ExactMatch.Name)"
+        } # Match by Name
+        elseif ($ProdHashByName.ContainsKey($LegacyName)) {
+            $MatchByName++
             $ExactMatch = $ProdHashByName[$LegacyName]
-        } elseif ($ProdHashByDisplayName.ContainsKey($LegacyDName)) {
+            WriteLog -Message "Exact match by Name ${Domain}:$($ExactMatch.Name)"
+        } # Match by DisplayName
+        elseif ($ProdHashByDisplayName.ContainsKey($LegacyDName)) {
+            $MatchByDisplayName++
             $ExactMatch = $ProdHashByDisplayName[$LegacyDName]
+            WriteLog -Message "Exact match by DisplayName ${Domain}:$($ExactMatch.Name)"
         }
 
+        # For non exact matches, loop the rest of the Production Domain
         foreach ($ProdUser in $ProdDomain) {
-            $ProdSam = $ProdUser.SamAccountName
+            #$ProdSam = $ProdUser.SamAccountName
             $ProdId = $ProdUser.EmployeeNumber
             $ProdName = $ProdUser.Name
-            $ProdDName = $ProdUser.DisplayName
+            #$ProdDName = $ProdUser.DisplayName
             $ProdUPN = $ProdUser.UserPrincipalName
 
-            #$Domain = $ProdUser.CanonicalName -split '\.' | Select-Object -First 1
             if (-not $ExactMatch) {
+                # Search for WID in Description
                 if ($ProdId -and ($LegacyDescription -like "*$($ProdId)*")){
-                    WriteLog -Message "Exact match by WID in DESCRIPTION on ${Domain}:$($ProdName)"
+                    $MatchByWidDescription++
                     $BestMatch = $ProdUser
-                } # Search WID in SamAccountName
+                    WriteLog -Message "Best match by WID in Description ${Domain}:$($ProdName)"
+                } # Search for WID in SamAccountName
                 elseif ($ProdId -and ($LegacySam -like "*$($ProdId)*")) {
-                    WriteLog -Message "Exact match by WID in SAMACCOUNTNAME on ${Domain}:$($ProdName)"
+                    $MatchByWidSam++
                     $BestMatch = $ProdUser
-                } # Search WID in UserPrincipalName
+                    WriteLog -Message "Best match by WID in SamAccountName ${Domain}:$($ProdName)"
+                } # Search for WID in UserPrincipalName
                 elseif (($ProdUPN -and $ProdId) -and ($LegacyUPN -like "*$($ProdId)*")) {
-                    WriteLog -Message "Exact match by WID in USERPRINCIPALNAME on ${Domain}:$($ProdName)"
+                    $MatchByWidUpn++
                     $BestMatch = $ProdUser
+                    WriteLog -Message "Best match by WID in UserPrincipalName ${Domain}:$($ProdName)"
                 }
             }
         }
 
+        # Prepares output information
         $OutputInfo = [PSCustomObject]@{
             CN = $LegacyUser.CN
             Name = $LegacyUser.Name
@@ -126,21 +154,49 @@ Function Invoke-CompareUsersOptimized () {
             #DistinguishedName = $LegacyUser.DistinguishedName
             #CanonicalName = $LegacyUser.CanonicalName
             MatchedType = $ExactMatch ? "Exact" : ($BestMatch ? "Best Match" : "None")
-            MatchedUser = $ExactMatch ? $ExactMatch.SamAccountName : ($BestMatch ? $BestMatch.Name : "")
+            MatchedUser = $ExactMatch ? $ExactMatch.SamAccountName : ($BestMatch ? $BestMatch.SamAccountName : "")
+            MatchedStatus = $ExactMatch ? $ExactMatch.Status : ($BestMatch ? $BestMatch.Status : "")
         }
         $OutputData += $OutputInfo
 
         $i++
-        if ($i % 10 -eq 0) {
+        if ($i % 100 -eq 0) {
             Write-Progress -Activity "Processing users..." -Status "Processed $i users of $($LegacyDomain.Count)" -PercentComplete ($i / $LegacyDomain.Count * 100)
         }
     }
+
     $OutputData | Export-Csv -Path $OutputFile -Delimiter ";" -NoTypeInformation -Encoding utf8BOM
+
+    $stop = Get-Date
+    $elapsed = $stop - $start
+    Write-Output "Elapsed: $elapsed"
+
+    Write-Output "Match by ID: $MatchById"
+    Write-Output "Match by SAM: $MatchBySam"
+    Write-Output "Match by NAME: $MatchByName"
+    Write-Output "Match by DISPLAYNAME: $MatchByDisplayName"
+    Write-Output "Total Exact Matches: $($MatchBySam + $MatchById + $MatchByName + $MatchByDisplayName)"
+
+    Write-Output "Match by WID in Description: $MatchByWidDescription"
+    Write-Output "Match by WID in SAM: $MatchByWidSam"
+    Write-Output "Match by WID in UPN: $MatchByWidUpn"
+    Write-Output "Total Partial Matches: $($MatchByWidDescription + $MatchByWidSam + $MatchByWidUpn)"
+
+    WriteLog -Message "========== SCRIPT FINISHED =========="
 }
 
 Function Invoke-CompareUsers () {
+    $Start = Get-Date
     $OutputData = @()
     $i = 0
+
+    $MatchById = 0
+    $MatchBySam = 0
+    $MatchByName = 0
+    $MatchByDisplayName = 0
+    $MatchByWidDescription = 0
+    $MatchByWidSam = 0
+    $MatchByWidUpn = 0
 
     foreach ($LegacyUser in $LegacyDomain) {
         $LegacyId           = $LegacyUser.EmployeeNumber
@@ -151,34 +207,59 @@ Function Invoke-CompareUsers () {
         $LegacyUPN          = $LegacyUser.UserPrincipalName
 
         $ExactMatch = $null
-        #$BestMatch = $null
-
-        $OutputInfo = [PSCustomObject]@{
-            CN = $LegacyUser.CN
-            Name = $LegacyUser.Name
-            DisplayName = $LegacyUser.DisplayName
-            #FirstName = $LegacyUser.GivenName
-            #LastName = $LegacyUser.sn
-            EmployeeNumber = $LegacyUser.EmployeeNumber
-            SamAccountName = $LegacyUser.SamAccountName
-            #UserPrincipalName = $LegacyUser.UserPrincipalName
-            Mail = $LegacyUser.Mail
-            #Description = $LegacyUser.Description
-            Status = $LegacyUser.Status
-            #DistinguishedName = $LegacyUser.DistinguishedName
-            #CanonicalName = $LegacyUser.CanonicalName
-        }
+        $BestMatch = $null
+        $MatchFound = $false
 
         foreach ($ProdUser in $ProdDomain) {
+            if ($MatchFound) { break }  # Exit loop once a match is found
             $ProdSam = $ProdUser.SamAccountName
             $ProdId = $ProdUser.EmployeeNumber
             $ProdName = $ProdUser.Name
             $ProdDName = $ProdUser.DisplayName
             $ProdUPN = $ProdUser.UserPrincipalName
 
-            #$Domain = $ProdUser.CanonicalName -split '\.' | Select-Object -First 1
+            # Match by EmployeeNumber
+            if ($ProdId -and ($ProdId -eq $LegacyId)) {
+                $MatchById++
+                $ExactMatch = $ProdUser
+                $MatchFound = $true
+            } # Match by SamAccountName
+            elseif ($ProdSam -and ($ProdSam -eq $LegacySam)) {
+                $MatchBySam++
+                $ExactMatch = $ProdUser
+                $MatchFound = $true
+            } # Match by Name
+            elseif (($ProdName -and $LegacyName) -and ($ProdName -eq $LegacyName)) {
+                $MatchByName++
+                $ExactMatch = $ProdUser
+                $MatchFound = $true
+            } # Match by DisplayName
+            elseif (($ProdDName -and $LegacyDName) -and ($ProdDName -eq $LegacyDName)) {
+                $MatchByDisplayName++
+                $ExactMatch = $ProdUser
+                $MatchFound = $true
+            }
 
-            # Search WID in EmployeeNumber
+            if (-not $ExactMatch) {
+                # Match by WID In Description
+                if ($ProdId -and ($LegacyDescription -like "*$($ProdId)*")) {
+                    $MatchByWidDescription++
+                    $BestMatch = $ProdUser
+                    $MatchFound = $true
+                } # Match by WID in SAM
+                elseif ($ProdId -and ($LegacySam -like "*$($ProdId)*")) {
+                    $MatchByWidSam++
+                    $BestMatch = $ProdUser
+                    $MatchFound = $true
+                } # Match by WID in UPN
+                elseif (($ProdId -and $ProdUPN) -and ($LegacyUPN -like "*$($ProdId)*")) {
+                    $MatchByWidUpn++
+                    $BestMatch = $ProdUser
+                    $MatchFound = $true
+                }
+            }
+
+            <# # Search WID in EmployeeNumber
             if ($ProdId -and ($ProdId -eq $LegacyId)) {
                 WriteLog -Message "Exact match by WID in EmployeeNumber ${Domain}:$($ProdName)"
                 $ExactMatch = $ProdUser
@@ -190,11 +271,7 @@ Function Invoke-CompareUsers () {
             elseif ($ProdId -and ($LegacyDescription -like "*$($ProdId)*")){
                 WriteLog -Message "Exact match by WID in DESCRIPTION on ${Domain}:$($ProdName)"
                 $ExactMatch = $ProdUser
-            } <# # Search WID in SamAccountName
-            elseif ($ProdUser.EmployeeNumber -and ($ProdUser.EmployeeNumber -match ($LegacyUser.SamAccountName -replace '^y-'))) {
-                WriteLog -Message "Exact match by WID in SAMACCOUNTNAME on ${Domain}:$($ProdUser.Name)"
-                $ExactMatch = $ProdUser
-            } #> # Search WID in SamAccountName - New
+            } # Search WID in SamAccountName - New
             elseif ($ProdId -and ($LegacySam -like "*$($ProdId)*")) {
                 WriteLog -Message "Exact match by WID in SAMACCOUNTNAME on ${Domain}:$($ProdName)"
                 $ExactMatch = $ProdUser
@@ -206,31 +283,67 @@ Function Invoke-CompareUsers () {
             elseif ($LegacyName -and ($LegacyName -eq $ProdName -or $LegacyDName -eq $ProdDName)) {
                 WriteLog -Message "Exact match by NAME on ${Domain}:$($ProdName)"
                 $ExactMatch = $ProdUser
-            }
+            } #>
         }
 
-        if ($ExactMatch) {
+        <# if ($ExactMatch) {
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value $ExactMatch.SamAccountName
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value $ExactMatch.Status
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Exact" -Force
-        } <# elseif ($BestMatch) {
+        } elseif ($BestMatch) {
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value $BestMatch.CN
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value $BestMatch.Status
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value "Best Match" -Force
-        } #> else {
+        } else {
             #WriteLog -Message "No match found in ${Domain} for $($WexUser.Name)"
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Username" -Value ""
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Status" -Value ""
             $OutputInfo | Add-Member -MemberType NoteProperty -Name "${Domain}_Matchtype" -Value ""
-        }
+        } #>
 
+        $OutputInfo = [PSCustomObject]@{
+            CN = $LegacyUser.CN
+            Name = $LegacyUser.Name
+            DisplayName = $LegacyUser.DisplayName
+            #FirstName = $LegacyUser.GivenName
+            #LastName = $LegacyUser.sn
+            EmployeeNumber = $LegacyUser.EmployeeNumber
+            SamAccountName = $LegacyUser.SamAccountName
+            UserPrincipalName = $LegacyUser.UserPrincipalName
+            #Mail = $LegacyUser.Mail
+            #Description = $LegacyUser.Description
+            Status = $LegacyUser.Status
+            #DistinguishedName = $LegacyUser.DistinguishedName
+            #CanonicalName = $LegacyUser.CanonicalName
+            #MatchedType = $ExactMatch ? "Exact" : "None"
+            #MatchedUser = $ExactMatch ? $ExactMatch.SamAccountName : ""
+            MatchedType = $ExactMatch ? "Exact" : ($BestMatch ? "Best Match" : "None")
+            MatchedUser = $ExactMatch ? $ExactMatch.SamAccountName : ($BestMatch ? $BestMatch.SamAccountName : "")
+            MatchedStatus = $ExactMatch ? $ExactMatch.Status : ($BestMatch ? $BestMatch.Status : "")
+        }
         $OutputData += $OutputInfo
+
         $i++
-        if ($i % 10 -eq 0) {
+        if ($i % 20 -eq 0) {
             Write-Progress -Activity "Processing users..." -Status "Processed $i users of $($LegacyDomain.Count)" -PercentComplete ($i / $LegacyDomain.Count * 100)
         }
     }
     $OutputData | Export-Csv -Path $OutputFile -Delimiter ";" -NoTypeInformation -Encoding utf8BOM
+
+    $stop = Get-Date
+    $elapsed = $stop - $start
+    Write-Output "Elapsed: $elapsed"
+
+    Write-Output "Match by ID: $MatchById"
+    Write-Output "Match by SAM: $MatchBySam"
+    Write-Output "Match by NAME: $MatchByName"
+    Write-Output "Match by DISPLAYNAME: $MatchByDisplayName"
+    Write-Output "Total Exact Matches: $($MatchBySam + $MatchById + $MatchByName + $MatchByDisplayName)"
+
+    Write-Output "Match by WID in Description: $MatchByWidDescription"
+    Write-Output "Match by WID in SAM: $MatchByWidSam"
+    Write-Output "Match by WID in UPN: $MatchByWidUpn"
+    Write-Output "Total Partial Matches: $($MatchByWidDescription + $MatchByWidSam + $MatchByWidUpn)"
 }
 
 Function Invoke-CompareADUsers () {
@@ -304,5 +417,5 @@ Function Invoke-CompareADUsers () {
     $OutputData | Export-Csv -Path $OutputFile -Delimiter ";" -NoTypeInformation -Encoding utf8BOM
 }
 
-#Invoke-CompareUsersOptimized
-Invoke-CompareUsers
+Invoke-CompareUsersOptimized
+#Invoke-CompareUsers
