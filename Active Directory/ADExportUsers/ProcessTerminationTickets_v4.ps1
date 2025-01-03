@@ -15,7 +15,7 @@
         V1.1, 12/23/2024 - Added support to multiple domains, overall script optimization.
         v1.0, 12/17/2024 - Initial Version
 #>
-[CmdletBinding()]
+<# [CmdletBinding()]
 param (
     [Parameter(Mandatory=$true,HelpMessage="You must provide an input csv file for processing.")]
     [string]$LegacyDomainCsv,
@@ -25,7 +25,7 @@ param (
 
     [Parameter(Mandatory=$true,HelpMessage="You must provide an output csv file for processing.")]
     [string]$OutputFile
-)
+) #>
 
 Import-Module ".\Logger.psm1" -Force
 
@@ -41,9 +41,9 @@ Import-Module ".\Logger.psm1" -Force
     }
 } #>
 
-#$LegacyDomainCsv = '.\phoenix.csv'
-#$ProdDomainCsv = '.\wexprodr.csv'
-#$OutputFile = ".\DomainsProcessed.csv"
+$LegacyDomainCsv = '.\encprimary.csv'
+$ProdDomainCsv = '.\wexprodr.csv'
+$OutputFile = ".\ENCPrimary_Processed.csv"
 
 $LegacyDomain = Import-Csv -Path $LegacyDomainCsv -Delimiter ";"
 $ProdDomain = Import-Csv -Path $ProdDomainCsv -Delimiter ";"
@@ -99,22 +99,22 @@ Function Invoke-CompareUsersOptimized () {
         $BestMatch          = $null
 
         # Match by EmployeeNumber
-        if ($ProdHashByEmployeeId.ContainsKey($LegacyId)) {
+        if ($null -ne $LegacyId -and $ProdHashByEmployeeId.ContainsKey($LegacyId)) {
             $MatchById++
             $ExactMatch = $ProdHashByEmployeeId[$LegacyId]
             WriteLog -Message "Exact match by WID in EmployeeNumber ${Domain}:$($ExactMatch.Name)"
         } # Match by SamAccountName
-        elseif ($ProdHashBySam.ContainsKey($LegacySam)) {
+        elseif ($null -ne $LegacySam -and $ProdHashBySam.ContainsKey($LegacySam)) {
             $MatchBySam++
             $ExactMatch = $ProdHashBySam[$LegacySam]
             WriteLog -Message "Exact match by SAMACCOUNTNAME ${Domain}:$($ExactMatch.Name)"
         } # Match by Name
-        elseif ($ProdHashByName.ContainsKey($LegacyName)) {
+        elseif ($null -ne $LegacyName -and $ProdHashByName.ContainsKey($LegacyName)) {
             $MatchByName++
             $ExactMatch = $ProdHashByName[$LegacyName]
             WriteLog -Message "Exact match by Name ${Domain}:$($ExactMatch.Name)"
         } # Match by DisplayName
-        elseif ($ProdHashByDisplayName.ContainsKey($LegacyDName)) {
+        elseif ($null -ne $LegacyDName -and $ProdHashByDisplayName.ContainsKey($LegacyDName)) {
             $MatchByDisplayName++
             $ExactMatch = $ProdHashByDisplayName[$LegacyDName]
             WriteLog -Message "Exact match by DisplayName ${Domain}:$($ExactMatch.Name)"
@@ -158,19 +158,23 @@ Function Invoke-CompareUsersOptimized () {
             EmployeeNumber = $LegacyUser.EmployeeNumber
             SamAccountName = $LegacyUser.SamAccountName
             UserPrincipalName = $LegacyUser.UserPrincipalName
-            #Mail = $LegacyUser.Mail
-            #Description = $LegacyUser.Description
+            Mail = $LegacyUser.Mail
+            Description = $LegacyUser.Description
             Status = $LegacyUser.Status
             #DistinguishedName = $LegacyUser.DistinguishedName
             #CanonicalName = $LegacyUser.CanonicalName
-            MatchedType = $ExactMatch ? "Exact" : ($BestMatch ? "Best Match" : "None")
-            MatchedUser = $ExactMatch ? $ExactMatch.SamAccountName : ($BestMatch ? $BestMatch.SamAccountName : "")
-            MatchedStatus = $ExactMatch ? $ExactMatch.Status : ($BestMatch ? $BestMatch.Status : "")
+            ProdEmployeeNumber = $ExactMatch ? $ExactMatch.EmployeeNumber : ($BestMatch ? $BestMatch.EmployeeNumber: "")
+            ProdName = $ExactMatch ? $ExactMatch.Name : ($BestMatch ? $BestMatch.Name: "")
+            ProdSamAccountName = $ExactMatch ? $ExactMatch.SamAccountName : ($BestMatch ? $BestMatch.SamAccountName : "")
+            ProdEmail = $ExactMatch ? $ExactMatch.Mail : ($BestMatch ? $BestMatch.Mail: "")
+            ProdStatus = $ExactMatch ? $ExactMatch.Status : ($BestMatch ? $BestMatch.Status : "")
+            ProdDescription = $ExactMatch ? $ExactMatch.Description : ($BestMatch ? $BestMatch.Description : "")
+            MatchType = $ExactMatch ? "Exact" : ($BestMatch ? "Approximate" : "None")
         }
         $OutputData += $OutputInfo
 
         $i++
-        if ($i % 100 -eq 0) {
+        if ($i % 50 -eq 0) {
             Write-Progress -Activity "Processing users..." -Status "Processed $i users of $($LegacyDomain.Count)" -PercentComplete ($i / $LegacyDomain.Count * 100)
         }
     }
