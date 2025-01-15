@@ -14,6 +14,8 @@
         V1.2, 12/31/2024 - Script optimization, cleanup and parameters included.
         V1.1, 12/23/2024 - Added support to multiple domains, overall script optimization.
         v1.0, 12/17/2024 - Initial Version
+    REQUIREMENTS:
+        Powershell >= 7.4.6
 #>
 <# [CmdletBinding()]
 param (
@@ -79,71 +81,106 @@ Function Invoke-CompareUsersOptimized () {
     $OutputData = @()
     $i = 0
 
-    $MatchById = 0
-    $MatchBySam = 0
-    $MatchByName = 0
-    $MatchByDisplayName = 0
-    $MatchByWidDescription = 0
-    $MatchByWidSam = 0
-    $MatchByWidUpn = 0
+    $MatchById              = 0
+    $MatchBySam             = 0
+    $MatchByName            = 0
+    $MatchByDisplayName     = 0
+    $MatchByWidDescription  = 0
+    $MatchByWidSam          = 0
+    $MatchByWidUpn          = 0
 
     foreach ($LegacyUser in $LegacyDomain) {
         $LegacyId           = $LegacyUser.EmployeeNumber
         $LegacySam          = $LegacyUser.SamAccountName
         $LegacyName         = $LegacyUser.Name
+        $LegacyFirstName    = $LegacyUser.GivenName
+        $LegacySurname      = $LegacyUser.sn
+        $LegacyLastName     = $LegacyUser.sn -split '\s+' | Select-Object -Last 1
         $LegacyDName        = $LegacyUser.DisplayName
         $LegacyDescription  = $LegacyUser.Description
         $LegacyUPN          = $LegacyUser.UserPrincipalName
 
         $ExactMatch         = $null
         $BestMatch          = $null
+        $ApproximateMatch   = $null
 
+        WriteLog -Message "Processing user: $LegacyName"
         # Match by EmployeeNumber
         if ($null -ne $LegacyId -and $ProdHashByEmployeeId.ContainsKey($LegacyId)) {
             $MatchById++
             $ExactMatch = $ProdHashByEmployeeId[$LegacyId]
-            WriteLog -Message "Exact match by WID in EmployeeNumber ${Domain}:$($ExactMatch.Name)"
+            WriteLog -Message "Exact match by WID in EmployeeNumber: $($ExactMatch.Name)"
         } # Match by SamAccountName
         elseif ($null -ne $LegacySam -and $ProdHashBySam.ContainsKey($LegacySam)) {
             $MatchBySam++
             $ExactMatch = $ProdHashBySam[$LegacySam]
-            WriteLog -Message "Exact match by SAMACCOUNTNAME ${Domain}:$($ExactMatch.Name)"
+            WriteLog -Message "Exact match by SamAccountName: $($ExactMatch.Name)"
         } # Match by Name
         elseif ($null -ne $LegacyName -and $ProdHashByName.ContainsKey($LegacyName)) {
             $MatchByName++
             $ExactMatch = $ProdHashByName[$LegacyName]
-            WriteLog -Message "Exact match by Name ${Domain}:$($ExactMatch.Name)"
+            WriteLog -Message "Exact match by Name: $($ExactMatch.Name)"
         } # Match by DisplayName
         elseif ($null -ne $LegacyDName -and $ProdHashByDisplayName.ContainsKey($LegacyDName)) {
             $MatchByDisplayName++
             $ExactMatch = $ProdHashByDisplayName[$LegacyDName]
-            WriteLog -Message "Exact match by DisplayName ${Domain}:$($ExactMatch.Name)"
+            WriteLog -Message "Exact match by DisplayName: $($ExactMatch.Name)"
         }
 
         # For non exact matches, loop the rest of the Production Domain
         foreach ($ProdUser in $ProdDomain) {
-            #$ProdSam = $ProdUser.SamAccountName
-            $ProdId = $ProdUser.EmployeeNumber
-            $ProdName = $ProdUser.Name
-            #$ProdDName = $ProdUser.DisplayName
-            $ProdUPN = $ProdUser.UserPrincipalName
+            $ProdSam        = $ProdUser.SamAccountName
+            $ProdId         = $ProdUser.EmployeeNumber
+            $ProdName       = $ProdUser.Name
+            $ProdFirstName  = $ProdUser.GivenName
+            $ProdSurname    = $ProdUser.sn
+            $ProdLastName   = $ProdUser.sn -split '\s+' | Select-Object -Last 1
+            $ProdDName      = $ProdUser.DisplayName
+            $ProdUPN        = $ProdUser.UserPrincipalName
+
+            $ProdUsername = ($ProdFirstName + "." + $ProdLastName).ToLower()
+            $ProdUsername2 = ($ProdFirstName[0] + $ProdLastName).ToLower()
+
+            $HighestScore   = 0
 
             if (-not $ExactMatch) {
                 # Search for WID in Description
                 if ($ProdId -and ($LegacyDescription -like "*$($ProdId)*")){
                     $MatchByWidDescription++
                     $BestMatch = $ProdUser
-                    WriteLog -Message "Best match by WID in Description ${Domain}:$($ProdName)"
+                    WriteLog -Message "Best match by WID in Description: $($ProdName)"
                 } # Search for WID in SamAccountName
                 elseif ($ProdId -and ($LegacySam -like "*$($ProdId)*")) {
                     $MatchByWidSam++
                     $BestMatch = $ProdUser
-                    WriteLog -Message "Best match by WID in SamAccountName ${Domain}:$($ProdName)"
+                    WriteLog -Message "Best match by WID in SamAccountName: $($ProdName)"
                 } # Search for WID in UserPrincipalName
                 elseif (($ProdUPN -and $ProdId) -and ($LegacyUPN -like "*$($ProdId)*")) {
                     $MatchByWidUpn++
                     $BestMatch = $ProdUser
-                    WriteLog -Message "Best match by WID in UserPrincipalName ${Domain}:$($ProdName)"
+                    WriteLog -Message "Best match by WID in UserPrincipalName: $($ProdName)"
+                }
+            } elseif (-not $ExactMatch -and -not $BestMatch) {
+                if (($ProdSurname -and $LegacySurname) -and ($LegacySurname -eq $ProdSurname)){ # If Surname is Equal
+                    $Score = Get-JaroWinklerDistance $ProdFirstName $LegacyFirstName
+                    WriteLog -Message "Score for $($ProdFirstName) is ${Score}"
+                    if ($Score -ge 0.85 -and $Score -gt $HighestScore) { # And FirstName is similar
+                        $ApproximateMatch = $ProdUser
+                        WriteLog -Message "Approximate match by Surname: $($ProdName)"
+                    }
+                } elseif (($ProdLastName -and $LegacyLastName) -and ($LegacyLastName -eq $ProdLastName)) { # If LastName is Equal
+                    $Score = Get-JaroWinklerDistance $ProdFirstName $LegacyFirstName
+                    WriteLog -Message "Score for $($ProdFirstName) is ${Score}"
+                    if ($Score -ge 0.85 -and $Score -gt $HighestScore) { # And FirstName is similar
+                        $ApproximateMatch = $ProdUser
+                        WriteLog -Message "Approximate match by LastName: $($ProdName)"
+                    }
+                } elseif ($ProdUsername -eq $LegacySam) {
+                    WriteLog -Message "Approximate match by Generated UserName: $($ProdName)"
+                    $ApproximateMatch = $ProdUser
+                } elseif ($ProdUsername2 -eq $LegacySam) {
+                    WriteLog -Message "Approximate match by Generated UserName Version 2: $($ProdName)"
+                    $ApproximateMatch = $ProdUser
                 }
             }
         }
@@ -153,8 +190,8 @@ Function Invoke-CompareUsersOptimized () {
             CN = $LegacyUser.CN
             Name = $LegacyUser.Name
             DisplayName = $LegacyUser.DisplayName
-            #FirstName = $LegacyUser.GivenName
-            #LastName = $LegacyUser.sn
+            FirstName = $LegacyUser.GivenName
+            LastName = $LegacyUser.sn
             EmployeeNumber = $LegacyUser.EmployeeNumber
             SamAccountName = $LegacyUser.SamAccountName
             UserPrincipalName = $LegacyUser.UserPrincipalName
@@ -164,12 +201,16 @@ Function Invoke-CompareUsersOptimized () {
             #DistinguishedName = $LegacyUser.DistinguishedName
             #CanonicalName = $LegacyUser.CanonicalName
             ProdEmployeeNumber = $ExactMatch ? $ExactMatch.EmployeeNumber : ($BestMatch ? $BestMatch.EmployeeNumber: "")
-            ProdName = $ExactMatch ? $ExactMatch.Name : ($BestMatch ? $BestMatch.Name: "")
+            ProdName = $ExactMatch ? $ExactMatch.Name : ($BestMatch ? $BestMatch.Name: ($ApproximateMatch ? $ApproximateMatch.Name : ""))
+            ProdFirstName = $ExactMatch ? $ExactMatch.GivenName : ($BestMatch ? $BestMatch.GivenName: "")
+            ProdLastName = $ExactMatch ? $ExactMatch.sn : ($BestMatch ? $BestMatch.sn: "")
             ProdSamAccountName = $ExactMatch ? $ExactMatch.SamAccountName : ($BestMatch ? $BestMatch.SamAccountName : "")
             ProdEmail = $ExactMatch ? $ExactMatch.Mail : ($BestMatch ? $BestMatch.Mail: "")
-            ProdStatus = $ExactMatch ? $ExactMatch.Status : ($BestMatch ? $BestMatch.Status : "")
             ProdDescription = $ExactMatch ? $ExactMatch.Description : ($BestMatch ? $BestMatch.Description : "")
-            MatchType = $ExactMatch ? "Exact" : ($BestMatch ? "Approximate" : "None")
+            ProdStatus = $ExactMatch ? $ExactMatch.Status : ($BestMatch ? $BestMatch.Status : ($ApproximateMatch ? $ApproximateMatch.Status : ""))
+            #MatchType = $ExactMatch ? "Exact" : ($BestMatch ? "Approximate" : "None")
+            MatchType = $ExactMatch ? "Exact" : ($BestMatch ? "Best" : ($ApproximateMatch ? "Approximate" : "None"))
+
         }
         $OutputData += $OutputInfo
 
@@ -348,15 +389,15 @@ Function Invoke-CompareADUsers () {
             foreach ($LegacyUser in $LegacyUsers) {
                 # Search WID in Description
                 if ($LegacyUser.Description -and ($WexUser.EmployeeNumber -like "*$($LegacyUser.Description)*")){
-                    WriteLog -Message "Exact match by WID in DESCRIPTION on ${Domain}:$($LegacyUser.Name)"
+                    WriteLog -Message "Exact match by WID in DESCRIPTION on: $($LegacyUser.Name)"
                     $ExactMatch = $LegacyUser
                 } # Search WID in SamAccountName
                 elseif ($LegacyUser.SamAccountName -and ($WexUser.EmployeeNumber -like "*$($LegacyUser.SamAccountName)*")) {
-                    WriteLog -Message "Exact match by WID in SAMACCOUNTNAME on ${Domain}:$($LegacyUser.Name)"
+                    WriteLog -Message "Exact match by WID in SAMACCOUNTNAME on: $($LegacyUser.Name)"
                     $ExactMatch = $LegacyUser
                 } # Search WID in UserPrincipalName
                 elseif ($LegacyUser.UserPrincipalName -and ($WexUser.EmployeeNumber -like "*$($LegacyUser.UserPrincipalName)*")) {
-                    WriteLog -Message "Exact match by WID in USERPRINCIPALNAME on ${Domain}:$($LegacyUser.Name)"
+                    WriteLog -Message "Exact match by WID in USERPRINCIPALNAME on: $($LegacyUser.Name)"
                     $ExactMatch = $LegacyUser
                 }
                 elseif ($LegacyUser.Name -and ($WexUser.Name -eq $LegacyUser.Name -or $WexUser.DisplayName -eq $LegacyUser.DisplayName)) {
